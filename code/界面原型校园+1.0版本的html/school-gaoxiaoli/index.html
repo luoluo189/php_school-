@@ -26,19 +26,25 @@
 		}
 		.t{
 			width:100%;
-			margin-top: 10px;
-			margin-left: 10px;
+			padding-top: 10px;
 			float: left;
+			/*background-color: #e6e6fa;*/
+			background-image:url("images/bgss.png");
+
 		}
 		.top{
 			float: left;
-			margin-left: 8px;
-			margin-right: 10px;
+			margin-left: 4%;
+			margin-right: 4%;
+			width: 40%;
+		}
+		.imgs{
+			text-align: center;
 		}
 		.top img{
-			width: 150px;
-			height: 150px;
-			border-radius: 40px;
+			width: 100%;
+			border-radius: 20%;
+			text-align: center;
 		}
 		.f{
 			margin-top: -10px;
@@ -47,6 +53,9 @@
 			font-size: 22px;
 			color: #007aff;
 			text-shadow: 2px 2px 2px #cc7acc;
+		}
+        .mid{
+			background-color: #888888;
 		}
 	</style>
 </head>
@@ -60,7 +69,7 @@
 		<!--顶部幻灯片开始-->
 		<div class="swiper-container" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide"><img src="images/1.jpg" alt=""></div>
+				<div class="swiper-slide"><img src="images/111.jpg" alt=""></div>
 				<div class="swiper-slide"><img src="images/2.png" alt=""></div>
 				<div class="swiper-slide"><img src="images/3.png" alt=""></div>
 				<div class="swiper-slide"><img src="images/4.png" alt=""></div>
@@ -70,26 +79,25 @@
 		</div>
 		<!--顶部幻灯片结束-->
 
-		<div class="t">
-			<a class="top" href="">
-				<div><img src="images/1.jpg" alt=""></div>
-				<div class="f">校园生活</div>
-			</a>
-			<a class="top" href="">
-				<div><img src="images/2.png" alt=""></div>
-				<div class="f">校园美食</div>
-			</a>
-		</div>
-		<div class="t">
-			<a class="top" href="lifa-dianpu.html">
-				<div><img src="images/4.png" alt=""></div>
-				<div class="f">美发预约</div>
-			</a>
-			<a class="top" href="">
-				<div><img src="images/3.png" alt=""></div>
-				<div class="f">校园兼职</div>
-			</a>
-		</div>
+			<div class="t">
+				<a class="top" href="">
+					<div class="imgs"><img src="images/1.jpg" alt="" ></div>
+					<div class="f">校园生活</div>
+				</a>
+				<a class="top" href="">
+					<div class="imgs"><img src="images/2.png" alt=""></div>
+					<div class="f">校园美食</div>
+				</a>
+
+				<a class="top" href="lifa-dianpu.html">
+					<div class="imgs"><img src="images/4.png" alt=""></div>
+					<div class="f">美发预约</div>
+				</a>
+				<a class="top" href="">
+					<div class="imgs"><img src="images/3.png" alt=""></div>
+					<div class="f">校园兼职</div>
+				</a>
+			</div>
 
 	</div>
 
