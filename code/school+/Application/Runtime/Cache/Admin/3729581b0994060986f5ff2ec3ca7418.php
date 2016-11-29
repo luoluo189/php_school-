@@ -11,9 +11,9 @@
 <div class="topbar-wrap white">
     <div class="topbar-inner clearfix">
         <div class="topbar-logo-wrap clearfix">
-            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
+            <h1 class="topbar-logo none"><a href="index/" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="seller.html">首页</a></li>
+                <li><a class="on" href="seller/">首页</a></li>
                 <li><a href="#" target="_blank">网站首页</a></li>
             </ul>
         </div>
@@ -29,24 +29,44 @@
 <div class="container clearfix">
     <div class="sidebar-wrap">
         <div class="sidebar-title">
-            <h1>菜单</h1>
+            <h1>校园+</h1>
         </div>
         <div class="sidebar-content">
             <ul class="sidebar-list">
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>商铺管理</a>
                     <ul class="sub-menu">
-                        <li><a href="seller.html"><i class="icon-font">&#xe008;</i>管理店铺信息</a></li>
-                        <li><a href="lan.html"><i class="icon-font">&#xe004;</i>添加商品栏目</a></li>
-                        <li><a href="insert.html"><i class="icon-font">&#xe005;</i>上传商品信息</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe006;</i>管理商品信息</a></li>
-                        <li><a href="ding.html"><i class="icon-font">&#xe012;</i>管理订单信息</a></li>
+                        <li><a href="/school+/admin/seller/"><i class="icon-font">&#xe008;</i>管理店铺信息</a></li>
+                    </ul>
+
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe003;</i>商品种类管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/school+/admin/lan/addlan"><i class="icon-font">&#xe004;</i>添加种类</a></li>
+                        <li><a href="/school+/admin/lan/"><i class="icon-font">&#xe006;</i>管理商品种类</a></li>
                     </ul>
                 </li>
-                
+                <li>
+                    <a href="#"><i class="icon-font">&#xe003;</i>商品管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/school+/admin/goods/addgds"><i class="icon-font">&#xe005;</i>上传商品信息</a></li>
+                        <li><a href="/school+/admin/goods"><i class="icon-font">&#xe006;</i>管理商品信息</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe003;</i>订单管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/school+/admin/ding/"><i class="icon-font">&#xe012;</i>管理订单信息</a></li>
+
+                   </ul>
+
+                </li>
             </ul>
         </div>
     </div>
+    <!--/sidebar-->
+    
     <!--/sidebar-->
     <div class="main-wrap">
 
@@ -141,10 +161,12 @@
         </div>
     </div>
     <!--/main-->
-</div>
-</body>
-</html>
+
 <script>
 document.getElementById("1").style.display="none";
 document.getElementById("1").style.display="inline";
 </script>
+    <!--/main-->
+</div>
+</body>
+</html>

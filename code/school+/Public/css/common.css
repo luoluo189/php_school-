@@ -62,7 +62,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 /* common */
 .topbar-wrap{height:50px;line-height:50px;background:#1A1A1A;}
 .topbar-logo-wrap{float:left;}
-.topbar-inner{font-size:18px;padding:0 20px;}
+.topbar-inner{font-size:16px;padding:0 20px;}
 .topbar-logo{float:left;width:150px;text-align:center;}
 .navbar-list{float:left;}
 .top-info-wrap{float:right;}
@@ -113,9 +113,9 @@ textarea:focus,input[type="text"]:focus,input[type="password"]:focus,input[type=
 -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6);-moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6);}
 .insert-tab{border-collapse:collapse;border:1px solid #eee;}
 .insert-tab th,.insert-tab td{border:1px solid #eee;}
-.insert-tab tr{line-height:40px;}
-.insert-tab th{text-align:right;font-weight:normal;padding-right:10px;font-size:14px;}
-.insert-tab td{text-align:left;padding-left:10px;}
+.insert-tab tr{line-height:20px;}
+.insert-tab th{text-align:right;font-weight:normal;padding-right:5px;font-size:12px;}
+.insert-tab td{text-align:left;padding-left:5px;}
 .list-page{padding:20px 0;text-align:center;}
 .list-page a{margin:0 5px;padding:2px 7px;border:1px solid #ccc;background:#f3f3f3;}
 .list-page a:hover{background:#e4e4e4;border:1px solid #908f8f;}

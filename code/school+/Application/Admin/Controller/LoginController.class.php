@@ -13,7 +13,7 @@ class LoginController extends Controller
 
 
 
-        
+        layout(false);
         $this->display(login);
     }
 }

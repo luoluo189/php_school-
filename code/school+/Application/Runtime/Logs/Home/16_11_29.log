@@ -1215,3 +1215,19 @@ INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
 ERR: 非法操作:personal
 
+[ 2016-11-29T19:03:45+08:00 ] 127.0.0.1 /school+/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-11-29T19:04:01+08:00 ] 127.0.0.1 /school+/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+

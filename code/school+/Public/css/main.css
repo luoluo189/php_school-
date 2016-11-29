@@ -8,11 +8,11 @@
 .sidebar-list li a{padding: 0 16px 0 20px;display: block;height: 38px;line-height: 38px;color: #333;}
 .sidebar-list li a:hover{background: #fff;color: #1963AA;}
 .sub-menu{border-top: 1px solid #e5e5e5;background: #fff;}
-.sub-menu li{padding-left: 21px;}
+.sub-menu li{padding-left: 20px;}
 .sub-menu li.on{background: #1963AA;}
 .sub-menu li.on a{background: #1963AA;color: #fff;}
 .sub-menu li.on .icon-font{color: #fff;}
-.sub-menu .icon-font{font-size: 11px;}
+.sub-menu .icon-font{font-size: 10px;}
 /* main */
 .crumb-wrap{height: 40px;line-height: 39px;border-bottom: 1px solid #e5e5e5;background: #f5f5f5;}
 .crumb-list{padding-left: 12px;}

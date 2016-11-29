@@ -6,7 +6,7 @@
  * @info :  admin-css
  *******************************/
 *{margin:0;padding:0;}
-body{font:14px/1.5 '微软雅黑';background:#f9f9f9;}
+body{font:13px/1.5 '方正黑体';background:#f9f9f9;}
 a{color:#00007F;text-decoration:none;}
 a:hover{color:#bd0a01;text-decoration:underline;}
 .admin_login_wrap{margin:140px auto 0;width:312px;}

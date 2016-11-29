@@ -10,7 +10,7 @@
     <h1>后台管理</h1>
     <div class="adming_login_border">
         <div class="admin_input">
-            <form action="index/" method="post">
+            <form action="/school+/admin/index/" method="post">
                 <ul class="admin_items">
                     <li>
                         <label for="user">用户名：</label>
@@ -21,13 +21,13 @@
                         <input type="password" name="pwd" value="admin" id="pwd" size="40" class="admin_input_style" />
                     </li>
                     <li>
-                        <input type="submit" tabindex="3" value="提交" class="btn btn-primary" />
+                        <input type="submit"  value="提交" class=" btn btn-primary" />
                     </li>
                 </ul>
             </form>
         </div>
     </div>
-    <p class="admin_copyright"><a tabindex="5" href="#">返回首页</a> &copy; 2014 Powered by <a href="http://jscss.me" target="_blank">有主机上线</a></p>
+    <p class="admin_copyright"><a tabindex="5" href="http://www.loveluoluo189.cn/schoolone">返回首页</a> &copy;2016-11-29 Powered by <a href="http://www.loveluoluo189.cn/schoolone" target="_blank">校园+</a></p>
 </div>
 </body>
 </html>
