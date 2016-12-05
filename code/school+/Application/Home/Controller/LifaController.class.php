@@ -6,7 +6,9 @@ use Think\Controller;
 class LifaController extends Controller
 {
     protected $_db;
-   
+   public function index(){
+//       $this->display(dianpu);
+   }
    //
     public function dianpu(){
         $_db=M('store_information');

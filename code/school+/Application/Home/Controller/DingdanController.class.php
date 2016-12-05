@@ -11,6 +11,69 @@ class DingdanController extends Controller
 //        $this-display();
 //    }
     public function confirm(){
+
+        $media = M('customer_address');
+        $m['ci_idd'] = 1;
+        $m['ca_id'] = 1;
+// 把查询条件传入查询方法
+        $s = $media->where($m)->select(); 
+        $this->assign('s',$s);
+        $sql = "select bs_gname,bs_gprice,sh_cnum,bs_gurl
+        from bs_goods,shopping_cart
+        where bs_goods.bs_gid=shopping_cart.bs_gidd and ci_idddd=1 and bs_gid=1";
+        $storename=M()->query($sql);
+       // dump($storename);
+        // $n= count($storename);
+        // $count=0;
+        //  for ($i=0; $i < $n ; $i++) { 
+        //      $c=$storename[$i][sh_cnum]*$storename[$i][bs_gprice];
+        //      $count=$count+$c;
+        //  }
+        
+        //   $this->assign('cs',$count);
+           $this->assign('storename',$storename);
         $this->display();
+
+       
+    }
+    public function gouwuche_queren(){
+
+
+        $sql = "select bs_gname,bs_gprice,sh_cnum,bs_gurl
+        from bs_goods,shopping_cart
+        where bs_goods.bs_gid=shopping_cart.bs_gidd and ci_idddd=1";
+        
+      
+        
+        // $_db=M('shopping_cart');
+
+        // $condition['ci_idddd']=1;
+        // $condition1=$_db->where($condition)->select();
+        
+        // $n=count($condition1);
+        // for ($i=0; $i < $n ; $i++) { 
+        //     $storename[]=M('bs_goods')->where("bs_gid=%d",array($condition1[$i]['bs_gidd']))->find();
+        // }
+        // dump($storename);
+        // $this->assign('',$condition1);
+        
+        $storename=M()->query($sql);
+        $n= count($storename);
+        $count=0;
+         for ($i=0; $i < $n ; $i++) { 
+             $c=$storename[$i][sh_cnum]*$storename[$i][bs_gprice];
+             $count=$count+$c;
+         }
+        //dump($count);
+        //dump($storename);
+        $this->assign('storename',$storename);
+        $this->assign('cs',$count);
+      $this->display();
+    }
+    public function personal_comment(){
+    	$this->display();
+    }
+    public function personal_list(){
+    	$this->display();
     }
 }

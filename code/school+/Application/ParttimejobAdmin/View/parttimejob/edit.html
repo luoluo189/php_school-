@@ -1,0 +1,57 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span>
+                <a class="crumb-name" href=" ">兼职管理</a><span class="crumb-step">&gt;</span><span>修改兼职</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/school+/ParttimejobAdmin/parttimejob/edit/id/{$pt.pt_inid}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+
+                            <tr>
+                                <th><i class="require-red">*</i>兼职名称：</th>
+                                <td><input class="pt_inname" name="pt_inname" size="50" value="{$pt.pt_inname}" type="text"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>兼职报酬：</th>
+                                <td>
+                                    <input class="common-text required" id="pt_inmoney" name="pt_inmoney" size="50" value="{$pt.pt_inmoney}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>兼职地址：</th>
+                                <td>
+                                    <input class="common-text required" id="pt_inaddress" name="pt_inaddress" size="50" value="{$pt.pt_inaddress}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>联系人手机号：</th>
+                                <td>
+                                    <input class="common-text required" id="pt_min_phonee" name="pt_min_phonee" size="50" value="{$pt.pt_min_phonee}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>兼职内容：</th>
+                                <td>
+                                    <textarea class="common-textarea" id="pt_inabstract" name="pt_inabstract"  value="{$pt.pt_inabstract}"cols="30" style="width: 98%;" rows="10">{$pt.pt_inabstract}
+                                    </textarea>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit" name="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/main-->

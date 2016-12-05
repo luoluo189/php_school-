@@ -1,0 +1,53 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">店铺管理</a><span class="crumb-step">&gt;</span><span>店铺信息修改</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>分类：</th>
+                            <td>
+                                <select name="colId" id="catid" class="required">
+                                    <option value="">请选择</option>
+                                    <option value="19">水果店</option><option value="20">服装店</option>
+                                </select>
+                            </td>
+                        </tr>
+                         <tr>
+                                <th><i class="require-red">*</i>头像：</th>
+                                <td><input name="smallimg" id="" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>--></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>名称：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="title" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>所在地址：</th>
+                                <td><input class="common-text" name="author" size="50" value="" type="text"></td>
+                            </tr>
+                           
+                            <tr>
+                                <th>介绍：</th>
+                                <td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->

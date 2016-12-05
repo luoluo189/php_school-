@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link href="css/weui.min.css" type="text/css" rel="stylesheet">
-    <link href="css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
     <style>
         html,body{
             height:100%;
@@ -64,8 +64,8 @@
         width:80%;
         padding-top:10px;
         margin:0 auto;
-    	text-align:center;
-		font-size:22px;
+        text-align:center;
+        font-size:22px;
         }  
         .user{
         margin-top:2%;
@@ -76,34 +76,35 @@
 <body>
 <div class="weui_tab">
     <div class="weui_tab_bd">
-        		
-		    <div>
-		    <!-- 返回图标开始 -->
-		    <div   class="back" >
-		    <a href="gouwuche.html"><img src="images/back.jpg"  style="width:30px;height:30px;" ></a>
-		    </div>
-		    <div class="set">
-		    确认订单
-		    </div>
-		    <!-- 返回图标结束 -->	
-		    </div>
+                
+            <div>
+            <!-- 返回图标开始 -->
+            <div   class="back" >
+            <a href="gouwuche.html"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+            </div>
+            <div class="set">
+            确认订单
+            </div>
+            <!-- 返回图标结束 --> 
+            </div>
         
 
         <div  class="user"   style="height:100px;font-size: 18px;">
         <hr/>
+        <volist name="s" id="vo">
             <div  style="margin-left: 4%;">
 
-           收货人：安垒 &nbsp;&nbsp;联系电话：15232103082
+           收货人：{$vo['ca_name']} &nbsp;&nbsp;联系电话：{$vo['ca_phone']}
             <br/>
             <div  style="margin-top:10px;">
 
-           <img src="images/dingwei.png" style="width:18px; height:30px;float:left;margin-right:20px;">
-           河北师范大学启智园3号楼
-           <a href="personal-address.html" ><img src="images/back2.jpg" class="address"></a>
+           <img src="__PUBLIC__/home/images/dingwei.png" style="width:18px; height:30px;float:left;margin-right:20px;">
+           {$vo['ca_phone']}
+           <a href="personal-address.html" ><img src="__PUBLIC__/home/images/back2.jpg" class="address"></a>
 
            </div>
             </div>
-
+            </volist>
         </div>
 
         <div class="conx">
@@ -122,7 +123,7 @@
                         <p class="weui_media_desc">￥10</p>
                         <p class="weui_media_desc">X1</p>
                     </div>
-                    <div  class="as"> <img src="images/chaosuannai.jpg" alt="" class="as1"> </div>
+                    <div  class="as"> <img src="__PUBLIC__/home/images/chaosuannai.jpg" alt="" class="as1"> </div>
                 </a>
 
             </div>
@@ -152,7 +153,7 @@
                     <p>合计： 156元</p>
                 </div>
                 <div class="weui_cell_ft">
-                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary"> 提交订单 </a>
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary">提交订单</a>
                 </div>
             </div>
         </div>
@@ -160,40 +161,40 @@
 
     </div>
     <div class="weui_tabbar">
-		<a href="index.html" class="weui_tabbar_item weui_bar_item_on">
-			<div class="weui_tabbar_icon">
-				<img src="images/b1.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">首页</p>
-		</a>
-		<a href="sousuo.html" class="weui_tabbar_item">
-			<div class="weui_tabbar_icon">
-				<img src="images/b2.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">搜索</p>
-		</a>
-		<a href="gouwuche.html" class="weui_tabbar_item">
-			<div class="weui_tabbar_icon">
-				<img src="images/b3.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">购物车</p>
-		</a>
-		<a href="personal.html" class="weui_tabbar_item">
-			<div class="weui_tabbar_icon">
-				<img src="images/b4.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">个人中心</p>
-		</a>
+        <a href="index.html" class="weui_tabbar_item weui_bar_item_on">
+            <div class="weui_tabbar_icon">
+                <img src="__PUBLIC__/home/images/b1.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">首页</p>
+        </a>
+        <a href="sousuo.html" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="__PUBLIC__/home/images/b2.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">搜索</p>
+        </a>
+        <a href="gouwuche.html" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="__PUBLIC__/home/images/b3.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">购物车</p>
+        </a>
+        <a href="personal.html" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="__PUBLIC__/home/images/b4.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">个人中心</p>
+        </a>
     </div>
 </div>
 
 
 
 </body>
-<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-<script type="text/javascript" src="js/jquery-weui.min.js"></script>
-<script type="text/javascript" src="js/jquery-weui.js"></script>
-<script type="text/javascript" src="js/swiper.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/swiper.js"></script>
 <script>
     $(".swiper-container").swiper({
         loop: true,

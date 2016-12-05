@@ -3,25 +3,25 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">栏目管理</a><span class="crumb-step">&gt;</span><span>新增栏目</span></div>
+            <div class="crumb-list">
+                <i class="icon-font"></i>
+                <a href="/school+/admin/seller/seller">首页</a><span class="crumb-step">&gt;
+                </span><a class="crumb-name" href="/school+/admin/lan/lan">商品种类管理</a>
+                <span class="crumb-step">&gt;</span><span>新增商品种类</span>
+            </div>
         </div>
         <div class="result-wrap">
-            <div class="result-content">
-                <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
-                    <table class="insert-tab" width="100%">
+            <div class="result-content" >
+                <form action="/school+/admin/lan/store" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%" >
                         <tbody>
                             <tr>
-                                <th><i class="require-red">*</i>栏目名称：</th>
+                                <th><i class="require-red">*</i>商品种类名称：</th>
                                 <td>
                                     <input class="common-text required" id="title" name="title" size="50" value="" type="text">
                                 </td>
                             </tr>
-                            
-                            
-                            <tr>
-                                <th>栏目描述：</th>
-                                <td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
-                            </tr>
+
                             <tr>
                                 <th></th>
                                 <td>
@@ -29,7 +29,8 @@
                                     <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
                                 </td>
                             </tr>
-                        </tbody></table>
+                        </tbody>
+                    </table>
                 </form>
             </div>
         </div>

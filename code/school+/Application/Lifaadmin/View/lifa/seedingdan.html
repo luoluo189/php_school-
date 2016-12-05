@@ -1,0 +1,73 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span>理发预约订单管理</span><span class="crumb-step">&gt;</span><span>查看订单</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                        <tr>
+                            <td>订单ID</td>
+                            <td>{$lifadan.or_tdid}</td>
+
+                        </tr>
+                         <tr>
+                             <td>预约者姓名</td>
+                             <td>{$lifadan.hair_name}</td>
+
+                         </tr>
+                        <tr>
+                            <td>预约理发种类</td>
+                            <td>{$lifadan.or_typename}</td>
+
+                        </tr>
+                        <tr>
+                            <td>预约者联系方式</td>
+                            <td>{$lifadan.hair_number}</td>
+
+                        </tr>
+                        <tr>
+                            <td>预约时间</td>
+                            <td>{$lifadan.or_tdtime}</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>客户备注</td>
+                            <td>{$lifadan.hair_content}</td>
+                        </tr>
+                        <tr>
+                            <td>订单状态</td>
+                            <td>{$lifadan.ts_idd}
+                                <?php
+                                    switch ($lifadan["ts_idd"])
+                                        {
+                                        case 1:
+                                          echo "理发预约取消";
+                                          break;
+                                        case 2:
+                                          echo "理发预约完成";
+                                          break;
+                                        case 3:
+                                       echo "理发预约推迟10分钟";
+                                         break;
+                                        default:
+                                         echo "理发预约进行中";
+                                        };?>
+                            </td>
+                        </tr>
+                        </tbody></table>
+
+                    <a class="btn btn-primary btn2 mr3" href="/school+/lifaadmin/lifa/danConfirm?id={$lifadan.or_tdid}">确认预约</a>
+                    <a class="btn btn-primary btn2 mr1" href="/school+/lifaadmin/lifa/danCancel?id={$lifadan.or_tdid}">取消预约</a>
+                    <a class="btn btn-primary btn2 mr1" href="/school+/lifaadmin/lifa/danDelete?id={$lifadan.or_tdid}">删除订单</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->

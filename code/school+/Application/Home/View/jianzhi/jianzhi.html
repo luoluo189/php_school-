@@ -5,8 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link href="css/weui.min.css" type="text/css" rel="stylesheet">
-	<link href="css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+	<link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
+	<link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
 	<style>
 		html,body{
 			height:100%;
@@ -62,7 +62,7 @@
 		    <div>
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a href="index.html"><img src="images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a href="index.html"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
 		    兼职首页
@@ -121,7 +121,7 @@
 				</tr>
 				<tr>
 
-					<td><a href="jianzhi-content.html">高中物理</a></td>
+					<td><a href="{:U('home/jianzhi/jianzhi_content')}">高中物理</a></td>
 					<td>周六日</td>
 					<td>20元/小时</td>
 
@@ -157,25 +157,25 @@
 	<div class="weui_tabbar">
 		<a href="index.html" class="weui_tabbar_item weui_bar_item_on">
 			<div class="weui_tabbar_icon">
-				<img src="images/b1.jpg" alt="">
+				<img src="__PUBLIC__/home/images/b1.jpg" alt="">
 			</div>
 			<p class="weui_tabbar_label">首页</p>
 		</a>
 		<a href="sousuo.html" class="weui_tabbar_item">
 			<div class="weui_tabbar_icon">
-				<img src="images/b2.jpg" alt="">
+				<img src="__PUBLIC__/home/images/b2.jpg" alt="">
 			</div>
 			<p class="weui_tabbar_label">搜索</p>
 		</a>
 		<a href="gouwuche.html" class="weui_tabbar_item">
 			<div class="weui_tabbar_icon">
-				<img src="images/b3.jpg" alt="">
+				<img src="__PUBLIC__/home/images/b3.jpg" alt="">
 			</div>
 			<p class="weui_tabbar_label">购物车</p>
 		</a>
 		<a href="personal.html" class="weui_tabbar_item">
 			<div class="weui_tabbar_icon">
-				<img src="images/b4.jpg" alt="">
+				<img src="__PUBLIC__/home/images/b4.jpg" alt="">
 			</div>
 			<p class="weui_tabbar_label">个人中心</p>
 		</a>
@@ -185,10 +185,10 @@
 
 
 </body>
-<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-<script type="text/javascript" src="js/jquery-weui.min.js"></script>
-<script type="text/javascript" src="js/jquery-weui.js"></script>
-<script type="text/javascript" src="js/swiper.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/swiper.js"></script>
 <script>
 	$("#picker1").picker({
 		title: "请选择兼职类型",

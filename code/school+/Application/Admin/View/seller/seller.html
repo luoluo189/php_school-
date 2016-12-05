@@ -7,37 +7,40 @@
                 <h1>店铺基本信息</h1>
             </div>
             <div class="result-content">
-                <ul class="sys-info-list">
+
+                <ul class="sys-info-list" >
                     <li>
-                        <label class="res-lab">头像</label><span class="res-info"><img src="__PUBLIC__/images/logo.png" class="res-labb"/></span>
+                        <label class="res-lab">头像</label><span class="res-info">
+                        <img src="__PUBLIC__/{$seller.si_image}" class="res-labb"/></span>
                         <span class="res-labc"></span>
                     </li>
                     <li>
-                        <label class="res-lab">二维码</label><span class="res-info"><img src="__PUBLIC__/images/1.jpg" class="res-labb"/></span>
+                        <label class="res-lab">名称</label><span class="res-info">{$seller.si_name}</span>
                         <span class="res-labc"></span>
                     </li>
                     <li>
-                        <label class="res-lab">名称</label><span class="res-info">一个柚子</span>
+                        <label class="res-lab">介绍</label><span class="res-info">{$seller.si_sintroduce}</span>
                         <span class="res-labc"></span>
                     </li>
                     <li>
-                        <label class="res-lab">介绍</label><span class="res-info">店内环境高端大气上档次，店主良心做饮品，服务大众服务人民</span>
+                        <label class="res-lab">所在地址</label><span class="res-info">{$seller.si_address}</span>
                         <span class="res-labc"></span>
                     </li>
                     <li>
-                        <label class="res-lab">所在地址</label><span class="res-info">河北师范大学师生活动中心</span>
+                        <label class="res-lab">联系方式</label><span class="res-info">{$seller.si_phone}</span>
                         <span class="res-labc"></span>
                     </li>
                     <li>
-                        <label class="res-lab">主体信息</label><span class="res-info">php校园+</span>
+                        <label class="res-lab">主体信息</label><span class="res-info">{$type}</span>
                         <span class="res-labc"></span>
                     </li>
                     <!--<a href="seller/changeseller">修改店铺信息</a>-->
                     <li>
-                        <a href="/school+/admin/seller/changeseller"> <input value="修改店铺信息" type="button"></a>
-
+                        <a href="/school+/admin/seller/changeseller/store?id={$seller.si_id}"  class="update"> <input value="修改店铺信息" type="button"></a>
+                        <!--href="/admin/seller/changeseller"-->
                     </li>
                 </ul>
+
             </div>
         </div>
 

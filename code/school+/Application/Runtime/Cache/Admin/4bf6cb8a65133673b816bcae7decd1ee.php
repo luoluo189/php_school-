@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/school+/Public/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/school+/Public/css/main.css"/>
     <script type="text/javascript" src="/school+/Public/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="/school+/Public/home/js/jquery-2.1.4.js"></script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -13,7 +14,7 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a href="index/" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="seller/">首页</a></li>
+                <li><a class="on" href="/school+/admin/seller/seller">首页</a></li>
                 <li><a href="#" target="_blank">网站首页</a></li>
             </ul>
         </div>
@@ -36,7 +37,7 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>商铺管理</a>
                     <ul class="sub-menu">
-                        <li><a href="/school+/admin/seller/"><i class="icon-font">&#xe008;</i>管理店铺信息</a></li>
+                        <li><a href="/school+/admin/seller/seller"><i class="icon-font">&#xe008;</i>管理店铺信息</a></li>
                     </ul>
 
                 </li>
@@ -44,20 +45,20 @@
                     <a href="#"><i class="icon-font">&#xe003;</i>商品种类管理</a>
                     <ul class="sub-menu">
                         <li><a href="/school+/admin/lan/addlan"><i class="icon-font">&#xe004;</i>添加种类</a></li>
-                        <li><a href="/school+/admin/lan/"><i class="icon-font">&#xe006;</i>管理商品种类</a></li>
+                        <li><a href="/school+/admin/lan/lan"><i class="icon-font">&#xe006;</i>管理商品种类</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>商品管理</a>
                     <ul class="sub-menu">
                         <li><a href="/school+/admin/goods/addgds"><i class="icon-font">&#xe005;</i>上传商品信息</a></li>
-                        <li><a href="/school+/admin/goods"><i class="icon-font">&#xe006;</i>管理商品信息</a></li>
+                        <li><a href="/school+/admin/goods/design"><i class="icon-font">&#xe006;</i>管理商品信息</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>订单管理</a>
                     <ul class="sub-menu">
-                        <li><a href="/school+/admin/ding/"><i class="icon-font">&#xe012;</i>管理订单信息</a></li>
+                        <li><a href="/school+/admin/ding/ding"><i class="icon-font">&#xe012;</i>管理订单信息</a></li>
 
                    </ul>
 
@@ -71,15 +72,41 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">栏目管理</a><span class="crumb-step">&gt;</span><span>查看栏目</span></div>
+            <div class="crumb-list"><i class="icon-font"></i>
+                <a href="/admin/seller/seller">首页</a><span class="crumb-step">&gt;</span>
+                <a class="crumb-name" href="/admin/lan/lan">商品种类管理</a>
+                <span class="crumb-step">&gt;</span><span>查看商品种类</span>
+            </div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
                 <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
-                    <table class="insert-tab" width="100%">
-                        <tbody>
-                         <a href="/school+/admin/lan/addlan"> <input type="button" value="添加商品栏目" /></a>
-                        </tbody></table>
+                    <div class="result-title">
+                        <div class="result-list">
+                            <a href="/admin/lan/addlan"><i class="icon-font"></i>新增商品种类</a>
+                            <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                        </div>
+                    </div>
+                    <div class="result-content">
+                        <table class="result-tab" width="100%">
+                            <tr>
+                                <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+                                <th>商品种类ID</th>
+                                <th>商品种类名称</th>
+                                <th>操作</th>
+                            </tr>
+                            <?php if(is_array($stype)): $i = 0; $__LIST__ = $stype;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                                <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
+                                <td><?php echo ($vo["bs_tid"]); ?></td>
+                                <td><?php echo ($vo["bs_tname"]); ?></td>
+                                <td>
+                                    <a class="link-update" href="/school+/index.php/Admin/Lan/changelan/id/<?php echo ($vo["bs_tid"]); ?>">修改</a>
+                                    <a class="delete" href="/school+/index.php/Admin/Lan/delete/id/<?php echo ($vo["bs_tid"]); ?>" >删除</a>
+                                </td>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+                        </table>
+                        <div class="list-page"> 2 条 1/1 页</div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -87,7 +114,21 @@
     </div>
     <!--/main-->
 
+
     <!--/main-->
 </div>
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('jquery文件引入成功！');
+        $(".delete").click(function(){
+            var tag = confirm('真的要删除吗？');
+            if(!tag){
+                return false;
+            }
+        });
+    });
+</script>
+
 </html>

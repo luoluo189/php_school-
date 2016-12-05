@@ -1,0 +1,89 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head>
+<title>收货地址管理</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link href="/school+/Public/home/css/weui.min.css" type="text/css" rel="stylesheet">
+	<link href="/school+/Public/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+<style>
+        html,body{
+			height:100%;
+		}
+        .exit{
+        font-size:26px;
+        position:absolute;
+        bottom:0;
+        width:100%;
+        text-align:center;        
+        }
+        
+        .back{
+        margin-top:20px;
+        float:left;
+        }
+        .set{
+        width:80%;
+        padding-top:20px;
+        margin:0 auto;
+		font-size:22px;
+        }
+
+</style>
+</head>
+<body>
+
+<div class="weui_tab">
+	<div class="weui_tab_bd">	
+	
+
+
+    		<div>
+		    <!-- 返回图标开始 -->
+		    <div   class="back" >
+		    <a href="/school+/home/personal/pset/id/<?php echo ($user["ci_id"]); ?>"><img src="/school+/Public/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    </div>
+		    <div class="set">
+		    收货地址管理
+		    </div>
+		    <!-- 返回图标结束 -->	
+		    </div>
+		    
+
+    <!-- 主体部分开始 -->
+    <div class="weui_cells weui_cells_access"  style="margin-top:8%">
+    <?php if(is_array($address)): $i = 0; $__LIST__ = $address;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a class="weui_cell" href="javascript:;">
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p>姓名：<?php echo ($vo["ca_name"]); ?></p>
+                <p>电话：<?php echo ($vo["ca_phone"]); ?></p>
+                <p>地址：<?php echo ($vo["ca_address"]); ?></p>
+            </div>
+        </a>
+        <a class="weui_cell" href="#">
+            <div class="weui_cell_bd weui_cell_primary"  >
+                <div style="margin-top: 2%;">
+                    <input type="checkbox"  name="address"  value="address"> 设为默认地址
+                </div>
+                <div class="weui_cell_bd weui_cell_primary"    style=" position:absolute; right:0; top:0%;">
+                    <input type="submit" value="编辑" class="weui_btn weui_btn_mini weui_btn_default">
+                    <input type="submit" value="删除" class="weui_btn weui_btn_mini weui_btn_default">
+                </div>
+            </div>
+        </a><?php endforeach; endif; else: echo "" ;endif; ?>
+
+
+    </div>
+    <!-- 主体部分结束 -->
+  
+    <!-- 底部“ 新增”开始 -->
+    <div class="exit"  style="background-color:white;" >
+    <hr/>     
+     <a    href="/school+/home/personal/paddaddress/id/<?php echo ($user["ci_id"]); ?>"    style="color:red;">
+     新增收货地址
+    </a>	
+    </div>
+     <!-- 底部“ 新增“结束 -->
+</div>
+</body>
+</html>

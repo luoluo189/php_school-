@@ -1,0 +1,63 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span class="crumb-name">兼职管理</span></div>
+        </div>
+        <div class="search-wrap">
+
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-title">
+                    <div class="result-list">
+                        <a href="add"><i class="icon-font"></i>添加兼职</a>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th>兼职ID</th>
+                            <th>兼职名称</th>
+                            <th>兼职报酬</th>
+                            <th>兼职内容</th>
+                            <th>联系方式</th>
+                            <th>兼职地址</th>
+                            <th>操作</th>
+                        </tr>
+                        <volist name="pt_information" id="vo">
+                        <tr>
+                            <td>{$vo.pt_inid}</td>
+                            <td>{$vo.pt_inname}</td>
+                            <td>{$vo.pt_inmoney}</td>
+                            <td>{$vo.pt_inabstract}</td>
+                            <td>{$vo.pt_min_phonee}</td>
+                            <td>{$vo.pt_inaddress}</td>
+                            <td>
+                                <a class="" href="edit/id/{$vo.pt_inid}">修改</a>
+                                <a class="delete" href="__URL__/delete/id/{$vo.pt_inid}">删除</a>
+                            </td>
+                        </tr>
+                         </volist>
+
+                    </table>
+                    <div class="list-page"> 2 条 1/1 页</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('jquery文件引入成功！');
+        $(".delete").click(function(){
+            var tag = confirm('真的要删除吗？');
+            if(!tag){
+                return false;
+            }
+        });
+    });
+
+</script>

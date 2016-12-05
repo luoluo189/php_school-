@@ -3,39 +3,49 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">店铺管理</a><span class="crumb-step">&gt;</span><span>店铺信息修改</span></div>
+            <div class="crumb-list"><i class="icon-font"></i>
+                <a href="/admin/seller/seller">首页</a><span class="crumb-step">&gt;</span>
+                <a class="crumb-name" href="/school+/admin/seller/seller">店铺管理</a>
+                <span class="crumb-step">&gt;</span><span>店铺信息修改</span></div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <form action="/school+/admin/seller/store?id={$seller.si_id}" method="post" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody><tr>
                             <th width="120"><i class="require-red">*</i>分类：</th>
                             <td>
                                 <select name="colId" id="catid" class="required">
                                     <option value="">请选择</option>
-                                    <option value="19">水果店</option><option value="20">服装店</option>
+                                    <volist name="sttype" id="vo">
+                                        <option value="{$vo.s_type_name}">{$vo.s_type_name}</option>
+                                    </volist>
+                                    <!--<option value="19">水果店</option><option value="20">服装店</option>-->
                                 </select>
                             </td>
                         </tr>
-                         <tr>
+                            <tr>
                                 <th><i class="require-red">*</i>头像：</th>
-                                <td><input name="smallimg" id="" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>--></td>
+                                <td><input name="si_image" id="" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>--></td>
                             </tr>
+                                <td type="hidden" name="si_id" value="{$seller.si_id}"></td>
                             <tr>
                                 <th><i class="require-red">*</i>名称：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="title" size="50" value="" type="text">
+                                    <input class="common-text required" name="si_name" size="50" value="{$seller.si_name}" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <th>所在地址：</th>
-                                <td><input class="common-text" name="author" size="50" value="" type="text"></td>
+                                <td><input class="common-text" name="si_address" size="50" value="{$seller.si_address}" type="text"></td>
                             </tr>
-                           
+                            <tr>
+                                <th>联系电话：</th>
+                                <td><input class="common-text" name="si_phone" size="50" value="{$seller.si_phone}" type="text"></td>
+                            </tr>
                             <tr>
                                 <th>介绍：</th>
-                                <td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
+                                <td><textarea name="si_sintroduce" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10">{$seller.si_sintroduce}</textarea></td>
                             </tr>
                             <tr>
                                 <th></th>

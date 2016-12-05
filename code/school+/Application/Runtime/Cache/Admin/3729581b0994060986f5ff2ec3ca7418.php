@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/school+/Public/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/school+/Public/css/main.css"/>
     <script type="text/javascript" src="/school+/Public/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="/school+/Public/home/js/jquery-2.1.4.js"></script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -13,7 +14,7 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a href="index/" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="seller/">首页</a></li>
+                <li><a class="on" href="/school+/admin/seller/seller">首页</a></li>
                 <li><a href="#" target="_blank">网站首页</a></li>
             </ul>
         </div>
@@ -36,7 +37,7 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>商铺管理</a>
                     <ul class="sub-menu">
-                        <li><a href="/school+/admin/seller/"><i class="icon-font">&#xe008;</i>管理店铺信息</a></li>
+                        <li><a href="/school+/admin/seller/seller"><i class="icon-font">&#xe008;</i>管理店铺信息</a></li>
                     </ul>
 
                 </li>
@@ -44,20 +45,20 @@
                     <a href="#"><i class="icon-font">&#xe003;</i>商品种类管理</a>
                     <ul class="sub-menu">
                         <li><a href="/school+/admin/lan/addlan"><i class="icon-font">&#xe004;</i>添加种类</a></li>
-                        <li><a href="/school+/admin/lan/"><i class="icon-font">&#xe006;</i>管理商品种类</a></li>
+                        <li><a href="/school+/admin/lan/lan"><i class="icon-font">&#xe006;</i>管理商品种类</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>商品管理</a>
                     <ul class="sub-menu">
                         <li><a href="/school+/admin/goods/addgds"><i class="icon-font">&#xe005;</i>上传商品信息</a></li>
-                        <li><a href="/school+/admin/goods"><i class="icon-font">&#xe006;</i>管理商品信息</a></li>
+                        <li><a href="/school+/admin/goods/design"><i class="icon-font">&#xe006;</i>管理商品信息</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>订单管理</a>
                     <ul class="sub-menu">
-                        <li><a href="/school+/admin/ding/"><i class="icon-font">&#xe012;</i>管理订单信息</a></li>
+                        <li><a href="/school+/admin/ding/ding"><i class="icon-font">&#xe012;</i>管理订单信息</a></li>
 
                    </ul>
 
@@ -71,23 +72,20 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商品管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="/school+/admin/seller/seller">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商品管理</span></div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="/jscss/admin/design/index" method="post">
+                <form action="/jscss/school+/admin/design/index" method="post">
                     <table class="search-tab">
                         <tr>
-                            <th width="120">选择分类:</th>
+                            <th width="120">选择商品种类:</th>
                             <td>
-                                <select name="search-sort" id="">
+                                <select name="search-sort" id="catid">
                                     <option value="">全部</option>
-                                    <option value="19">佩饰</option><option value="20">外套</option>
+                                    <?php if(is_array($btype)): $i = 0; $__LIST__ = $btype;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["bs_tname"]); ?>"><?php echo ($vo["bs_tname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                                 </select>
                             </td>
-                            <th width="70">关键字:</th>
-                            <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
-                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
                         </tr>
                     </table>
                 </form>
@@ -97,63 +95,39 @@
             <form name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="insert.html"><i class="icon-font"></i>新增作品</a>
+                        <a href="/school+/admin/goods/addgds"><i class="icon-font"></i>新增商品</a>
                         <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
-                        <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
                     </div>
                 </div>
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
                             <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
-                            <th>排序</th>
-                            <th>ID</th>
-                            <th>标题</th>
-                            <th>审核状态</th>
-                            <th>点击</th>
-                            <th>发布人</th>
-                            <th>更新时间</th>
-                            <th>评论</th>
+                            <th>商品图片</th>
+                            <th>商品ID</th>
+                            <th>商品名称</th>
+                            <th>商品型号(颜色)</th>
+                            <th>商品单价</th>
+                            <th>商品库存</th>
+                            <th>商品描述</th>
                             <th>操作</th>
                         </tr>
-                        <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td>
-                                <input name="ids[]" value="59" type="hidden">
-                                <input class="common-input sort-input" name="ord[]" value="0" type="text">
-                            </td>
-                            <td>59</td>
-                            <td title="发哥经典"><a target="_blank" href="#" title="发哥经典">发哥经典</a> …
-                            </td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>admin</td>
-                            <td>2014-03-15 21:11:01</td>
-                            <td></td>
-                            <td>
-                                <a class="link-update" href="xiu.html">修改</a>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tc"><input name="id[]" value="58" type="checkbox"></td>
-                            <td>
-                                <input name="ids[]" value="58" type="hidden">
-                                <input class="common-input sort-input" name="ord[]" value="0" type="text">
-                            </td>
-                            <td>58</td>
-                            <td title="黑色经典"><a target="_blank" href="#" title="黑色经典">黑色经典</a> …
-                            </td>
-                            <td>0</td>
-                            <td>35</td>
-                            <td>admin</td>
-                            <td>2013-12-30 22:34:00</td>
-                            <td></td>
-                            <td>
-                                <a class="link-update" href="#">修改</a>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
-                        </tr>
+                        <?php if(is_array($bgoods)): $i = 0; $__LIST__ = $bgoods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                                <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
+                                <td><image src="/school+/Public/<?php echo ($vo["bs_gurl"]); ?>" width="60px"height="60px"/></td>
+                                <td><?php echo ($vo["bs_gid"]); ?></td>
+                                <td title=""><a target="_blank" href="#" title=""><?php echo ($vo["bs_gname"]); ?></a> …
+                                </td>
+                                <td><?php echo ($vo["bs_gsize"]); ?></td>
+                                <td><?php echo ($vo["bs_gprice"]); ?></td>
+                                <td><?php echo ($vo["bs_gnumber"]); ?></td>
+
+                                <td><?php echo ($vo["bs_gdescription"]); ?></td>
+                                <td>
+                                    <a class="link-update" href="/school+/index.php/Admin/Goods/changegds/id/<?php echo ($vo["bs_gid"]); ?>">修改</a>
+                                    <a class="delete" href="/school+/index.php/Admin/Goods/delete/id/<?php echo ($vo["bs_gid"]); ?>" >删除</a>
+                                </td>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                     </table>
                     <div class="list-page"> 2 条 1/1 页</div>
                 </div>
@@ -169,4 +143,17 @@ document.getElementById("1").style.display="inline";
     <!--/main-->
 </div>
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('jquery文件引入成功！');
+        $(".delete").click(function(){
+            var tag = confirm('真的要删除吗？');
+            if(!tag){
+                return false;
+            }
+        });
+    });
+</script>
+
 </html>

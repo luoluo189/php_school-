@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>兼职预约</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+    <style>
+        html,body{
+            height:100%;
+        }
+        .swiper-container img {
+            display: block;
+            width: 100%;
+        }
+        .back{
+            margin-top:10px;
+            float:left;
+        }
+        .set{
+            width:80%;
+            padding-top:10px;
+            margin:0 auto;
+            text-align:center;
+            font-size:22px;
+        }
+			.fo{
+			margin-top:5px;
+			 margin-left:10%;
+			}
+    </style>
+</head>
+<body>
+<div class="weui_tab">
+    <div class="weui_tab_bd">
+    
+        	
+		    <div>
+		    <!-- 返回图标开始 -->
+		    <div   class="back" >
+		    <a href="jianzhi-content.html"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    </div>
+		    <div class="set">
+		    兼职详情
+		    </div>
+		    <!-- 返回图标结束 -->	
+		    </div>
+        
+
+        
+        <div class="fo">
+            <p>兼职时间： 周六日</p>
+            <p>职位还需要人员个数： 4人</p>
+            <p>岗位要求：</p>
+            <p>1、符合相关专业要求，熟悉初高中教材</p>
+            <p>2、符合相关专业要求，熟悉初高中教材</p>
+            <p>3、符合相关专业要求，熟悉初高中教材s</p>
+        </div>
+        
+        
+        
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="tel" placeholder="请输入姓名">
+                </div>
+            </div>
+
+
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">起始日期</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="date" value="">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">结束时间</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="datetime-local" value="" placeholder="">
+                </div>
+            </div>
+
+        </div>
+        <div class="weui_cells_title">简介</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <textarea class="weui_textarea" placeholder="请输入简介" rows="3"></textarea>
+                    <div class="weui_textarea_counter"><span>0</span>/200</div>
+                </div>
+            </div>
+        </div>
+        <a href="personal-list.html" class="weui_btn weui_btn_primary">提交</a>
+
+    </div>
+    <div class="weui_tabbar">
+        <a href="index.html" class="weui_tabbar_item weui_bar_item_on">
+            <div class="weui_tabbar_icon">
+                <img src="__PUBLIC__/home/images/b1.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">首页</p>
+        </a>
+        <a href="sousuo.html" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="__PUBLIC__/home/images/b2.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">搜索</p>
+        </a>
+        <a href="gouwuche.html" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="__PUBLIC__/home/images/b3.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">购物车</p>
+        </a>
+        <a href="personal.html" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="__PUBLIC__/home/images/b4.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">个人中心</p>
+        </a>
+    </div>
+</div>
+
+
+
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/jquery-weui.min.js"></script>
+<script type="text/javascript" src="js/swiper.js"></script>
+<script>
+    $(".swiper-container").swiper({
+        loop: true,
+        autoplay: 1000
+    });
+</script>
+</html>

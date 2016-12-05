@@ -1,0 +1,47 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">店铺管理</a><span class="crumb-step">&gt;</span><span>店铺信息修改</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/school+/admin/seller/store" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+
+                             <tr>
+                                 <th><i class="require-red">*</i>头像：</th>
+                                 <td><input name="image" id="image" type="file">
+                             </tr>
+                             <input type="hidden" name="si_id" value="{$store.si_id}">
+                            <tr>
+                                <th><i class="require-red">*</i>名称：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="title" size="50" value="{$store.si_name}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>所在地址：</th>
+                                <td><input class="common-text" name="si_address" size="50" value="{$store.si_address}" type="text"></td>
+                            </tr>
+                           
+                            <tr>
+                                <th>介绍：</th>
+                                <td><textarea name="si_sintroduce" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10" >{$store.si_sintroduce}</textarea></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->

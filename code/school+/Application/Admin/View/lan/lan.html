@@ -3,18 +3,47 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">栏目管理</a><span class="crumb-step">&gt;</span><span>查看栏目</span></div>
+            <div class="crumb-list"><i class="icon-font"></i>
+                <a href="/admin/seller/seller">首页</a><span class="crumb-step">&gt;</span>
+                <a class="crumb-name" href="/admin/lan/lan">商品种类管理</a>
+                <span class="crumb-step">&gt;</span><span>查看商品种类</span>
+            </div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
                 <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
-                    <table class="insert-tab" width="100%">
-                        <tbody>
-                         <a href="/school+/admin/lan/addlan"> <input type="button" value="添加商品栏目" /></a>
-                        </tbody></table>
+                    <div class="result-title">
+                        <div class="result-list">
+                            <a href="/admin/lan/addlan"><i class="icon-font"></i>新增商品种类</a>
+                            <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                        </div>
+                    </div>
+                    <div class="result-content">
+                        <table class="result-tab" width="100%">
+                            <tr>
+                                <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+                                <th>商品种类ID</th>
+                                <th>商品种类名称</th>
+                                <th>操作</th>
+                            </tr>
+                            <volist name="stype" id="vo">
+                            <tr>
+                                <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
+                                <td>{$vo.bs_tid}</td>
+                                <td>{$vo.bs_tname}</td>
+                                <td>
+                                    <a class="link-update" href="__URL__/changelan/id/{$vo.bs_tid}">修改</a>
+                                    <a class="delete" href="__URL__/delete/id/{$vo.bs_tid}" >删除</a>
+                                </td>
+                            </tr>
+                            </volist>
+                        </table>
+                        <div class="list-page"> 2 条 1/1 页</div>
+                    </div>
                 </form>
             </div>
         </div>
 
     </div>
     <!--/main-->
+

@@ -1,0 +1,113 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span class="crumb-name">兼职管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <!--<form action="/jscss/admin/design/index" method="post">-->
+                    <!--<table class="search-tab">-->
+                        <!--<tr>-->
+                            <!--<th width="120">选择分类:</th>-->
+                            <!--<td>-->
+                                <!--<select name="search-sort" id="">-->
+                                    <!--<option value="">全部</option>-->
+                                    <!--<option value="19">发布者</option><option value="20">兼职者</option>-->
+                                <!--</select>-->
+                            <!--</td>-->
+                            <!--<th width="70">关键字:</th>-->
+                            <!--<td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>-->
+                            <!--<td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+                <!--</form>-->
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-title">
+
+                </div>
+                <div class="result-content">
+
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th>预约订单ID</th>
+                            <th>预约者姓名</th>
+                            <th>预约理发种类</th>
+                            <th>预约者联系方式</th>
+                            <th>预约时间</th>
+                            <th>订单状态</th>
+                            <th>操作</th>
+                        </tr>
+                        <volist name="dingdans" id="vo">
+                            <tr>
+                                <td>{$vo.or_tdid}</td>
+                                <td>{$vo.hair_name}</td>
+                                <td>{$vo.or_typename}</td>
+                                <td>{$vo.hair_number}</td>
+                                <td>{$vo.or_tdtime}</td>
+                                <td>{$vo.ts_idd}
+                                    <?php
+                                    switch ($vo["ts_idd"])
+                                        {
+                                        case 1:
+                                          echo "理发预约取消";
+                                          break;
+                                        case 2:
+                                          echo "理发预约完成";
+                                          break;
+                                        case 3:
+                                       echo "理发预约推迟10分钟";
+                                         break;
+                                        default:
+                                         echo "理发预约进行中";
+                                        };?>
+                                </td>
+
+                                <td>
+                                    <a class="" href="/school+/lifaadmin/lifa/seedingdan?id={$vo.or_tdid}">查看详情</a>
+                                    <a class="delete" href="" name="{$vo.or_tdid}">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+
+                    </table>
+                    <div class="list-page"> 2 条 1/1 页</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //检测js文件是否引入成功
+            console.log('恭喜你,jquery文件引入成功');
+
+            $(".delete").click(function(){
+                var alarm = confirm('是否确定要删除？');
+//                confirm(alarm);
+                if(alarm == true){
+                    var id = $(this).attr('name');
+//                    confirm(id);
+
+                    //attr()设置被选元素的属性和值。//获取要删除的数据的id
+                    var self = $(this);
+                    $.post("{:U('lifaadmin/lifa/deletelifadan')}",//执行删除操作的页面
+                            {'id':id},//删除页面所需要的要删除的数据id
+
+                            function(data){
+                                //请求成功后隐藏该记录
+                                var child = self.parent().parent();//获取当前结点父结点的父结点
+                                child.hide();//隐藏信息
+
+                            }//function(data)处的括号
+                    );//post结尾处的括号
+                }
+            });
+        });
+    </script>
+
