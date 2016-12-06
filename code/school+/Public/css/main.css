@@ -1,5 +1,6 @@
 .sidebar-wrap{float: left;width: 189px;min-height:700px;background: #f2f2f2;border-right:1px solid #6f7ccc;/*cursor:e-resize;*/}
-.main-wrap{margin-left: 200px;min-height:100%; }
+.main-wrap{margin-left: 190px;min-height:100%; }
+
 .sidebar-title{height: 40px;line-height: 40px;text-indent:1em;font-size: 24px;text-align: left;}
 .sidebar-title h1{font-weight: normal;}
 .sidebar-content{padding-top: 5px;}
@@ -15,6 +16,7 @@
 .sub-menu .icon-font{font-size: 10px;}
 /* main */
 .crumb-wrap{height: 40px;line-height: 39px;border-bottom: 1px solid #e5e5e5;background: #f5f5f5;}
+.store-wrap{height: 40px;line-height: 39px;border-bottom: 1px solid #e5e5e5;background: #f5f5f5;}
 .crumb-list{padding-left: 12px;}
 .crumb-list .icon-font{margin-right: 5px;}
 .crumb-step{margin: 0 5px;color: #b2c2e0;font-family: serif;}

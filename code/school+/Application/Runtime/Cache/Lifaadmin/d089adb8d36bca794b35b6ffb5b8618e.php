@@ -77,9 +77,8 @@
 
                          </tr>
                         <tr>
-                            <td>预约理发种类</td>
-                            <td><?php echo ($lifadan["or_typename"]); ?></td>
-
+                            <td>预约理发种类头发长度</td>
+                            <td><?php echo ($lifadan["or_typename"]); ?>，头发长度为：<?php echo ($lifadan["hair_long"]); ?></td>
                         </tr>
                         <tr>
                             <td>预约者联系方式</td>
@@ -89,7 +88,6 @@
                         <tr>
                             <td>预约时间</td>
                             <td><?php echo ($lifadan["or_tdtime"]); ?></td>
-
                         </tr>
 
                         <tr>
@@ -107,14 +105,43 @@
 
                     <a class="btn btn-primary btn2 mr3" href="/school+/lifaadmin/lifa/danConfirm?id=<?php echo ($lifadan["or_tdid"]); ?>">确认预约</a>
                     <a class="btn btn-primary btn2 mr1" href="/school+/lifaadmin/lifa/danCancel?id=<?php echo ($lifadan["or_tdid"]); ?>">取消预约</a>
-                    <a class="btn btn-primary btn2 mr1" href="/school+/lifaadmin/lifa/danDelete?id=<?php echo ($lifadan["or_tdid"]); ?>">删除订单</a>
+
+                    <a id="delete" name="<?php echo ($lifadan["or_tdid"]); ?>" class="btn btn-primary btn2 mr1">删除订单</a>
                 </form>
             </div>
         </div>
 
     </div>
     <!--/main-->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //检测js文件是否引入成功
+            console.log('恭喜你,jquery文件引入成功');
 
+            $("#delete").click(function(){
+                var alarm = confirm('是否确定要删除？');
+                confirm(alarm);
+                if(alarm == true){
+                    var id = $(this).attr('name');
+                    confirm(id);
+
+                    //attr()设置被选元素的属性和值。//获取要删除的数据的id
+                    var self = $(this);
+                    $.post("<?php echo U('lifaadmin/lifa/danDelete');?>",//执行删除操作的页面
+                            {'id':id},//删除页面所需要的要删除的数据id
+
+                            function(data){
+                                //请求成功后隐藏该记录
+                               if(confirm("删除成功,刷新页面生效，如需恢复订单请联系管理员")){
+                                   history.go(-1);
+                               }
+                            }//function(data)处的括号
+                    );//post结尾处的括号
+
+                }
+            });
+        });
+    </script>
     <!--/main-->
 </div>
 </body>

@@ -98,10 +98,6 @@ class ParttimejobController extends Controller
         }
     }
 
-
-
-
-
     //管理兼职订单（order页面）之查看详情选项（已完成）
     public function view(){
         $pt_trid = I('get.id');

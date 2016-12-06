@@ -11,7 +11,7 @@ ul,ol{list-style:none outside;padding:0}
 h1,h2,h3,h4,h5,h6{font-size:100%}
 textarea{overflow-y:auto;padding:3px}
 a{color:#428bca;text-decoration:none;outline:0}
-a:hover,a:active{color:#2a6496;text-decoration:none;}
+a:hover,a:active{color: #090660;text-decoration:none;}
 a:focus{outline:0;}
 button::-moz-focus-inner{border:0;padding:0;}
 figure{margin:0}
@@ -60,9 +60,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 .icon-font { font-family:'icomoon'; speak:none; font-weight:400; font-style:normal; font-variant:normal; text-transform:none; line-height:1; -webkit-font-smoothing:antialiased; }
 .require-red{color:#f60;font-family:serif;margin-right:3px;}
 /* common */
-.topbar-wrap{height:50px;line-height:50px;background:#1A1A1A;}
+.topbar-wrap{height:50px;line-height:50px;background: rgba(9, 6, 96, 0.98);}
 .topbar-logo-wrap{float:left;}
-.topbar-inner{font-size:16px;padding:0 20px;}
+.topbar-inner{font-size:14px;padding:0 20px;}
 .topbar-logo{float:left;width:150px;text-align:center;}
 .navbar-list{float:left;}
 .top-info-wrap{float:right;}

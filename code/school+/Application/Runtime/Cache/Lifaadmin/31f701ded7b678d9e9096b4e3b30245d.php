@@ -111,7 +111,7 @@
 
                                 <td>
                                     <a class="" href="/school+/lifaadmin/lifa/seedingdan?id=<?php echo ($vo["or_tdid"]); ?>">查看详情</a>
-                                    <a class="delete" href="" name="<?php echo ($vo["or_tdid"]); ?>">删除</a>
+                                    <!--<a class="delete" href="" name="<?php echo ($vo["or_tdid"]); ?>">删除</a>-->
                                 </td>
                             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 
@@ -130,14 +130,14 @@
 
             $(".delete").click(function(){
                 var alarm = confirm('是否确定要删除？');
-//                confirm(alarm);
+                confirm(alarm);
                 if(alarm == true){
                     var id = $(this).attr('name');
-//                    confirm(id);
+                    confirm(id);
 
                     //attr()设置被选元素的属性和值。//获取要删除的数据的id
                     var self = $(this);
-                    $.post("<?php echo U('lifaadmin/lifa/deletelifadan');?>",//执行删除操作的页面
+                    $.post("<?php echo U('lifaadmin/lifa/danDelete');?>",//执行删除操作的页面
                             {'id':id},//删除页面所需要的要删除的数据id
 
                             function(data){

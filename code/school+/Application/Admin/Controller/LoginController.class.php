@@ -16,4 +16,59 @@ class LoginController extends Controller
         layout(false);
         $this->display(login);
     }
+    public function login(){
+        //不显示layout布局
+        layout(false);
+        //生成验证码
+
+
+        $this->display();
+
+    }
+    public function captcha(){
+        //s生成验证码
+        $captcha = new Verify();
+        $captcha->entry('login');
+    }
+    public function dologin(){
+        //校验验证码
+        $captcha = new Verify();
+        if($captcha->check(I('post.captcha'),'login')){
+            //成功
+            $condition = array();
+            $condition['name']=I('post.name');
+            $condition['pswd']=I('post.pswd','','md5');
+            $user = $this->_db->where($condition)->find();
+//            $user = $this->_db->where()
+            if($user){
+                //用户名密码正确
+                //把用户名密码写入session
+                session('loginedName',I('post.name'));
+                //跳转页面
+                //
+                switch($user['group_id']) {
+                    case 1:
+                        $jumpUrl = '/admin/';
+                        break;
+                    case 2:
+                        $jumpUrl = '/home/';
+                        break;
+                    default:
+                        $jumpUrl = '/home/';
+                        break;
+                }
+                $this->success('登陆成功！',$jumpUrl);
+            }else{
+                //用户名密码错误
+                echo '用户名密码错误';
+            }
+        }else{
+            //失败
+            echo '验证码输入失败';
+        }
+    }
+    public function logout(){
+        //注销session
+        session('loginedName',null);
+    }
 }
