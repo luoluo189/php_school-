@@ -11,72 +11,50 @@
 
     <div class="result-wrap">
         <div class="result-content">
-            <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
-                <div class="result-title">
-                    <div class="result-list">
-                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
-                    </div>
-                </div>
-                <div class="result-content">
-                    <table class="result-tab" width="100%">
+
+            <div class="result-content">
+                    <table class="result-tab" width="60%">
                         <tr>
-                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
-                            <th>商品名称</th>
-                            <th>商品单价</th>
-                            <th>商品数量</th>
-                            <th>商品总金额</th>
-                            <th>交易客户</th>
-                            <th>客户地址</th>
-                            <th>客户联系方式</th>
-                            <th>操作</th>
+                            <td rowspan="{$num}">商品</td>
+                            <td>商品名称</td>
+                            <td>单价</td>
+                            <td>数量</td>
+                        </tr>
+                        <volist name="shangpin" id="vo">
+                        <tr>
+                            <td>{$vo.bs_gname}</td>
+                            <td>{$vo.bs_gprice}</td>
+                            <td>{$vo.bs_mgnum}</td>
+                        </tr>
+                        </volist>
+
+
+                        <tr>
+                            <td>总金额</td>
+                            <td colspan="3">{$btin.bs_tr_inmoney}</td>
                         </tr>
                         <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td>可口可乐</td>
-                            <td>10元</td>
-                            <td>2</td>
-                            <td>20</td>
-                            <td>妮妮</td>
-                            <td>二期宿舍</td>
-                            <td>15234356787</td>
-                            <td>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
+                            <td>用户昵称</td>
+                            <td colspan="3">{$name.ci_name}</td>
                         </tr>
                         <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td>可口可乐</td>
-                            <td>10元</td>
-                            <td>2</td>
-                            <td>20</td>
-                            <td>妮妮</td>
-                            <td>二期宿舍</td>
-                            <td>15234356787</td>
-                            <td>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
+                            <td>用户地址</td>
+                            <td colspan="3">{$btin.bs_tr_inaddress}</td>
                         </tr>
                         <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td>可口可乐</td>
-                            <td>10元</td>
-                            <td>2</td>
-                            <td>20</td>
-                            <td>妮妮</td>
-                            <td>二期宿舍</td>
-                            <td>15234356787</td>
-                            <td>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
+                            <td>用户联系方式</td>
+                            <td colspan="3">{$btin.bs_tr_inphone}</td>
                         </tr>
                         <tr>
-                            <td colspan="9">
-                                <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
-                            </td>
+                          <td colspan="4">
+                              <a class="btn btn5" href="/admin/ding/ding"  type="button">返回</a>
+                              <a class="btn btn-primary btn2 mr3" href="/admin/ding/danConfirm?id={$btin.bs_tr_idd}">订单完成</a>
+                              <a class="btn btn-primary btn2 mr1" href="/admin/ding/danCancel?id={$btin.bs_tr_idd}">取消预约</a>
+                          </td>
                         </tr>
                     </table>
+
                 </div>
-            </form>
         </div>
     </div>
 

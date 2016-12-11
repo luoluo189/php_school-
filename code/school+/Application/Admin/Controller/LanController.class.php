@@ -11,10 +11,27 @@ class LanController extends Controller
         $stype=M('bs_type');
         $condition=array();
         $condition['si_id']=1;
-        $stype=$stype->where($condition)->select();
-        //dump($stype);
-        $stype=$this->assign('stype',$stype);
+        //1.获取author_id=3记录总条数
+        $count=$stype->where($condition)->count();
+        //dump($count);
+        //2.设置（获取）每一页显示的个数
+        $pageSize=3;
+        //3.创建分页对象
+        $page=new \Think\Page($count,$pageSize);
+        //4.分页查询
+        $stype=$stype->where($condition)->limit($page->firstRow.','.$page->listRows)->select();
+        //5.输出查询结果
+        $this->assign('stype',$stype);
+        //6.输出分页码
+        $page->setConfig('prev','上一页');
+        $page->setConfig('next','下一页');
+        $this->assign('pages',$page->show());
+        //7.显示视图文件
         $this->display();
+        //$stype=$stype->where($condition)->select();
+        //dump($stype);
+        //$stype=$this->assign('stype',$stype);
+        //$this->display();
     }
     public function addlan(){
         $this->display();
@@ -29,8 +46,7 @@ class LanController extends Controller
         //dump($resulut);
         if($resulut)
         {
-//            $this->success('数据插入成功','/admin/lan/lan');
-            $this->success('数据插入成功');
+            $this->success('数据插入成功','/admin/lan/lan');
         }
         else{
             $this->error('数据插入失败');

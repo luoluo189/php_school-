@@ -41,8 +41,8 @@
                             <th>订单交易ID</th>
                             <th>交易用户</th>
                             <th>下单时间</th>
-                            <th>订单状态</th>
                             <th>交易方式</th>
+                            <th>订单状态</th>
                             <th>操作</th>
                         </tr>
                         <volist name="tstates" id="vo">
@@ -51,19 +51,50 @@
                             <td>{$vo.bs_tr_id}</td>
                             <td>{$vo.ci_name}</td>
                             <td>{$vo.bs_tr_xtime}</td>
-                            <td>{$vo.ts_name}</td>
                             <td>{$vo.bs_tr_way}</td>
+                            <td>{$vo.ts_name}</td>
+
                             <td>
-                                <a class="link-view" href="dingview">查看</a>
-                                <a class="delete" href="__URL__/delete/id/{$vo.bs_tr_id}">删除</a>
+                                <a class="link-view" href="dingview/id/{$vo.bs_tr_id}">查看</a>
+                                <!--<a class="delete" href="__URL__/delete/id/{$vo.bs_tr_id}">删除</a>-->
+                                <a class="delete" href="" name="{$vo.bs_tr_id}">删除</a>
                             </td>
                         </tr>
                         </volist>
 
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page">{$pages}</div>
                 </div>
             </form>
         </div>
     </div>
     <!--/main-->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //检测js文件是否引入成功
+            console.log('恭喜你,jquery文件引入成功');
+
+            $(".delete").click(function(){
+                var alarm = confirm('是否确定要删除？');
+                confirm(alarm);
+                if(alarm == true){
+                    var id = $(this).attr('name');
+                    confirm(id);
+
+                    //attr()设置被选元素的属性和值。//获取要删除的数据的id
+                    var self = $(this);
+                    $.post("{:U('admin/ding/delete/')}",//执行删除操作的页面
+                            {'id':id},//删除页面所需要的要删除的数据id
+
+                            function(data){
+                                //请求成功后隐藏该记录
+                                var child = self.parent().parent();//获取当前结点父结点的父结点
+                                child.hide();//隐藏信息
+
+                            }//function(data)处的括号
+                    );//post结尾处的括号
+                }
+            });
+        });
+    </script>
+

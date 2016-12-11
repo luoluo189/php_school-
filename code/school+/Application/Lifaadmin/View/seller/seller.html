@@ -11,12 +11,14 @@
             <ul class="sys-info-list">
                 <li>
                     <label class="res-lab">头像</label><span class="res-info"><img src="__PUBLIC__/{$store.si_image}" class="res-labb"/></span>
-
+                    <span class="res-labc">
+                        <a href="/Lifaadmin/seller/changesellerpic/storePic/{$seller.si_id}"  class="update"> <input value="修改店铺照片" type="button"></a>
+                    </span>
                 </li>
 
                 <li>
                     <label class="res-lab">名称</label><span class="res-info">{$store.si_name}</span>
-                    <span class="res-labc"></span>
+
                 </li>
                 <li>
                     <label class="res-lab">介绍</label><span class="res-info">{$store.si_sintroduce}</span>
@@ -36,7 +38,7 @@
                 </li>
                 <!--<a href="seller/changeseller">修改店铺信息</a>-->
                 <li>
-                    <a href="/school+/Lifaadmin/seller/changeseller"> <input value="修改店铺信息" type="button"></a>
+                    <a href="/Lifaadmin/seller/changeseller"> <input value="修改店铺信息" type="button"></a>
 
                 </li>
             </ul>

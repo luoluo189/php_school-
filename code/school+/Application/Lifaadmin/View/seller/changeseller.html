@@ -7,13 +7,15 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="/school+/admin/seller/store" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <form action="/Lifaadmin/seller/store/id/{$store.si_id}" method="post" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody>
 
                              <tr>
                                  <th><i class="require-red">*</i>头像：</th>
-                                 <td><input name="image" id="image" type="file">
+                                 <td>
+                                     <img src="__PUBLIC__/{$store.si_image}" alt="{$store.si_name}的头像" width="150px">
+                                 </td>
                              </tr>
                              <input type="hidden" name="si_id" value="{$store.si_id}">
                             <tr>

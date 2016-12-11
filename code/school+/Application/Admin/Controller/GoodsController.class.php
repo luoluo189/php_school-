@@ -8,22 +8,47 @@ class GoodsController extends Controller
 {
     public function design()
     {
-        //$this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px } a,a:hover{color:blue;}</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本 V{$Think.version}</div><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_55e75dfae343f5a1"></thinkad><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');
+         //种类分类
         $btype=M('bs_type');
         $condition=array();
         $condition['si_id']=1;
         $btype=$btype->where($condition)->select();
         $this->assign('btype',$btype);
 
-        $sql="select bs_gid,bs_gname,bs_gsize,bs_gprice,bs_gnumber,bs_gurl,bs_gdescription 
-       from bs_type,bs_goods where bs_type.si_id=1 
-       and bs_type.bs_tid=bs_goods.bs_tid";
-        $bgoods=M()->query($sql);
+        //商品信息
+        $sql = "select bs_gid,bs_gname,bs_gsize,bs_gprice,bs_gnumber,bs_gurl,bs_gdescription
+       from bs_type,bs_goods
+       where bs_type.si_id=1 and bs_type.bs_tid=bs_goods.bs_tid";
+        $bgoods = M()->query($sql);
         //dump($bgoods);
+//            $this->assign('bgoods', $bgoods);
+        //$this->display();
+
+        //1.获取记录总条数
+        $count=count($bgoods);
+        //dump($count);
+        //2.设置（获取）每一页显示的个数
+        $pageSize=4;
+        //3.创建分页对象
+        $page=new \Think\Page($count,$pageSize);
+        //4.分页查询
+        $sqls = "select bs_gid,bs_gname,bs_gsize,bs_gprice,bs_gnumber,bs_gurl,bs_gdescription
+       from bs_type,bs_goods
+       where bs_type.si_id=1 and bs_type.bs_tid=bs_goods.bs_tid limit $page->firstRow,$page->listRows";
+        $bgoods=M()->query($sqls);
+        //dump($bgoods);
+        //5.输出查询结果
         $this->assign('bgoods',$bgoods);
+        //6.输出分页码
+        $page->setConfig('prev','上一页');
+        $page->setConfig('next','下一页');
+        $this->assign('pages',$page->show());
+        //7.显示视图文件
         $this->display();
 
     }
+
+
     public function addgds(){
         $btype=M('bs_type');
         $condition=array();
@@ -33,11 +58,7 @@ class GoodsController extends Controller
         $this->display();
     }
     public function store(){
-        //获取post数据
         $data=I('post.');
-        $data['bs_tid']=2;
-        $data['bs_gsid']=1;
-        $data['bs_rid']=1;
         //dump($data);
         //上传文件
         $upload=new Upload();
@@ -54,21 +75,27 @@ class GoodsController extends Controller
         else{
             foreach ($info as $file){
                 $saveFileName=$file['savepath'].$file['savename'];
-                $data['bs_gurl']=$saveFileName;
-                //dump($data['bs_gurl']);
+                $data['si_image']=$saveFileName;
+                //dump($data['si_image']);
             }
         }
         //dump($data);
         // 插入到数据表中
-        $bgoods = M('bs_goods');
-        $result = $bgoods->add($data);
+        $id =I('get.id');
+        //dump($id);
+        $seller = M('bs_goods');
+        $dd['si_id']=$id;
+        //dump($dd);
+        $result = $seller->where($dd)->save($data);
         //dump($result);
         // 善后处理
         if ($result) {
-            $this->success( '数据添加成功！','/school+/admin/goods/design');
+            //$this->success( '数据修改成功！','/admin/seller/seller');
+            header('Location:/admin/seller/seller');
         } else {
-            $this->error('数据添加失败！');
+            $this->error('数据修改失败！');
         }
+
     }
 
     public function changegds(){
@@ -99,7 +126,7 @@ class GoodsController extends Controller
         //dump($dd);
         $result=$bgoods->where($dd)->save($data);
         if ($result) {
-            $this->success( '数据修改成功！','/school+/admin/goods/design');
+            $this->success( '数据修改成功！','/admin/goods/design');
         } else {
             $this->error('数据修改失败！');
         }

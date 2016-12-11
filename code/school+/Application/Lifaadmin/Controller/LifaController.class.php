@@ -171,12 +171,12 @@ class LifaController extends Controller
      * 状态：succeed
      */
         /*
-         * 功能：确认订单
+         * 功能：完成订单
          * 编写者：骆静静
          * 状态：succeed
          */
     public function danConfirm()
-    {//确认订单——改为2
+    {//完成订单——改为2
 
         $id=$_GET['id'];
         $_db=M('order_trade');
@@ -198,7 +198,7 @@ class LifaController extends Controller
        else{
            $data['ts_idd'] = 2;
            $_db->save($data);
-           $this->success('确认订单成功！','dingdan',2);
+           $this->success('完成订单成功！','dingdan',2);
        }
     }
     /*

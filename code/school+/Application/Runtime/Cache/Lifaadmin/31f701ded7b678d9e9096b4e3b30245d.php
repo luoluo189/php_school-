@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>理发后台管理</title>
-    <link rel="stylesheet" type="text/css" href="/school+/Public/css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="/school+/Public/css/main.css"/>
-    <script type="text/javascript" src="/school+/Public/js/libs/modernizr.min.js"></script>
-    <script type="text/javascript" src="/school+/Public/js/jquery-2.2.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Public/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/css/main.css"/>
+    <script type="text/javascript" src="/Public/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="/Public/js/jquery-2.2.3.min.js"></script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -37,16 +37,16 @@
                 <li>
                     <a href="#">店铺管理</a>
                     <ul class="sub-menu">
-                        <li><a href="/school+/Lifaadmin/seller">查看店铺信息</a></li>
-                        <li><a href="/school+/Lifaadmin/seller/changeseller">编辑店铺信息</a></li>
+                        <li><a href="/Lifaadmin/seller">查看店铺信息</a></li>
+                        <li><a href="/Lifaadmin/seller/changeseller">编辑店铺信息</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">理发预约管理</a>
                             <ul class="sub-menu">
-                                <li><a href="/school+/Lifaadmin/lifa/addlifa">添加预约时间</a></li>
-                                <li><a href="/school+/Lifaadmin/lifa/managelifa">管理预约时间</a></li>
-                                <li><a href="/school+/Lifaadmin/lifa/dingdan">管理预约订单</a></li>
+                                <li><a href="/Lifaadmin/lifa/addlifa">添加预约时间</a></li>
+                                <li><a href="/Lifaadmin/lifa/managelifa">管理预约时间</a></li>
+                                <li><a href="/Lifaadmin/lifa/dingdan">管理预约订单</a></li>
                             </ul>
                 </li>
 
@@ -110,8 +110,8 @@
                                 </td>
 
                                 <td>
-                                    <a class="" href="/school+/lifaadmin/lifa/seedingdan?id=<?php echo ($vo["or_tdid"]); ?>">查看详情</a>
-                                    <!--<a class="delete" href="" name="<?php echo ($vo["or_tdid"]); ?>">删除</a>-->
+                                    <a class="" href="/lifaadmin/lifa/seedingdan?id=<?php echo ($vo["or_tdid"]); ?>">查看详情</a>
+                                    <a class="delete" href="" name="<?php echo ($vo["or_tdid"]); ?>">删除</a>
                                 </td>
                             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 

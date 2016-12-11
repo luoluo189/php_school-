@@ -21,6 +21,8 @@
                             <th>兼职ID</th>
                             <th>兼职名称</th>
                             <th>兼职报酬</th>
+                            <th>兼职时间</th>
+
                             <th>兼职内容</th>
                             <th>联系方式</th>
                             <th>兼职地址</th>
@@ -31,12 +33,16 @@
                             <td>{$vo.pt_inid}</td>
                             <td>{$vo.pt_inname}</td>
                             <td>{$vo.pt_inmoney}</td>
+
+                            <td>{$vo.pt_ifshow}</td>
+
                             <td>{$vo.pt_inabstract}</td>
                             <td>{$vo.pt_min_phonee}</td>
                             <td>{$vo.pt_inaddress}</td>
                             <td>
                                 <a class="" href="edit/id/{$vo.pt_inid}">修改</a>
-                                <a class="delete" href="__URL__/delete/id/{$vo.pt_inid}">删除</a>
+                                <a class="delete" href="" name="{$vo.pt_inid}">删除</a>
+                                <!--<a class="delete" href="__URL__/delete?id={$vo.pt_inid}">删除</a>-->
                             </td>
                         </tr>
                          </volist>
@@ -49,15 +55,31 @@
     </div>
     <!--/main-->
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        console.log('jquery文件引入成功！');
-        $(".delete").click(function(){
-            var tag = confirm('真的要删除吗？');
-            if(!tag){
-                return false;
-            }
-        });
-    });
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //检测js文件是否引入成功
+            console.log('恭喜你,jquery文件引入成功');
 
-</script>
+            $(".delete").click(function(){
+                var alarm = confirm('是否确定要删除？');
+                confirm(alarm);
+                if(alarm == true){
+                    var id = $(this).attr('name');
+                    confirm(id);
+
+                    //attr()设置被选元素的属性和值。//获取要删除的数据的id
+                    var self = $(this);
+                    $.post("{:U('ParttimejobAdmin/parttimejob/delete')}",//执行删除操作的页面
+                            {'id':id},//删除页面所需要的要删除的数据id
+
+                            function(data){
+                                //请求成功后隐藏该记录
+                                var child = self.parent().parent();//获取当前结点父结点的父结点
+                                child.hide();//隐藏信息
+
+                            }//function(data)处的括号
+                    );//post结尾处的括号
+                }
+            });
+        });
+    </script>

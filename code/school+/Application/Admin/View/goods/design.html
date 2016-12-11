@@ -3,11 +3,11 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/school+/admin/seller/seller">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商品管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="/admin/seller/seller">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商品管理</span></div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="/jscss/school+/admin/design/index" method="post">
+                <form action="/jscss/admin/design/index" method="post">
                     <table class="search-tab">
                         <tr>
                             <th width="120">选择商品种类:</th>
@@ -28,7 +28,7 @@
             <form name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="/school+/admin/goods/addgds"><i class="icon-font"></i>新增商品</a>
+                        <a href="/admin/goods/addgds"><i class="icon-font"></i>新增商品</a>
                         <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
                     </div>
                 </div>
@@ -36,26 +36,27 @@
                     <table class="result-tab" width="100%">
                         <tr>
                             <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
-                            <th>商品图片</th>
                             <th>商品ID</th>
                             <th>商品名称</th>
                             <th>商品型号(颜色)</th>
                             <th>商品单价</th>
                             <th>商品库存</th>
+                            <th>商品图片</th>
                             <th>商品描述</th>
                             <th>操作</th>
                         </tr>
                         <volist name="bgoods" id="vo">
                             <tr>
                                 <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                                <td><image src="__PUBLIC__/{$vo.bs_gurl}" width="60px"height="60px"/></td>
                                 <td>{$vo.bs_gid}</td>
-                                <td title=""><a target="_blank" href="#" title="">{$vo.bs_gname}</a> …
+                                <td title=""><a target="_blank" href="#" title="">{$vo.bs_gname}</a>
                                 </td>
                                 <td>{$vo.bs_gsize}</td>
                                 <td>{$vo.bs_gprice}</td>
                                 <td>{$vo.bs_gnumber}</td>
-
+                                <td>
+                                    <span class="res-info"><img src="__PUBLIC__/{$vo.bs_gurl}" class="res-labb"/></span>
+                                </td>
                                 <td>{$vo.bs_gdescription}</td>
                                 <td>
                                     <a class="link-update" href="__URL__/changegds/id/{$vo.bs_gid}">修改</a>
@@ -64,7 +65,9 @@
                             </tr>
                         </volist>
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page">
+                        {$pages}
+                    </div>
                 </div>
             </form>
         </div>

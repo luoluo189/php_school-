@@ -7,10 +7,14 @@ use Think\Upload;
 //店铺信息
 class SellerController extends Controller
 {
+    /*
+     * 功能：店家信息的展示
+     * 编写者：骆静静
+     * 状态：succeed
+     */
     public function seller()
     {
-        //$this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px } a,a:hover{color:blue;}</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本 V{$Think.version}</div><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_55e75dfae343f5a1"></thinkad><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');
-        $seller=M('store_information');
+         $seller=M('store_information');
         $condition=array();
         $condition['si_id']=1;
         $seller=$seller->where($condition)->select();
@@ -19,10 +23,7 @@ class SellerController extends Controller
         //dump($seller);
         $this->assign('seller',$seller);
 
-//        $sttype=M('store_type');
-//        $sttype=$sttype->select();
-//        $this->assign('sttype',$sttype);
-
+        //店家种类的判断
         if($seller[s_type_id]==1)
         {
             $type="理发店";
@@ -37,6 +38,11 @@ class SellerController extends Controller
         $this->display();
 
     }
+    /*
+     * 功能：修改店家信息的页面
+     * 编写者：骆静静
+     * 状态：succeed
+     */
     public function changeseller(){
         $seller=M('store_information');
         $condition=array();
@@ -47,24 +53,54 @@ class SellerController extends Controller
         //dump($seller);
         $this->assign('seller',$seller);
 
-        $sttype=M('store_type');
-        $sttype=$sttype->select();
-        $this->assign('sttype',$sttype);
-
-//        if($seller[s_type_id]==1)
-//        {
-//            $type="理发店";
-//        }elseif($seller[s_type_id]==2)
-//        {
-//            $type="商品店";
-//        }
-//        else{
-//            $type="兼职发布人";
-//        }
-//        $this->assign('type',$type);
         $this->display();
     }
+    /*
+      * 功能：修改店家头像的页面
+      * 编写者：骆静静
+      * 状态：succeed
+      */
+    public function changesellerpic(){
+        $seller=M('store_information');
+        $condition=array();
+        $condition['si_id']=1;
+        $seller=$seller->where($condition)->select();
+        //dump($seller);
+        $seller=$seller[0];
+        //dump($seller);
+        $this->assign('seller',$seller);
+
+        $this->display();
+    }
+    /*
+     * 功能：修改店家信息的提交
+     * 编写者：骆静静
+     * 状态：succeed
+     */
     public function store(){
+        //获取post数据
+        $data=I('post.');
+        // 插入到数据表中
+        $id =I('get.id');
+        //dump($id);
+        $seller = M('store_information');
+        $dd['si_id']=$id;
+        $result = $seller->where($dd)->save($data);
+        //dump($result);
+        // 善后处理
+        if ($result) {
+            //$this->success( '数据修改成功！','/admin/seller/seller');
+            header('Location:/admin/seller/seller');
+        } else {
+            $this->error('数据修改失败！');
+        }
+    }
+    /*
+     * 功能：修改店家的照片
+     * 编写者：骆静静
+     * 状态：succeed
+     */
+    public function storePic(){
         //获取post数据
         $data=I('post.');
         //dump($data);
@@ -87,24 +123,21 @@ class SellerController extends Controller
                 //dump($data['si_image']);
             }
         }
-       //dump($data);
+        //dump($data);
         // 插入到数据表中
         $id =I('get.id');
         //dump($id);
         $seller = M('store_information');
         $dd['si_id']=$id;
-        //dump($dd);
         $result = $seller->where($dd)->save($data);
         //dump($result);
         // 善后处理
         if ($result) {
             //$this->success( '数据修改成功！','/admin/seller/seller');
-//            header('Location:/admin/seller/seller');
-            $this->redirect('seller');
+            header('Location:/admin/seller/seller');
         } else {
             $this->error('数据修改失败！');
         }
     }
-
 
 }

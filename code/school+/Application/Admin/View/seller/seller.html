@@ -10,9 +10,11 @@
 
                 <ul class="sys-info-list" >
                     <li>
-                        <label class="res-lab">头像</label><span class="res-info">
-                        <img src="__PUBLIC__/{$seller.si_image}" class="res-labb"/></span>
-                        <span class="res-labc"></span>
+                        <label class="res-lab">头像</label>
+                        <span class="res-info"><img src="__PUBLIC__/{$seller.si_image}" class="res-labb"/></span>
+                        <span class="res-labc">
+                             <a href="/admin/seller/changesellerpic/storePic/{$seller.si_id}"  class="update"> <input value="修改店铺照片" type="button"></a>
+                        </span>
                     </li>
                     <li>
                         <label class="res-lab">名称</label><span class="res-info">{$seller.si_name}</span>
@@ -36,7 +38,7 @@
                     </li>
                     <!--<a href="seller/changeseller">修改店铺信息</a>-->
                     <li>
-                        <a href="/school+/admin/seller/changeseller/store?id={$seller.si_id}"  class="update"> <input value="修改店铺信息" type="button"></a>
+                        <a href="/admin/seller/changeseller/store/id/{$seller.si_id}"  class="update"> <input value="修改店铺信息" type="button"></a>
                         <!--href="/admin/seller/changeseller"-->
                     </li>
                 </ul>
