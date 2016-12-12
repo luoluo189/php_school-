@@ -41,14 +41,14 @@
         }
         .as{
             float:right;
-            width:40%;
-            height:10%;
-            margin-left: 12%;
+            /*width:40%;*/
+            /*height:10%;*/
+            /*margin-left: 12%;*/
         }
         .as1{
             float:right;
-            width:100%;
-            height:100%;
+            width:100px;
+            height:70px;
             margin-right: 10%;
         }
         .address{
@@ -70,6 +70,9 @@
         .user{
         margin-top:2%;
         }
+        .weui_panel_bd{
+            width: 100%;
+        }
 
     </style>
 </head>
@@ -80,7 +83,7 @@
             <div>
             <!-- 返回图标开始 -->
             <div   class="back" >
-            <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+            <a href="" onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
             </div>
             <div class="set">
             确认订单
@@ -93,7 +96,6 @@
         <hr/>
         <volist name="s" id="vo">
             <div  style="margin-left: 4%;">
-
            收货人：{$vo['ca_name']} &nbsp;&nbsp;联系电话：{$vo['ca_phone']}
             <br/>
             <div  style="margin-top:10px;">
@@ -113,20 +115,26 @@
             <div class="sto1">店铺名称：一个柚子</div>
             <hr/>
             <!--  -->
+            <volist name="storename" id="vo">
             <div class="weui_panel_bd">
-                <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+                <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" width="100%">
                     <div class="weui_media_hd">
                         <input type="checkbox" name="store"/>
                     </div>
                     <div class="weui_media_bd">
-                        <h4 class="weui_media_title">草莓炒酸奶</h4>
-                        <p class="weui_media_desc">￥10</p>
-                        <p class="weui_media_desc">X1</p>
+                        <h4 class="weui_media_title">{$vo['bs_gname']}</h4>
+                        <p class="weui_media_desc">￥{$vo['bs_gprice']}</p>
+                        <p class="weui_media_desc">X{$vo['sh_cnum']}</p>
                     </div>
-                    <div  class="as"> <img src="__PUBLIC__/home/images/chaosuannai.jpg" alt="" class="as1"> </div>
+                    <div  class="as">
+                        <img src="__PUBLIC__/{$vo['bs_gurl']}" alt="" class="as1">
+                    </div>
                 </a>
 
             </div>
+                <hr/>
+            </volist>
+
 
             <!--  -->
             <hr/>
@@ -150,7 +158,7 @@
         <div class="weui_cells">
             <div class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
-                    <p>合计： 156元</p>
+                    <p>合计：￥{$cs}</p>
                 </div>
                 <div class="weui_cell_ft">
                     <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary">提交订单</a>

@@ -41,16 +41,35 @@ class DingdanController extends Controller
        
     }
     public function gouwuche_queren(){
-        $_db=M('shopping_cart');
+//        $_db=M('shopping_cart');
+//
+//        $condition['ci_idddd']=1;
+//        $condition1=$_db->where($condition)->select();
+//        //dump($condition1);
+//         $n=count($condition1);
+//        for ($i=0; $i < $n ; $i++) {
+//            $storename[]=M('bs_goods')->where("bs_gid=%d",array($condition1[$i]['bs_gidd']))->find();
+//        }
+//        $this->assign('cs',$condition1);
+//        $this->display();
 
-        $condition['ci_idddd']=1;
-        $condition1=$_db->where($condition)->select();
-        //dump($condition1);
-         $n=count($condition1);
-        for ($i=0; $i < $n ; $i++) { 
-            $storename[]=M('bs_goods')->where("bs_gid=%d",array($condition1[$i]['bs_gidd']))->find();
+
+
+
+        $sql = "select bs_gname,bs_gprice,sh_cnum,bs_gurl,bs_goods.bs_gid
+         from bs_goods,shopping_cart
+         where bs_goods.bs_gid=shopping_cart.bs_gidd and ci_idddd=1";
+        $storename=M()->query($sql);
+        //dump($storename);
+        $this->assign('storename',$storename);
+
+        $n= count($storename);
+        $count=0;
+        for ($i=0; $i < $n ; $i++) {
+            $c=$storename[$i][sh_cnum]*$storename[$i][bs_gprice];
+            $count=$count+$c;
         }
-        $this->assign('cs',$condition1);
+        $this->assign('cs',$count);
         $this->display();
     }
     /*
