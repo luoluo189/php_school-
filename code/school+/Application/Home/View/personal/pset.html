@@ -36,7 +36,7 @@
 	<div class="weui_tab_bd">
     <!-- 返回图标开始 -->
     <div   class="back" >
-    <a href="/school+/home/personal/personal/id/{$user.ci_id}"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
     </div>
     <div class="setfont">
     设置
@@ -60,7 +60,7 @@
         </div>
         <div class="weui_cell_ft"></div>
         </a>
-        <a class="weui_cell" href="/school+/home/personal/paddress/id/{$user.ci_id}">
+        <a class="weui_cell" href="/home/personal/paddress/id/{$user.ci_id}">
         <div class="weui_cell_bd weui_cell_primary"  >
             <p>收货地址管理</p>
          </div>

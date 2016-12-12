@@ -7,12 +7,14 @@ class PersonalController extends Controller
 {
     protected $_db;
     protected function _initialize() {
-       layout(false);
+//       layout(false);
    }
     public function paddaddress(){
         $_nb=M('customer_information');
         $condition1=array();
-        $condition1['ci_id']=$_GET['id'];//应该获取到的是该微信号本身的id，这里由于还未实现自动得到微信号本身的id，所以手动输入id
+        $condition1['ci_id']=$_GET['id'];
+        //应该获取到的是该微信号本身的id，这里由于还未实现自动得到微信号本身的id，所以手动输入id
+        //暂时设置id为1
         $result1=$_nb->where($condition)->select();
         $this->assign('user', $result1[0]);
         //获得地址数据表
@@ -58,6 +60,10 @@ class PersonalController extends Controller
         $this->assign('address', $result);
         $this->display(); 
     }
+
+    /*
+     * 编辑部分未完成
+     */
     public function pchangeaddress(){
         // layout(false);
         // $_db=M('customer_address');
@@ -91,7 +97,6 @@ class PersonalController extends Controller
         $result=$_db->where($condition)->select();
         $this->assign('user', $result[0]);
         $this->display();
-        
     }
    
 }

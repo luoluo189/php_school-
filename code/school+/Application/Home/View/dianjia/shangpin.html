@@ -60,10 +60,10 @@
         <div>
             <!-- 返回图标开始 -->
             <div   class="back" >
-                <a href="dianjia.html"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+                <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
             </div>
-            <div class="set">
-                鲜榨果汁
+            <div class="set" name="set">
+                {$set['bs_gname']}
             </div>
             <!-- 返回图标结束 -->
         </div>
@@ -74,9 +74,9 @@
                 <img src="__PUBLIC__/home/images/meishi1.png"alt="">
             </div>
         </div>
-        <div class="a">￥10</div>
-        <div>
-            <p style="font-size: 20px;padding-left: 8px;">生鲜水果鲜榨</p>
+        <div class="a" name="set">￥{$set['bs_gprice']}</div>
+        <div name="set">
+            <p style="font-size: 20px;padding-left: 8px;">{$set['bs_gdescription']}</p>
             <p style="font-size: 15px;padding-left: 8px;padding-margin:8px;">运费：免费</p>
         </div>
 
@@ -121,7 +121,7 @@
                 </div>
                 <div class="dingdan">
                     <div class="img1"><img src="__PUBLIC__/home/images/0.png"  width="50px" height="50px" ></div>
-                    <div class="img2"><a href="gouwuche.html"><img src="__PUBLIC__/home/images/gouwuche.png" alt=""></a></div>
+                    <div class="img2"><a href="/home/dingdan/gouwuche_queren"><img src="__PUBLIC__/home/images/gouwuche.png" alt=""></a></div>
                 </div>
             </div>
         </div>
@@ -132,72 +132,46 @@
                 <div class="weui_media_hd">
                     <img class="weui_media_appmsg_thumb" src="__PUBLIC__/home/images/0.png" alt="">
                 </div>
-                <div class="weui_media_bd">
-                    <h4 class="weui_media_title">生鲜水果饮品店</h4>
-                    <p class="weui_media_desc">各种饮品大放送</p>
+                <div class="weui_media_bd" name="si">
+                    <h4 class="weui_media_title">{$si['si_name']}</h4>
+                    <p class="weui_media_desc">{$si['si_sintroduce']}</p>
                 </div>
             </a>
         </div>
 
 
-        <!--底部开始-->
+        <!--&lt;!&ndash;底部开始&ndash;&gt;-->
+
         <!--<div class="weui_tabbar">-->
-        <!--<a href="dianjia.html" class="weui_tabbar_item weui_bar_item_on">-->
-        <!--<div class="weui_tabbar_icon">-->
-        <!--<img src="images/11.png" alt="">-->
+            <!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
+                <!--<div class="weui_tabbar_icon">-->
+                    <!--<img src="images/b1.jpg" alt="">-->
+                <!--</div>-->
+                <!--<p class="weui_tabbar_label">首页</p>-->
+            <!--</a>-->
+            <!--<a href="sousuo.html" class="weui_tabbar_item">-->
+                <!--<div class="weui_tabbar_icon">-->
+                    <!--<img src="images/b2.jpg" alt="">-->
+                <!--</div>-->
+                <!--<p class="weui_tabbar_label">搜索</p>-->
+            <!--</a>-->
+            <!--<a href="gouwuche.html" class="weui_tabbar_item">-->
+                <!--<div class="weui_tabbar_icon">-->
+                    <!--<img src="images/b3.jpg" alt="">-->
+                <!--</div>-->
+                <!--<p class="weui_tabbar_label">购物车</p>-->
+            <!--</a>-->
+            <!--<a href="personal.html" class="weui_tabbar_item">-->
+                <!--<div class="weui_tabbar_icon">-->
+                    <!--<img src="images/b4.jpg" alt="">-->
+                <!--</div>-->
+                <!--<p class="weui_tabbar_label">个人中心</p>-->
+            <!--</a>-->
         <!--</div>-->
-        <!--<p class="weui_tabbar_label">店铺</p>-->
-        <!--</a>-->
-        <!--<a href="" class="weui_tabbar_item">-->
-        <!--<div class="weui_tabbar_icon">-->
-        <!--<img src="images/22.png" alt="">-->
-        <!--</div>-->
-        <!--<p class="weui_tabbar_label">收藏</p>-->
-        <!--</a>-->
-        <!--<a href="" class="weui_tabbar_item">-->
-        <!--<div class="weui_tabbar_icon">-->
-        <!--<img src="images/33.png" alt="">-->
-        <!--</div>-->
-        <!--<p class="weui_tabbar_label">购物车</p>-->
-        <!--</a>-->
-        <!--<a href="" class="weui_tabbar_item">-->
-        <!--<div class="weui_tabbar_icon">-->
-        <!--<img src="images/44.png" alt="">-->
-        <!--</div>-->
-        <!--<p class="weui_tabbar_label">立即购买</p>-->
-        <!--</a>-->
-        <!--</div>-->
-
-        <div class="weui_tabbar">
-            <a href="index.html" class="weui_tabbar_item weui_bar_item_on">
-                <div class="weui_tabbar_icon">
-                    <img src="images/b1.jpg" alt="">
-                </div>
-                <p class="weui_tabbar_label">首页</p>
-            </a>
-            <a href="sousuo.html" class="weui_tabbar_item">
-                <div class="weui_tabbar_icon">
-                    <img src="images/b2.jpg" alt="">
-                </div>
-                <p class="weui_tabbar_label">搜索</p>
-            </a>
-            <a href="gouwuche.html" class="weui_tabbar_item">
-                <div class="weui_tabbar_icon">
-                    <img src="images/b3.jpg" alt="">
-                </div>
-                <p class="weui_tabbar_label">购物车</p>
-            </a>
-            <a href="personal.html" class="weui_tabbar_item">
-                <div class="weui_tabbar_icon">
-                    <img src="images/b4.jpg" alt="">
-                </div>
-                <p class="weui_tabbar_label">个人中心</p>
-            </a>
-        </div>
-        <!--底部结束-->
-    </div>
-</div>
-</body>
+        <!--&lt;!&ndash;底部结束&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+<!--</body>-->
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js" ></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
 <script type="text/javascript">
@@ -213,4 +187,4 @@
         $(".weui_tab_bd .content:eq("+which+")").show();
     });
 </script>
-</html>
+<!--</html>-->

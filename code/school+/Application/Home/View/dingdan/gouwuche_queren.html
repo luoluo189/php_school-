@@ -19,7 +19,6 @@
             width:100%;
             height:10%;
         }
-
         .back{
             width:10%;
             margin-top:10px;
@@ -36,7 +35,7 @@
             width:10%;
             float:right;
             margin-right: 2%;
-            margin-top: -8%;
+            margin-top: -7%;
         }
         .checkbox{
             float:left;
@@ -59,11 +58,10 @@
     <div class="weui_tab_bd">
         <div class="con">
 
-
             <div>
                 <!-- 返回图标开始 -->
                 <div class="back" >
-                    <a href="index.html"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+                    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
                 </div>
                 <div class="set"  style="width:60%;">
                     购物车
@@ -80,12 +78,12 @@
                 </div>
             </div>
         </div>
-        <volist name="storename" id="vo">
+        
         <div class="weui_cells">
             <div class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <div class="checkbox"><input type="checkbox" ></div>
-                    <div class="image"><a href="shangpin.html"><img src="__PUBLIC__/home/images/chaosuannai.jpg"></a></div>
+                    <div class="image"><a href="/home/dianjia/shangpin"><img src="__PUBLIC__/home/images/chaosuannai.jpg"></a></div>
                 </div>
                 <div class="dingdan">
                     {$vo['bs_gname']}<br/>
@@ -94,7 +92,7 @@
                 </div>
             </div>
         </div>
-        </volist>
+        
         
 
         
@@ -116,41 +114,41 @@
     </div>
 
 
-    <!--底部菜单开始-->
-    <div class="weui_tabbar">
-        <a href="index.html" class="weui_tabbar_item weui_bar_item_on">
-            <div class="weui_tabbar_icon">
-                <img src="__PUBLIC__/home/images/b1.jpg" alt="">
-            </div>
-            <p class="weui_tabbar_label">首页</p>
-        </a>
-        <a href="sousuo.html" class="weui_tabbar_item">
-            <div class="weui_tabbar_icon">
-                <img src="__PUBLIC__/home/images/b2.jpg" alt="">
-            </div>
-            <p class="weui_tabbar_label">搜索</p>
-        </a>
-        <a href="gouwuche.html" class="weui_tabbar_item">
-            <div class="weui_tabbar_icon">
-                <img src="__PUBLIC__/home/images/b3.jpg" alt="">
-            </div>
-            <p class="weui_tabbar_label">购物车</p>
-        </a>
-        <a href="personal.html" class="weui_tabbar_item">
-            <div class="weui_tabbar_icon">
-                <img src="__PUBLIC__/home/images/b4.jpg" alt="">
-            </div>
-            <p class="weui_tabbar_label">个人中心</p>
-        </a>
-    </div>
-    <!--底部菜单结束-->
+    <!--&lt;!&ndash;底部菜单开始&ndash;&gt;-->
+    <!--<div class="weui_tabbar">-->
+        <!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
+            <!--<div class="weui_tabbar_icon">-->
+                <!--<img src="__PUBLIC__/home/images/b1.jpg" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">首页</p>-->
+        <!--</a>-->
+        <!--<a href="sousuo.html" class="weui_tabbar_item">-->
+            <!--<div class="weui_tabbar_icon">-->
+                <!--<img src="__PUBLIC__/home/images/b2.jpg" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">搜索</p>-->
+        <!--</a>-->
+        <!--<a href="gouwuche.html" class="weui_tabbar_item">-->
+            <!--<div class="weui_tabbar_icon">-->
+                <!--<img src="__PUBLIC__/home/images/b3.jpg" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">购物车</p>-->
+        <!--</a>-->
+        <!--<a href="personal.html" class="weui_tabbar_item">-->
+            <!--<div class="weui_tabbar_icon">-->
+                <!--<img src="__PUBLIC__/home/images/b4.jpg" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">个人中心</p>-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;底部菜单结束&ndash;&gt;-->
 
 
 
-    </div>
-</div>
+    <!--</div>-->
+<!--</div>-->
 
-</body>
+<!--</body>-->
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.js"></script>
@@ -166,4 +164,4 @@
         }
     });
 </script>
-</html>
+<!--</html>-->

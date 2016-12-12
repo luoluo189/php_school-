@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+作者：尤燕飞
+功能：商品预约、兼职、理发预约、全部订单页的动态获取
+-->
 <html>
 <head>
 	<title>全部订单</title>
@@ -15,9 +19,10 @@
             width:100%;
             display:block;
         }
-       .dingdanneirong{
-        float:left;
-        width:80%;
+       .dingdanneirong{ 
+        margin-right: -23%;
+		  float: right;
+		  width: 80%;
         }
        .back{
         margin-top:10px;
@@ -39,7 +44,7 @@
     		<div>
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a href="{:U('home/index/index')}"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
 		    全部订单
@@ -53,153 +58,37 @@
          <!--导航栏开始-->
         <div class="weui_tab">
             <div class="weui_navbar"  >
-                <a class="weui_navbar_item weui_bar_item_on"  >最新订单</a>
-                <a class="weui_navbar_item"  >商品预约</a>
-                <a class="weui_navbar_item"   >兼职</a>
+                <a class="weui_navbar_item weui_bar_item_on"  >商品预约</a>
+                <a class="weui_navbar_item"  >兼职</a>
                  <a class="weui_navbar_item"  >理发预约</a>
                  <a class="weui_navbar_item"   >已完成</a>
             </div>
             <div class="weui_tab_bd">
                 <!--选项卡开始-->
                 <div class="weui_tab_bd" >
-                    <!--第1个选项卡开始-->
-                    <div class="content" >
-                        <div class="weui_cells weui_cells_access">
-                        
-                             <a class="weui_cell" href="lifa-dianpu.html">
-							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/lifa.jpg"  style="width:80%;">
-							    </div>
-							    <div class="dingdanneirong">
-							      蓝调理发店<br/>
-							      预约类型：烫染大卷<br/>
-							      发型：中长发<br/>
-							      预约时间：2016-11-19&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>							     
-							      *1					      
-							    </div>						    
-							  </a>	
-							  
-								<div class="weui_cells">
-								    <div class="weui_cell" style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
-								    </div>
-								    </div>
-								
-								    <div class="weui_cell"  style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary" >
-								    
-								    
-								    <div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
-
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">延长收货</a>
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">预约成功</a>
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">确认收货</a>
-									</div>	
-									
-									
-															   
-								    </div>								    
-								   </div>  
-								   
-								</div>
-								
-								
-								<a class="weui_cell" href="dianjia.html">
-							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/meishi.jpg"  style="width:80%; ">
-							    </div>
-							    <div class="dingdanneirong">
-							      一个柚子饮品店<br/>
-							      商品：西瓜汁（大杯）<br/>
-							      送货地址：启智园3号楼<br/>
-							     预计到达：2016-11-19&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>
-							      *1						      
-							    </div>						    
-							  </a>		  
-								<div class="weui_cells">
-								    <div class="weui_cell" style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
-								    </div>
-								    </div>
-								
-								    <div class="weui_cell"  style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary">
-										<div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
-
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">延长收货</a>
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">预约成功</a>
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">确认收货</a>
-									</div>	
-																   
-								    </div>								    
-								   </div>  
-								   
-								 </div>
-
-                        </div>
-                    </div>
-                    <!--第1个选项卡结束-->
+                  
                     
-                    <!--第2个选项卡-->
-                    <div class="content" style="display:none">
+                    <!--第1个选项卡-->
+                    <div class="content">
                         <div class="weui_cells weui_cells_access">
-                        
-                        		<a class="weui_cell" href="dianjia.html">
+								<volist name="c" id="vo">
+								<a class="weui_cell" href="/home/dianjia/dianjia">
 							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/meishi.jpg"  style="width:80%; ">
+							      <img src="__PUBLIC__/{$vo['bs_gurl']}"  style="width:200px;">
 							    </div>
-							    <div class="dingdanneirong">
-							      一个柚子饮品店<br/>
-							      商品：西瓜汁（大杯）<br/>
-							      送货地址：河北师范大学启智园3号楼<br/>
-							     预计到达：&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>
-							      *1<br/>							      
+							    <div class="dingdanneirong margin-right:20px">
+							      {$vo['si_name']}<br/>
+							      商品名称：{$vo['bs_gname']}<br/>
+							      送货地址：{$vo['bs_tr_inaddress']}<br/>
+							     预计到达：&nbsp;&nbsp;{$vo['bs_tr_time']}<br/>
+							      ￥{$vo['bs_gprice']}<br/>
+							      *{$vo['bs_mgnum']}<br/>							      
 							    </div>						    
 							  </a>		  
 								<div class="weui_cells">
 								    <div class="weui_cell" style="height:20px;">
 								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
-								    </div>
-								    </div>
-								    
-								    <div class="weui_cell"  style="height:20px;">
-								   
-								    <div class="weui_cell_bd weui_cell_primary">
-
-										<div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">延长收货</a>
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">预约成功</a>
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">确认收货</a>
-									 </div>	
-									 			   
-								    </div>								    
-								   </div>  
-								   
-								</div>
-								
-								<a class="weui_cell" href="dianjia.html">
-							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/meishi.jpg"  style="width:80%; ">
-							    </div>
-							    <div class="dingdanneirong">
-							      一个柚子饮品店<br/>
-							      商品：西瓜汁（大杯）<br/>
-							      送货地址：河北师范大学启智园3号楼<br/>
-							     预计到达：&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>
-							      *1<br/>							      
-							    </div>						    
-							  </a>		  
-								<div class="weui_cells">
-								    <div class="weui_cell"  style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
+								      共{$vo['bs_mgnum']}件商品 合计：￥{$vo['bs_tr_inmoney']}
 								    </div>
 								    </div>
 								    
@@ -214,34 +103,28 @@
 								    </div>								    
 								   </div>  
 								</div>
-								
+								</volist>
                         </div>
                     </div>
                     
                     
                     
-                    <!--第3个选项卡-->
+                    <!--第2个选项卡-->
 					<div class="content" style="display:none">
 						<div class="weui_cells weui_cells_access">
-
-							<a class="weui_cell" href="javascript:;">
+							<volist name="s" id="vo">
+							<a class="weui_cell" href="/home/jianzhi/jianzhi_content">
 								<div class="weui_cell_hd" >
 									<img src="__PUBLIC__/home/images/jianzhi.png"   style="width:80%; ">
 								</div>
 								<div class="dingdanneirong">
-									兼职物理老师<br/>
-									工资：100元/天<br/>
-									时间：2016-11-12&nbsp;&nbsp;13:30<br/>
+									{$vo['pt_inname']}<br/>
+									工资：{$vo['pt_inmoney']}<br/>
+									时间：{$vo['pt_trtime']}<br/>
 								</div>
 							</a>
 							<div class="weui_cells">
-								<div class="weui_cell"  style="height:30px;">
-									<div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; left:0;">
-										备注：有工作经验 &nbsp;&nbsp; 联系方式：187331547834
-										<br/>
-										微信：weixin
-									</div>
-								</div>
+								
 
 								<div class="weui_cell"  style="height:20px;">
 									<div class="weui_cell_bd weui_cell_primary" >
@@ -253,98 +136,28 @@
 										</div>
 								</div>
 							</div>
-
-							<a class="weui_cell" href="javascript:;">
-								<div class="weui_cell_hd" >
-									<img src="__PUBLIC__/home/images/jianzhi.png"  style="width:80%; " >
-								</div>
-								<div class="dingdanneirong">
-									兼职物理老师<br/>
-									工资：100元/天<br/>
-									时间：2016-11-12&nbsp;&nbsp;13:30<br/>
-								</div>
-							</a>
-							<div class="weui_cells">
-								<div class="weui_cell"  style="height:30px;">
-									<div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; left:0;">
-										备注：有工作经验 &nbsp;&nbsp; 联系方式：187331547834
-										<br/>
-										微信：weixin
-									</div>
-								</div>
-
-								<div class="weui_cell"  style="height:30px;">
-									<div class="weui_cell_bd weui_cell_primary">
-										<div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
-										<a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">订单完成</a>
-										<a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">雇佣成功</a>
-										<a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default"  id="cancelemploy">取消雇佣</a>
-									</div>
-								 </div>
-
-
-
-								</div>
-							</div>
-
-
-							<a class="weui_cell" href="javascript:;">
-								<div class="weui_cell_hd" >
-									<img src="__PUBLIC__/home/images/jianzhi.png"   style="width:80%; ">
-								</div>
-								<div class="dingdanneirong">
-									兼职物理老师<br/>
-									工资：100元/天<br/>
-									时间：2016-11-12&nbsp;&nbsp;13:30<br/>
-								</div>
-							</a>
-							<div class="weui_cells">
-								<div class="weui_cell"  style="height:30px;">
-									<div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; left:0;">
-										备注：有工作经验 &nbsp;&nbsp; 联系方式：187331547834
-										<br/>
-										微信：weixin
-									</div>
-								</div>
-
-								<div class="weui_cell"  style="height:20px;">
-									<div class="weui_cell_bd weui_cell_primary">
-										<div class="button_sp_area"  style=" float:right;">
-
-										<a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">取消雇佣</a>
-											</div>
-
-									</div>
-								</div>
-							</div>
-
+							</volist>
 						</div>
 					</div>
 
-                    <!--第4个选项卡-->
+                    <!--第3个选项卡-->
                     <div class="content" style="display:none">
                         <div class="weui_cells weui_cells_access">
-                        
-                               <a class="weui_cell" href="lifa-dianpu.html">
+                        		<volist name="s1" id="vo">
+                               <a class="weui_cell" href="/home/lifa/dianpu">
 							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/meifa1.jpg"   style="width:80%; ">
+							      <img src="__PUBLIC__/{$vo['si_image']}"   style="width:80%; ">
 							    </div>
 							    <div class="dingdanneirong">
-							      蓝调理发店<br/>
-							      预约类型：烫染大卷<br/>
-							      发型：中长发<br/>
-							      预约时间：2016-11-12&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>
-							      *1<br/>							      
+							      {$vo['si_name']}<br/>
+							      预约类型：{$vo['or_typename']}<br/>
+							      发型：{$vo['hair_long']}<br/>
+							      预约时间：{$vo['or_tdday']}&nbsp;&nbsp;{$vo['or_tdtime']}<br/>
+							      							      
 							    </div>						    
 							  </a>		  
 								<div class="weui_cells">
-								    <div class="weui_cell"   style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
-								    </div>
-								    </div>
-								
+								   
 								    <div class="weui_cell"    style="height:20px;">
 								    <div class="weui_cell_bd weui_cell_primary" >
 
@@ -358,171 +171,90 @@
 								    </div>
 								   </div>  
 								</div>
-								
-								  <a class="weui_cell" href="lifa-dianpu.html">
-							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/meifa2.jpg"   style="width:80%; ">
-							    </div>
-							    <div class="dingdanneirong">
-							      蓝调理发店<br/>
-							      预约类型：烫染大卷<br/>
-							      发型：中长发<br/>
-							      预约时间：2016-11-12&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>
-							      *1<br/>							      
-							    </div>						    
-							  </a>		  
-								<div class="weui_cells">
-								    <div class="weui_cell"   style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
-								    </div>
-								    </div>
-								
-								    <div class="weui_cell"   style="height:20px;" >
-								    <div class="weui_cell_bd weui_cell_primary">
-
-										<div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">订单已取消</a>
-									  <a href="personal-comment.html" class="weui_btn weui_btn_mini weui_btn_default">评价订单</a>
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">删除订单</a>
-									 </div>	
-									 
-								    
-								    </div>
-								   </div>  
-								</div>
-								
-								
-							<a class="weui_cell" href="lifa-dianpu.html">
-							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/lifa.jpg"   style="width:80%; ">
-							    </div>
-							    <div class="dingdanneirong">
-							      蓝调理发店<br/>
-							      预约类型：烫染大卷<br/>
-							      发型：中长发<br/>
-							      预约时间：2016-11-12&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>
-							      *1<br/>		
-							      <div style="color:red;">推迟时间：迟到十分钟</div>			      
-							    </div>						    
-							  </a>		  
-								<div class="weui_cells">
-								    <div class="weui_cell"   style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
-								    </div>
-								    </div>
-								
-
-								</div>
-
+								</volist>
+				
                         </div>
                     </div>
                     
                     
                     
-                     <!--第5个选项卡-->
+                     <!--第4个选项卡-->
                     <div class="content" style="display:none">
                         <div class="weui_cells weui_cells_access">
-                          <a class="weui_cell" href="javascript:;">
+                          	<volist name="s1" id="vo">
+                               <a class="weui_cell" href="/home/lifa/dianpu">
 							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/lifa.jpg"   style="width:80%; ">
+							      <img src="__PUBLIC__/{$vo['si_image']}"   style="width:80%; ">
 							    </div>
 							    <div class="dingdanneirong">
-							      蓝调理发店<br/>
-							      预约类型：烫染大卷<br/>
-							      发型：中长发<br/>
-							      预约时间：2016-11-12&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>
-							      *1						      
+							      {$vo['si_name']}<br/>
+							      预约类型：{$vo['or_typename']}<br/>
+							      发型：{$vo['hair_long']}<br/>
+							      预约时间：{$vo['or_tdday']}&nbsp;&nbsp;{$vo['or_tdtime']}<br/>
+							      							      
 							    </div>						    
-							  </a>		  
-								<div class="weui_cells">
-								    <div class="weui_cell"  style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
-								    </div>
-								    </div>
-								
-								    <div class="weui_cell"   style="height:20px;">
+							  </a>		
+							  <div class="weui_cells">
+								   <div class="weui_cell"   style="height:20px;">
 								    <div class="weui_cell_bd weui_cell_primary">
-
-
-									<div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
-									  <a href="{:U('home/dingdan/personal_comment')}" class="weui_btn weui_btn_mini weui_btn_default">评价订单</a>
+								    <div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
+									  <a href="{:U('home/dingdan/personal_comment')}?id={$vo['or_tdid']}" class="weui_btn weui_btn_mini weui_btn_default">评价订单</a>
 									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">删除订单</a>
 									 </div>	
 									 
 								    </div>
 								   </div>  
 								</div>
-                        
-                          <a class="weui_cell" href="javascript:;">
+                        </volist>
+                         <volist name="s" id="vo">
+							<a class="weui_cell" href="/home/jianzhi/jianzhi">
+								<div class="weui_cell_hd" >
+									<img src="__PUBLIC__/home/images/jianzhi.png"   style="width:80%; ">
+								</div>
+								<div class="dingdanneirong">
+									{$vo['pt_inname']}<br/>
+									工资：{$vo['pt_inmoney']}<br/>
+									时间：{$vo['pt_trtime']}<br/>
+								</div>
+							</a>
+                        <div class="weui_cells">
+								   <div class="weui_cell"   style="height:20px;">
+								    <div class="weui_cell_bd weui_cell_primary">
+								    <div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
+									  <a href="{:U('home/dingdan/personal_comment')}?id={$vo['pt_inid']}" class="weui_btn weui_btn_mini weui_btn_default">评价订单</a>
+									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">删除订单</a>
+									 </div>	
+									 
+								    </div>
+								   </div>  
+								</div>
+                        </volist>
+                          <volist name="c" id="vo">
+								<a class="weui_cell" href="/home/dianjia/dianjia">
 							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/meifa2.jpg"   style="width:80%; ">
+							      <img src="__PUBLIC__/{$vo['bs_gurl']}"  style="width:80%; ">
 							    </div>
 							    <div class="dingdanneirong">
-							      蓝调理发店<br/>
-							      预约类型：烫染大卷<br/>
-							      发型：中长发<br/>
-							      预约时间：2016-11-12&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>
-							      *1<br/>							      
+							      {$vo['si_name']}<br/>
+							      商品名称：{$vo['bs_gname']}<br/>
+							      送货地址：{$vo['bs_tr_inaddress']}<br/>
+							     预计到达：&nbsp;&nbsp;{$vo['bs_tr_time']}<br/>
+							      ￥{$vo['bs_gprice']}<br/>
+							      *{$vo['bs_mgnum']}<br/>							      
 							    </div>						    
-							  </a>		  
-								<div class="weui_cells">
-								    <div class="weui_cell"  style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
-								    </div>
-								    </div>
-								
-								    <div class="weui_cell"   style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary" >
-
-										<div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
-									 <a href="{:U('home/dingdan/personal_comment')}" class="weui_btn weui_btn_mini weui_btn_default">评价订单</a>
-									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">删除订单</a>
-									 </div>	
-									 
-									 
-								    </div>
-								   </div>  
-								</div>
-                        
-                          <a class="weui_cell" href="javascript:;">
-							    <div class="weui_cell_hd">
-							      <img src="__PUBLIC__/home/images/meishi.jpg"   style="width:80%; ">
-							    </div>
-							    <div class="dingdanneirong">
-							      一个柚子饮品店<br/>
-							      商品：西瓜汁（大杯）<br/>
-							      送货地址：启智园3号楼<br/>
-							      预计到达时间：2016-11-12&nbsp;&nbsp;13:30<br/>
-							      ￥50<br/>
-							      *1<br/>							      
-							    </div>						    
-							  </a>		  
-								<div class="weui_cells">
-								    <div class="weui_cell"  style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary"  style=" position:absolute; right:0;">
-								      共1件商品 合计：￥50
-								    </div>
-								    </div>
-								
-								    <div class="weui_cell"  style="height:20px;">
-								    <div class="weui_cell_bd weui_cell_primary" >
-									 <div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
-									  <a href="{:U('home/dingdan/personal_comment')}" class="weui_btn weui_btn_mini weui_btn_default">评价订单</a>
+							  </a>		   
+								 <div class="weui_cells">
+								   <div class="weui_cell"   style="height:20px;">
+								    <div class="weui_cell_bd weui_cell_primary">
+								    <div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
+									  <a href="{:U('home/dingdan/personal_comment')}?id={$vo['bs_gid']}" class="weui_btn weui_btn_mini weui_btn_default">评价订单</a>
 									  <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">删除订单</a>
 									 </div>	
 									 
 								    </div>
 								   </div>  
 								</div>
-
+                        </volist>
                         </div>
                     </div>    
                                 
