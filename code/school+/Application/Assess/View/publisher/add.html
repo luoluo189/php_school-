@@ -1,0 +1,72 @@
+
+<!--/sidebar-->
+<div class="main-wrap">
+
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><a class="crumb-name" href=" ">发布者管理</a>
+            <span class="crumb-step">&gt;</span><span>添加发布者</span></div>
+    </div>
+    <div class="result-wrap">
+        <div class="result-content">
+            <form action="/assess/publisher/store" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <table class="insert-tab" width="100%">
+                    <tbody>
+                    <!--<input class="common-text" id="pt_min_id" name="pt_min_id" size="50"  type="hidden" value="{$pt_min_id}">-->
+
+                    <tr>
+                        <th><i class="require-red">*</i>发布者姓名：</th>
+                        <td>
+                            <input class="common-text" id="name" name="name" size="50"  type="text" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>发布者身份证号：</th>
+                        <td>
+                            <input class="common-text" id="idnumber" name="idnumber" size="50"  type="text" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>发布者手机号：</th>
+                        <td>
+                            <input class="common-text required" id="phonenumber" name="phonenumber" size="50" value="" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>发布者类型：</th>
+                        <td>
+                            <input class="common-text required" id="type" name="type" size="50" value="" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>发布者状态：</th>
+                        <td>
+                            <input class="common-text required" id="state" name="state" size="50" value="" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>地址：</th>
+                        <td>
+                            <input class="common-text required" id="address" name="address" size="50" value="" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>店名：</th>
+                        <td>
+                            <input class="common-text required" id="store_name" name="store_name" size="50" value="" type="text">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                            <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                        </td>
+                    </tr>
+                    </tbody></table>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!--/main-->

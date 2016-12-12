@@ -1,0 +1,81 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="">首页</a>
+                <span class="crumb-step">&gt;</span><span class="crumb-name">兼职者管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/jscss/admin/design/index" method="post">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="120">选择分类:</th>
+                            <td>
+                                <select name="search-sort" id="">
+                                    <option value="">全部</option>
+                                    <option value="19">发布者</option><option value="20">兼职者</option>
+                                </select>
+                            </td>
+
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+
+                            <!--<th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>-->
+                            <th></th>
+                            <th>兼职者ID</th>
+                            <th>兼职者昵称</th>
+                            <th>兼职者手机号</th>
+                            <th>兼职者状态</th>
+                            <th>违约次数</th>
+
+                            <th>操作</th>
+                        </tr>
+
+                        <volist name="pluralist" id="vo" key="k">
+                            <tr>
+
+                                <!--<td class="tc"><input name="id[]" value="59" type="checkbox"></td>-->
+                                <td>{$k}</td>
+                                <td>{$vo.pt_pid}</td>
+                                <td>{$vo.pt_pname}</td>
+                                <td>{$vo.pt_pphone}</td>
+                                <td>{$vo.pt_sname}</td>
+                                <td>0</td>
+
+                                <td>
+                                    <a class="view" href="view/id/{$vo.pt_pid}">查看</a>
+                                    <a class="delete" href="delete/id/{$vo.pt_pid}">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+                    </table>
+                    <div class="list-page"> 2 条 1/1 页</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('jquery文件引入成功！');
+        $(".delete").click(function(){
+            var tag = confirm('真的要删除吗？');
+            if(!tag){
+                return false;
+            }
+        });
+    });
+
+</script>

@@ -1,0 +1,42 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="/assess/assess/assess">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">评价管理</span></div>
+        </div>
+
+        <div class="result-wrap">
+            <table class="insert-tab" width="100%">
+                <tbody>
+                <tr>
+                    <td>评价ID</td>
+                    <td>{$assess[0]['appr_id']}</td>
+                </tr>
+                <tr>
+                    <td>评价内容</td>
+                    <td>{$assess[0]['appr_content']}</td>
+                </tr>
+                <tr>
+                    <td>评分</td>
+                    <td>{$assess[0]['appr_score']}</td>
+                </tr>
+                <tr>
+                    <td>店家</td>
+                    <td>{$assess[0]['store_information']['si_name']}</td>
+                </tr>
+                <tr>
+                    <td>商品</td>
+                    <td>{$assess[0]['bs_goods']['bs_gname']}</td>
+                </tr>
+
+                <tr>
+                    <td>客户</td>
+                    <td>{$assess[0]['customer_information']['ci_name']}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <!--/main-->
