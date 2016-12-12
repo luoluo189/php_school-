@@ -77,7 +77,7 @@
 
 
         <div class="titleimage">
-        <img src="__PUBLIC__/home/images/yinpindian.jpg" style="width:100%;">
+        <img src="__PUBLIC__/{$image[0]['si_image']}" style="width:100%;">
         </div>
 
 
@@ -91,7 +91,7 @@
                 <div><img src="__PUBLIC__/home/images/52.png" alt=""></div>
                 <div class="f">店家推荐</div>
             </a>
-            <a class="top" href="{:U('home/pingjia/fengping')}">
+            <a class="top" href="/home/pingjia/fengping?id={$set.si_id}">
                 <div><img src="__PUBLIC__/home/images/53.png" alt=""></div>
                 <div class="f">顾客风评</div>
             </a>
@@ -106,12 +106,14 @@
         
             <volist name="voo" id="vo">
                 <div class="weui_cells weui_cells_access">
-                            <a href="/home/dianjia/shangpin?bs_gid={$vo.bs_gid}&si_id={$set.si_id}"><img src="__PUBLIC__/home/images/yinpin.jpg"  class="yinpin"></a>
+                            <a href="/home/dianjia/shangpin?bs_gid={$vo.bs_gid}&si_id={$set.si_id}">
+                                <img src="__PUBLIC__/{$vo.bs_gurl}"  class="yinpin"></a>
                             <div class="neirong">
                                 {$vo['bs_gname']}<br/>
                                 价格：{$vo['bs_gprice']}<br/>
                                 {$vo['bs_gsize']}<br/>
-                                <a href="/home/dingdan/gouwuche_queren"><img src="__PUBLIC__/home/images/gouwuche.png" style="float:right;"></a>
+                                <a href="/home/dingdan/gouwuche_queren">
+                                    <img src="__PUBLIC__/home/images/gouwuche.png" style="float:right;"></a>
                             </div>
                 </div>
             </volist>

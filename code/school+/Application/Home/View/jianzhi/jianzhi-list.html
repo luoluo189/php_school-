@@ -1,7 +1,3 @@
-<!--
-作者：尤燕飞
-功能：兼职预约页
--->
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
-    <link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+    <link href="css/weui.min.css" type="text/css" rel="stylesheet">
+    <link href="css/jquery-weui.min.css" type="text/css" rel="stylesheet">
     <style>
         html,body{
             height:100%;
@@ -44,7 +40,7 @@
 		    <div>
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a href="jianzhi-content.html"><img src="images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
 		    兼职详情
@@ -55,15 +51,15 @@
 
         
         <div class="fo">
-            <p>兼职时间： 周{$cont[0][pt_inweeka]}~周{$cont[0][pt_inweekb]}</p>
-            <p>职位需要人员个数： {$cont[0][pt_innum]}人</p>
+            <p>兼职时间： 周六日</p>
+            <p>职位还需要人员个数： 4人</p>
             <p>岗位要求：</p>
-            {$cont[0][pt_inabstract]}
+            <p>1、符合相关专业要求，熟悉初高中教材</p>
+            <p>2、符合相关专业要求，熟悉初高中教材</p>
+            <p>3、符合相关专业要求，熟悉初高中教材s</p>
         </div>
         
         
-
-
         
         <div class="weui_cells weui_cells_form">
             <div class="weui_cell">
@@ -97,40 +93,40 @@
                 </div>
             </div>
         </div>
-        <a href="/home/dingdan/personal_list" class="weui_btn weui_btn_primary">提交</a>
+        <a href="personal-list.html" class="weui_btn weui_btn_primary">提交</a>
 
     </div>
-    <!--<div class="weui_tabbar">-->
-        <!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
-            <!--<div class="weui_tabbar_icon">-->
-                <!--<img src="__PUBLIC__/home/images/b1.jpg" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">首页</p>-->
-        <!--</a>-->
-        <!--<a href="sousuo.html" class="weui_tabbar_item">-->
-            <!--<div class="weui_tabbar_icon">-->
-                <!--<img src="__PUBLIC__/home/images/b2.jpg" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">搜索</p>-->
-        <!--</a>-->
-        <!--<a href="gouwuche.html" class="weui_tabbar_item">-->
-            <!--<div class="weui_tabbar_icon">-->
-                <!--<img src="__PUBLIC__/home/images/b3.jpg" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">购物车</p>-->
-        <!--</a>-->
-        <!--<a href="personal.html" class="weui_tabbar_item">-->
-            <!--<div class="weui_tabbar_icon">-->
-                <!--<img src="__PUBLIC__/home/images/b4.jpg" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">个人中心</p>-->
-        <!--</a>-->
-    <!--</div>-->
-<!--</div>-->
+    <div class="weui_tabbar">
+        <a href="index.html" class="weui_tabbar_item weui_bar_item_on">
+            <div class="weui_tabbar_icon">
+                <img src="images/b1.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">首页</p>
+        </a>
+        <a href="sousuo.html" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="images/b2.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">搜索</p>
+        </a>
+        <a href="gouwuche.html" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="images/b3.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">购物车</p>
+        </a>
+        <a href="personal.html" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="images/b4.jpg" alt="">
+            </div>
+            <p class="weui_tabbar_label">个人中心</p>
+        </a>
+    </div>
+</div>
 
 
 
-<!--</body>-->
+</body>
 <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="js/jquery-weui.min.js"></script>
 <script type="text/javascript" src="js/swiper.js"></script>
@@ -140,4 +136,4 @@
         autoplay: 1000
     });
 </script>
-<!--</html>-->
+</html>

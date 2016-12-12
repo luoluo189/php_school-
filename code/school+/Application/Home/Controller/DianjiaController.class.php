@@ -41,6 +41,7 @@ class DianjiaController extends Controller
         //获取商品详细信息
          // 数据库sql语句拼接？
         $this->assign('bs_goods',$goodname);
+        $this->assign('image',$name);
         $this->display();
     }
     /*
@@ -141,6 +142,7 @@ class DianjiaController extends Controller
         $this->assign('set',$set);
         $this->assign('si',$si);
 
+        $this->assign('image',$name);
         $this->display();
     }
 

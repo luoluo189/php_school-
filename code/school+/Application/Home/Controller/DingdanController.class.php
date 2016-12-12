@@ -50,10 +50,8 @@ class DingdanController extends Controller
         for ($i=0; $i < $n ; $i++) { 
             $storename[]=M('bs_goods')->where("bs_gid=%d",array($condition1[$i]['bs_gidd']))->find();
         }
-        //dump($storename);
         $this->assign('cs',$condition1);
-        
-      $this->display();
+        $this->display();
     }
     /*
     作者：尤燕飞

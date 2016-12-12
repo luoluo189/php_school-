@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<!--
-作者：尤燕飞
-功能：订单评价的动态获取
--->
 <html>
 <head>
 	<title>订单评价</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
-	<link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+	<link href="css/weui.min.css" type="text/css" rel="stylesheet">
+	<link href="css/jquery-weui.min.css" type="text/css" rel="stylesheet">
 	<style>
 		html,body{
 			height:100%;
@@ -50,7 +46,7 @@
     		<div>
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a href="personal-list.html"><img src="images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
 		    我的订单
@@ -65,14 +61,15 @@
 		
 		<div class="weui_cells">
 		  <div class="weui_cell">
-		    <!-- <div class="weui_cell_bd weui_cell_primary">
-		      <img src="__PUBLIC__/home/images/chaosuannai.jpg"  style="width:90% ;height:100%;">
-		    </div> -->
+		    <div class="weui_cell_bd weui_cell_primary">
+		      <img src="images/chaosuannai.jpg"  style="width:90% ;height:100%;">
+		    </div>
 		    <div class="dingdanneirong">
-		      		{$c1[0][or_typename]}{$c2[0][pt_inname]}{$c3[0][bs_gname]}<br/>
-								  预约类型：{$c1[0][or_typename]}{$c2[0][pt_inabstract]}{$c3[0][bs_gsize]}<br/>
-							      预约时间：{$c1[0][or_tdday]}{$c1[0][or_tdtime]}{$c2[0][pt_intime_a]}&nbsp;&nbsp;{$c2[0][pt_intime_b]}{$c3[0][bs_gmaketime]}<br/>
-							      
+		      		果汁<br/>
+								  预约类型：大杯<br/>
+							      预约时间：2016-11-19<br/>
+							      ￥4	<br/>					     
+							      *1
 		    </div>
 		  </div>
 		  
@@ -133,40 +130,40 @@
 	
 	
 	
-	<!--&lt;!&ndash; 底部menu开始 &ndash;&gt;-->
-	<!--<div class="weui_tabbar">-->
-		<!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
-			<!--<div class="weui_tabbar_icon">-->
-				<!--<img src="__PUBLIC__/home/images/b1.jpg" alt="">-->
-			<!--</div>-->
-			<!--<p class="weui_tabbar_label">首页</p>-->
-		<!--</a>-->
-		<!--<a href="sousuo.html" class="weui_tabbar_item">-->
-			<!--<div class="weui_tabbar_icon">-->
-				<!--<img src="__PUBLIC__/home/images/b2.jpg" alt="">-->
-			<!--</div>-->
-			<!--<p class="weui_tabbar_label">搜索</p>-->
-		<!--</a>-->
-		<!--<a href="gouwuche.html" class="weui_tabbar_item">-->
-			<!--<div class="weui_tabbar_icon">-->
-				<!--<img src="__PUBLIC__/home/images/b3.jpg" alt="">-->
-			<!--</div>-->
-			<!--<p class="weui_tabbar_label">购物车</p>-->
-		<!--</a>-->
-		<!--<a href="personal.html" class="weui_tabbar_item">-->
-			<!--<div class="weui_tabbar_icon">-->
-				<!--<img src="__PUBLIC__/home/images/b4.jpg" alt="">-->
-			<!--</div>-->
-			<!--<p class="weui_tabbar_label">个人中心</p>-->
-		<!--</a>-->
-	<!--</div>-->
-	<!--&lt;!&ndash; 底部menu结束 &ndash;&gt;-->
-	<!---->
-<!--</div>-->
-<!--</body>-->
-<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
-<script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/home/js/swiper.js"></script>
+	<!-- 底部menu开始 -->
+	<div class="weui_tabbar">
+		<a href="index.html" class="weui_tabbar_item weui_bar_item_on">
+			<div class="weui_tabbar_icon">
+				<img src="images/b1.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">首页</p>
+		</a>
+		<a href="sousuo.html" class="weui_tabbar_item">
+			<div class="weui_tabbar_icon">
+				<img src="images/b2.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">搜索</p>
+		</a>
+		<a href="gouwuche.html" class="weui_tabbar_item">
+			<div class="weui_tabbar_icon">
+				<img src="images/b3.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">购物车</p>
+		</a>
+		<a href="personal.html" class="weui_tabbar_item">
+			<div class="weui_tabbar_icon">
+				<img src="images/b4.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">个人中心</p>
+		</a>
+	</div>
+	<!-- 底部menu结束 -->
+	
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/jquery-weui.min.js"></script>
+<script type="text/javascript" src="js/swiper.js"></script>
 <script>
 
 
@@ -175,4 +172,4 @@
         
 </script>
 
-<!--</html>-->
+</html>
