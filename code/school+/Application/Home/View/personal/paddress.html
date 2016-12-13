@@ -42,7 +42,7 @@
     		<div>
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a href="/school+/home/personal/pset/id/{$user.ci_id}"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
 		    收货地址管理
@@ -83,7 +83,7 @@
         
    <div class="exit"  style="background-color:white;" >
     <hr/>     
-     <a href="/school+/home/personal/paddaddress/id/{$user.ci_id}"    style="color:red;">
+     <a href="/home/personal/paddaddress/id/{$user.ci_id}"    style="color:red;">
      新增收货地址
     </a>    
     </div>

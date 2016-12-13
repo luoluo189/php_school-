@@ -1,3 +1,7 @@
+<!--
+作者：尤燕飞
+功能：兼职首页
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +66,7 @@
 		    <div>
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a href="index.html"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
 		    兼职首页
@@ -100,7 +104,7 @@
 
 		<input type="text" id='picker1' style="width:22%;height:24px;" value="高中数学"/>
 		<input type="text" id='picker2' style="width:13%;height:24px;" value="周一"/>
-		<input type="text" id='picker3' style="width:13%;height:24px;" value="下午"/>
+		<input type="text" id='picker3' style="width:13%;height:24px;" value="周日"/>
 		<input type="text" id='picker4' style="width:25%;height:24px;" value="50~100/小时"/>
 		<div  style="float: right;height:10%;">
 		<a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">确认</a>
@@ -119,34 +123,18 @@
 					<td>时间</td>
 					<td>工资</td>
 				</tr>
+				<volist name="c" id="vo">
 				<tr>
 
-					<td><a href="{:U('home/jianzhi/jianzhi_content')}">高中物理</a></td>
-					<td>周六日</td>
-					<td>20元/小时</td>
+					<td><a href="{:U('home/jianzhi/jianzhi_content')}?id={$vo[pt_inid]}">{$vo['pt_inname']}</a></td>
+					<td>周{$vo['pt_inweeka']}~周{$vo['pt_inweekb']}</td>
+					<td>{$vo['pt_inmoney']}</td>
 
 				</tr>
-
-				<tr>
-					<td><a href="jianzhi-content.html">高中数学</a></td>
-					<td>周六日</td>
-					<td>20元/小时</td>
-				</tr>
-				<tr>
-					<td><a href="jianzhi-content.html">高中化学</a></td>
-					<td>周六日</td>
-					<td>20元/小时</td>
-				</tr>
-				<tr>
-					<td><a href="jianzhi-content.html">高中英语</a></td>
-					<td>周六日</td>
-					<td>20元/小时</td>
-				</tr>
-				<tr>
-					<td><a href="jianzhi-content.html">高中生物</a></td>
-					<td>周六日</td>
-					<td>20元/小时</td>
-				</tr>
+				</volist>
+				
+				
+				
 			</table>
 		</div>
 
@@ -154,37 +142,37 @@
 		<!-- 主体部分结束 -->
 
 	</div>
-	<div class="weui_tabbar">
-		<a href="index.html" class="weui_tabbar_item weui_bar_item_on">
-			<div class="weui_tabbar_icon">
-				<img src="__PUBLIC__/home/images/b1.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">首页</p>
-		</a>
-		<a href="sousuo.html" class="weui_tabbar_item">
-			<div class="weui_tabbar_icon">
-				<img src="__PUBLIC__/home/images/b2.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">搜索</p>
-		</a>
-		<a href="gouwuche.html" class="weui_tabbar_item">
-			<div class="weui_tabbar_icon">
-				<img src="__PUBLIC__/home/images/b3.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">购物车</p>
-		</a>
-		<a href="personal.html" class="weui_tabbar_item">
-			<div class="weui_tabbar_icon">
-				<img src="__PUBLIC__/home/images/b4.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">个人中心</p>
-		</a>
-	</div>
-</div>
+	<!--<div class="weui_tabbar">-->
+		<!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b1.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">首页</p>-->
+		<!--</a>-->
+		<!--<a href="sousuo.html" class="weui_tabbar_item">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b2.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">搜索</p>-->
+		<!--</a>-->
+		<!--<a href="gouwuche.html" class="weui_tabbar_item">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b3.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">购物车</p>-->
+		<!--</a>-->
+		<!--<a href="personal.html" class="weui_tabbar_item">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b4.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">个人中心</p>-->
+		<!--</a>-->
+	<!--</div>-->
+<!--</div>-->
 
 
 
-</body>
+<!--</body>-->
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.js"></script>
@@ -213,10 +201,11 @@
 		cols: [
 			{
 				textAlign: 'center',
-				values: ['上午', '下午', '晚上']
+				values: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
 			}
 		]
 	});
+	
 	$("#picker4").picker({
 		title: "请选择您理想的工资",
 		cols: [
@@ -227,4 +216,5 @@
 		]
 	});
 </script>
-</html>
+<!--</html>-->
+
