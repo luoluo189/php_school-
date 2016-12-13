@@ -10,7 +10,6 @@
 	<style>
 		html,body{
 			height:100%;
-			
 		}
         h2{
         	width: 100%;
@@ -64,59 +63,60 @@
 
 
 
-        <form action="/home/join/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
+        <form action="/home/join/store" method="post" id="myform" name="myform" enctype="multipart/form-data">
 		<!--表单-->
 		<div class="weui_cells weui_cells_form">
-  <div class="weui_cell">
-    <div class="weui_cell_hd" ><label class="weui_label">姓名</label></div>
-    <div class="weui_cell_bd weui_cell_primary">
-      <input class="weui_input" id="name" name="name" type="tel" placeholder="请输入姓名">
-    </div>
-  </div>
-  <div class="weui_cell">
-    <div class="weui_cell_hd"><label class="weui_label">身份证号</label></div>
-    <div class="weui_cell_bd weui_cell_primary">
-      <input class="weui_input" id="idnumber" name="" type="tel" placeholder="请输入身份证号">
-    </div>
-  </div>
-  <div class="weui_cell">
-    <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
-    <div class="weui_cell_bd weui_cell_primary">
-      <input class="weui_input" id="phonenumber" name="phonenumber" type="tel" placeholder="请输入手机号">
-    </div>
-
-  </div>
-
-
-    <div class="weui_cell weui_vcode" >
-         <div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
+          <div class="weui_cell">
+            <div class="weui_cell_hd" ><label class="weui_label">姓名</label></div>
             <div class="weui_cell_bd weui_cell_primary">
-               <input class="weui_input" type="number" placeholder="请输入验证码">
-              </div>
-             <div class="weui_cell_ft" style="width:30%">
-                 <img src = "/home/join/captcha"  style="width:100%" onClick="this.src=this.src+'?'+Math.random()">点击刷新
-              </div>
+              <input class="weui_input" id="name" name="name" type="tel" placeholder="请输入姓名">
+            </div>
+          </div>
+          <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">身份证号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+              <input class="weui_input" id="idnumber" name="idnumber" type="tel" placeholder="请输入身份证号">
+            </div>
+          </div>
+          <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+              <input class="weui_input" id="phonenumber" name="phonenumber" type="tel" placeholder="请输入手机号">
+            </div>
+
           </div>
 
-  <div class="weui_cell">
-    <div class="weui_cell_hd"><label class="weui_label">选择发布类型</label></div>
-    <div class="weui_cell_bd weui_cell_primary">
-      <input name="sex" type="radio" value="1" >兼职发布者
-      <br />
-      <input name="sex" type="radio" value="0" >商铺发布者
-    </div>
-  </div>
-  
-  <div class="weui_cell">
-    <div class="weui_cell_hd"><label class="weui_label">商面地址</label></div>
-    <div class="weui_cell_bd weui_cell_primary">
-      <input class="weui_input" id="address" name="address" type="tel" placeholder="请输入商面地址">
-    </div>
-  </div>
-</div>
-<a href="dialog.html" class="weui_btn weui_btn_primary">提交</a>
 
-</form>
+            <div class="weui_cell weui_vcode" >
+                 <div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                       <input class="weui_input"  placeholder="请输入验证码" name = "captcha">
+                      </div>
+                     <div class="weui_cell_ft" style="width:30%">
+                         <img src = "/home/join/captcha"  onClick="this.src=this.src+'?'+Math.random()">点击刷新
+
+                      </div>
+                  </div>
+
+          <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">选择发布类型</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+              <input name="type" type="radio" value="兼职" >兼职
+              <br />
+              <input name="type" type="radio" value="商铺" >商铺
+            </div>
+          </div>
+  
+              <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">商面地址</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                  <input class="weui_input" id="address" name="address" type="tel" placeholder="请输入商面地址">
+                </div>
+              </div>
+            </div>
+            <input class="weui_btn weui_btn_primary" name="submit" type="submit" value="提交">
+
+            </form>
 		<!-- 中间部分结束 -->	
 		
 	</div>
