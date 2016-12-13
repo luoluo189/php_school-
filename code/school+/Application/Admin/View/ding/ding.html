@@ -28,16 +28,16 @@
             </div>
         </div>
         <div class="result-wrap">
-            <form name="myform" id="myform" method="post">
+            <form name="myform" id="myform" method="post" action="__MODULE__/ding/deleteSelected">
                 <div class="result-title">
                     <div class="result-list">
-                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                        <button id="batchDel" type="submit"><i class="icon-font"></i>批量删除</button>
                     </div>
                 </div>
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
-                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+                            <th class="tc" width="5%"><input class="allChoose" name="checkbox10" type="checkbox" group="ids"></th>
                             <th>订单交易ID</th>
                             <th>交易用户</th>
                             <th>下单时间</th>
@@ -47,7 +47,7 @@
                         </tr>
                         <volist name="tstates" id="vo">
                         <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
+                            <td class="tc"><input name="id[]" value="{$vo.bs_tr_id}" type="checkbox"></td>
                             <td>{$vo.bs_tr_id}</td>
                             <td>{$vo.ci_name}</td>
                             <td>{$vo.bs_tr_xtime}</td>
