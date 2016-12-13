@@ -77,4 +77,50 @@
 <script>
 document.getElementById("1").style.display="none";
 document.getElementById("1").style.display="inline";
+
+//实现下拉菜单代码
+//$(function () {
+//    $("#catid option:selected").click(function () {
+//        var options=$("#catid option:selected");
+//        var text=alert(options.text());
+//        if ("炒酸奶" ==text){
+//
+//        }
+//    })
+//})
+//    批量删除
+/* 批量删除 */
+// 全选
+//$('.allChoose').click(function() {
+//    if($(this).is(':checked')) {
+//        $(':checkbox').attr('checked', 'checked');
+//    } else {
+//        $(':checkbox').removeAttr('checked');
+//    }
+//});
+
+// 删除操作
+//$('#batchDel').click(function() {
+//    if($(':checked').size() > 0) {
+//        layer.confirm('确定要删除吗？', {
+//            btn: ['确定','取消'], //按钮
+//            shade: false //不显示遮罩
+//        }, function(){
+//            $.post("{:U('Single/discard')}", {data: $('form').serializeArray()}, function(res) {
+//                if(res.state == 1) {
+//                    layer.msg(res.message, {icon: 1, time: 1000});
+//                } else {
+//                    layer.msg(res.message, {icon: 2, time: 1000});
+//                }
+//                setTimeout(function() {
+//                    location.reload();
+//                }, 1000);
+//            });
+//        }, function(){
+//            layer.msg('取消了删除！', {time: 1000});
+//        });
+//    } else {
+//        layer.alert('没有选择！');
+//    }
+//});
 </script>
