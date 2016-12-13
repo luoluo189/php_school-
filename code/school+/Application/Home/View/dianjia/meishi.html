@@ -34,7 +34,7 @@
 			<div >
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a href="index.html"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
 		    美食
@@ -62,9 +62,9 @@
            <div class="weui_panel weui_panel_access">
            <volist name="store_information" id="vo">
 			  <div class="weui_panel_bd">
-			    <a href="{:U('home/dianjia/dianjia')}" class="weui_media_box weui_media_appmsg">
+			    <a href="/home/dianjia/dianjia?si_id={$vo.si_id}" class="weui_media_box weui_media_appmsg">
 			      <div class="weui_media_hd">
-			        <img class="weui_media_appmsg_thumb"  src="__PUBLIC__/home/images/guozhi.jpg"  alt="">
+			        <img class="weui_media_appmsg_thumb"  src="__PUBLIC__/{$vo['si_image']}"  style="margin:0 auto;">
 			      </div>
 			      <div class="weui_media_bd">
 			        <h4 class="weui_media_title">{$vo['si_name']}</h4>
@@ -76,7 +76,34 @@
 			  </volist>
 			</div>
 	</div>
-
+	<!--<div class="weui_tabbar">-->
+		<!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b1.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">首页</p>-->
+		<!--</a>-->
+		<!--<a href="sousuo.html" class="weui_tabbar_item">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b2.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">搜索</p>-->
+		<!--</a>-->
+		<!--<a href="gouwuche.html" class="weui_tabbar_item">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b3.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">购物车</p>-->
+		<!--</a>-->
+		<!--<a href="personal.html" class="weui_tabbar_item">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b4.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">个人中心</p>-->
+		<!--</a>-->
+	<!--</div>-->
+<!--</div>-->
+<!--</body>-->
 <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="js/jquery-weui.min.js"></script>
 <script>
@@ -96,4 +123,4 @@
 		width: 100%;
 	}
 </style>
-
+<!--</html>-->

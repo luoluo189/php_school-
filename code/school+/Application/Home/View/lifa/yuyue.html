@@ -51,7 +51,7 @@
 		    <div>
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a href="/school+/home/lifa/dianpu/si_id/{$set.si_id}"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set" name="set">
 		   {$set.si_name}预约
@@ -140,37 +140,8 @@
     </form>
     </div>
 
-    <!--底部开始-->
-    <div class="weui_tabbar">
-		<a href="index.html" class="weui_tabbar_item weui_bar_item_on">
-			<div class="weui_tabbar_icon">
-				<img src="__PUBLIC__/home/images/b1.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">首页</p>
-		</a>
-		<a href="sousuo.html" class="weui_tabbar_item">
-			<div class="weui_tabbar_icon">
-				<img src="__PUBLIC__/home/images/b2.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">搜索</p>
-		</a>
-		<a href="gouwuche.html" class="weui_tabbar_item">
-			<div class="weui_tabbar_icon">
-				<img src="__PUBLIC__/home/images/b3.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">购物车</p>
-		</a>
-		<a href="personal.html" class="weui_tabbar_item">
-			<div class="weui_tabbar_icon">
-				<img src="__PUBLIC__/home/images/b4.jpg" alt="">
-			</div>
-			<p class="weui_tabbar_label">个人中心</p>
-		</a>
-    </div>
-    <!--底部结束-->
-</div>
-</body>
+
 <script type="text/javascript" src="__PUBLIC__/home/lib/jquery-2.1.4.js" ></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
 
-</html>
+

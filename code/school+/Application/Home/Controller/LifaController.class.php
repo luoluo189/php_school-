@@ -1,6 +1,9 @@
 <?php
 namespace Home\Controller;
-
+//开启输出缓冲区
+ob_start();
+//开启会话
+session_start();
 use Think\Controller;
 /**
  * @Author: 孙池晔
@@ -41,8 +44,7 @@ class LifaController extends Controller
         $condition['si_id']=$_GET[si_id];
         $result=$_db->where($condition)->select();
         $this->assign('set', $result[0]);
-         $this->display();
-
+        $this->display();
     }
     public function getyuyue()
     {

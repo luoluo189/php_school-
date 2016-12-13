@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
     <!--/sidebar-->
     <div class="main-wrap">
@@ -87,3 +88,94 @@
     });
 
 </script>
+=======
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">兼职管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/jscss/admin/design/index" method="post">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="120">选择分类:</th>
+                            <td>
+                                <select name="search-sort" id="">
+                                    <option value="">全部</option>
+                                    <option value="19">兼职</option><option value="20">商铺</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-title">
+                    <div class="result-list">
+                        <a href="/assess/publisher/add"><i class="icon-font"></i>新增</a>
+                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <!--<th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>-->
+                            <th></th>
+                            <th>发布者ID</th>
+                            <th>发布者姓名</th>
+                            <th>发布者身份证号</th>
+                            <th>发布者手机号</th>
+                            <th>发布者种类</th>
+                            <th>认证状态</th>
+                            <th>地址</th>
+                            <th>店名</th>
+                            <th>操作</th>
+                        </tr>
+
+
+                        <volist name="publisher" id="vo" key="k">
+                        <tr>
+                            <!--<td class="tc"><input name="id[]" value="59" type="checkbox"></td>-->
+                            <td>{$k}</td>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.name}</td>
+                            <td>{$vo.idnumber}</td>
+                            <td>{$vo.phonenumber}</td>
+                            <td>{$vo.type}</td>
+                            <td>{$vo.state}</td>
+                            <td>{$vo.address}</td>
+                            <td>{$vo.store_name}</td>
+                            <td>
+                                <a class="view" href="view/id/{$vo.id}">查看</a>
+                                <a class="edit" href="edit/id/{$vo.id}">修改</a>
+                                <a class="delete" href="__URL__/delete/id/{$vo.id}">删除</a>
+                            </td>
+                        </tr>
+                        </volist>
+
+                    </table>
+                    <div class="list-page"> 2 条 1/1 页</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('jquery文件引入成功！');
+        $(".delete").click(function(){
+            var tag = confirm('真的要删除吗？');
+            if(!tag){
+                return false;
+            }
+        });
+    });
+
+</script>
+>>>>>>> a18faaa828ce6cb71f757c6ada3a13fc53416144

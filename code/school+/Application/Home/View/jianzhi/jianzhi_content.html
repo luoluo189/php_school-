@@ -1,3 +1,8 @@
+<!--
+作者：尤燕飞
+功能：兼职详情页
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +68,7 @@
 		    <div class="fanhui">
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a href="jianzhi.html"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
 		    兼职详情页
@@ -76,57 +81,57 @@
         <div id="cont">
             <div><img src="__PUBLIC__/home/images/jianzhi.png" class="cont1"></div>
             <div class="cont2">
-                <p>发布者：赵四</p>
-                <p>用户简介:急需高中物理老师</p>
+                <p>发布者：{$cx[0][pt_min_name]}</p>
+                <p>用户简介:{$cont[0][pt_inabstract]}</p>
             </div>
         </div>
+        
         <div class="txt">
 
-        兼职时间： 周六日<br/>
-        职位还需要人员个数： 4人<br/>
+        兼职时间： 周{$cont[0][pt_inweeka]}~周{$cont[0][pt_inweekb]}<br/>
+        职位需要人员个数： {$cont[0][pt_innum]}<br/>
         岗位要求：<br/>
-        1、符合相关专业要求，熟悉初高中教材<br/>
-        2、符合相关专业要求，熟悉初高中教材<br/>
-        3、符合相关专业要求，熟悉初高中教材<br/>
-        联系人：张先生<br/>
-        联系电话：13422334544<br/>
-        详细地址：河北师范大学<br/>
+        {$cont[0][pt_inabstract]}
+        <br/>
+        联系人：{$cx[0][pt_min_name]}<br/>
+        联系电话：{$cx[0][pt_min_phone]}<br/>
+        详细地址：{$cont[0][pt_inaddress]}<br/>
         </div>
-        <a href="{:U('home/jianzhi/jianzhi_list')}" class="weui_btn weui_btn_primary"  style="margin-top:30px;">我要预约</a>
+        <a href="{:U('home/jianzhi/jianzhi_list')}?id={$cont[0][pt_inid]}" class="weui_btn weui_btn_primary"  style="margin-top:30px;">我要预约</a>
 
     </div>
-    <div class="weui_tabbar">
-        <a href="index.html" class="weui_tabbar_item weui_bar_item_on">
-            <div class="weui_tabbar_icon">
-                <img src="__PUBLIC__/home/images/b1.jpg" alt="">
-            </div>
-            <p class="weui_tabbar_label">首页</p>
-        </a>
-        <a href="sousuo.html" class="weui_tabbar_item">
-            <div class="weui_tabbar_icon">
-                <img src="__PUBLIC__/home/images/b2.jpg" alt="">
-            </div>
-            <p class="weui_tabbar_label">搜索</p>
-        </a>
-        <a href="gouwuche.html" class="weui_tabbar_item">
-            <div class="weui_tabbar_icon">
-                <img src="__PUBLIC__/home/images/b3.jpg" alt="">
-            </div>
-            <p class="weui_tabbar_label">购物车</p>
-        </a>
-        <a href="personal.html" class="weui_tabbar_item">
-            <div class="weui_tabbar_icon">
-                <img src="__PUBLIC__/home/images/b4.jpg" alt="">
-            </div>
-            <p class="weui_tabbar_label">个人中心</p>
-        </a>
-    </div>
-</div>
+    <!--<div class="weui_tabbar">-->
+        <!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
+            <!--<div class="weui_tabbar_icon">-->
+                <!--<img src="__PUBLIC__/home/images/b1.jpg" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">首页</p>-->
+        <!--</a>-->
+        <!--<a href="sousuo.html" class="weui_tabbar_item">-->
+            <!--<div class="weui_tabbar_icon">-->
+                <!--<img src="__PUBLIC__/home/images/b2.jpg" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">搜索</p>-->
+        <!--</a>-->
+        <!--<a href="gouwuche.html" class="weui_tabbar_item">-->
+            <!--<div class="weui_tabbar_icon">-->
+                <!--<img src="__PUBLIC__/home/images/b3.jpg" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">购物车</p>-->
+        <!--</a>-->
+        <!--<a href="personal.html" class="weui_tabbar_item">-->
+            <!--<div class="weui_tabbar_icon">-->
+                <!--<img src="__PUBLIC__/home/images/b4.jpg" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">个人中心</p>-->
+        <!--</a>-->
+    <!--</div>-->
+<!--</div>-->
 
 
 
-</body>
+<!--</body>-->
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/home/js/swiper.js"></script>
-</html>
+<!--</html>-->
+<!--<!DOCTYPE html>-->
