@@ -32,8 +32,6 @@ class JoinController extends Controller
     public function join(){
         $this->display();
     }
-
-
     /*
      * 功能：实现图片验证码
      * 编写者：李雪
@@ -46,10 +44,34 @@ class JoinController extends Controller
         $captcha->codeSet = '0123456789abcdefghijklmnopqrstuvwxyz';//验证码
         $captcha -> entry('login');//entry：保存验证码到session
     }
+    /*
+     * 功能：发布者信息插入数据库
+     * 编写者：李雪
+     * 状态：已完成
+     */
 
-    public function add(){
+    public function store(){
+        $captcha = new Verify();
+        $result = $captcha->check(I('post.captcha'),'login');
+//        dump($result);
 
+        if(isset($_POST['submit'])) {
+            if ($result) {
+                //校验成功
+                $data = I('post.');
+                $publisher = M('publisher')->add($data);
+                if ($publisher) {
+                    header("Location:/home/join/dialog");
+                }
+            }
+            else {
+                //校验失败
+                redirect('/home/join/join', 2, '验证码输入错误，页面跳转中...');
+
+            }
+        }
     }
-
-
+    public function dialog(){
+        $this->display();
+    }
 }

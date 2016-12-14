@@ -204,6 +204,33 @@ class DingController extends Controller
             $this->success('取消订单成功。。。','',2);
         }
     }
+    /*
+        * 功能：批量删除
+        * 编写者：安垒
+        * 状态：存在问题（关联表怎么实现删除数据）！！！！！！！！！！！
+     * ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        */
+    public function deleteSelected()
+    {
+        //删除指定记录
+        $name = $this->getActionName();
+        //$adminUsersModel = D("tstates");
+        $model = D("bs_trade");//获取当期模块的操作对象
+        dump($model);
+        $bs_tr_id = $_GET['bs_tr_id'];  //判断id是数组还是一个数值
+        if(is_array($bs_tr_id)){
+            $where = 'bs_tr_id in('.implode(',',$bs_tr_id).')';
+        }else{
+            $where = 'bs_tr_id='.$bs_tr_id;
+        }
+        dump($where);
+        $list=$model->where($where)->delete();
+        if($list!==false) {
+            $this->success("成功删除{$list}条！", U("__URL__/ding/ding"));
+        }else{
+            $this->error('删除失败！');
+        }
+    }
 
 
 }
