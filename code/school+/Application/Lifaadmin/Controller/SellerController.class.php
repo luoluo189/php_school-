@@ -4,17 +4,22 @@ namespace Lifaadmin\Controller;
 ob_start();
 //开启会话
 session_start();
-
 use Think\Controller;
 use Think\Upload;
 //店铺信息
 class SellerController extends Controller
 {
+    public function _before_index(){
+        if($_SESSION['loginedName']==NULL){
+            $jumpUrl = '/home/';
+            $this->redirect($jumpUrl);
+        }
+    }
     public function index()
     {
         $_db=M('store_information');
         $condition=array();
-        $condition['si_id']=6;
+        $condition['si_id']=$_SESSION['si_id'];
         $result=$_db->where($condition)->select();
         $result= $result[0];
 //        dump($result[si_address]);
@@ -36,7 +41,7 @@ class SellerController extends Controller
     public function changeseller(){
         $_db=M('store_information');
         $condition=array();
-        $condition['si_id']=6;
+        $condition['si_id']=$_SESSION['si_id'];
         $result=$_db->where($condition)->select();
         $result= $result[0];
 //        dump($result[si_address]);
@@ -48,7 +53,7 @@ class SellerController extends Controller
     public function changesellerpic(){
         $seller=M('store_information');
         $condition=array();
-        $condition['si_id']=6;
+        $condition['si_id']=$_SESSION['si_id'];
         $seller=$seller->where($condition)->select();
         //dump($seller);
         $seller=$seller[0];
@@ -65,18 +70,19 @@ class SellerController extends Controller
     public function store(){
         //获取post数据
         $data=I('post.');
-        dump($data);
+       //dump($data);
         // 插入到数据表中
         $id =I('get.id');
         dump($id);
         $seller = M('store_information');
         $dd['si_id']=$id;
+        //dump($dd);
         $result = $seller->where($dd)->save($data);
         dump($result);
-        // 善后处理
+//         善后处理
         if ($result) {
             //$this->success( '数据修改成功！','/admin/seller/seller');
-            header('Location:/Lifaadmin/seller');
+            header('Location:/index.php/Lifaadmin/seller');
         } else {
             $this->error('数据修改失败！');
         }
@@ -119,8 +125,7 @@ class SellerController extends Controller
         //dump($result);
         // 善后处理
         if ($result) {
-            //$this->success( '数据修改成功！','/admin/seller/seller');
-            header('Location:/Lifaadmin/seller/');
+            header('Location:/index.php/Lifaadmin/seller');
         } else {
             $this->error('数据修改失败！');
         }
