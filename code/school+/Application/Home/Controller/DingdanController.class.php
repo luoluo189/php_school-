@@ -8,17 +8,19 @@ namespace Home\Controller;
 ob_start();
 //开启会话
 session_start();
+
+
 use Think\Controller;
 
 class DingdanController extends Controller
 {
 
+    public $userId=1;
+
     public function confirm(){
 
         $media = M('customer_address');
-//        顾客id
-        $m['ci_idd'] = $_SESSION['ci_id'];
-//        地址id
+        $m['ci_idd'] = 1;
         $m['ca_id'] = 1;
 // 把查询条件传入查询方法
         $s = $media->where($m)->select(); 
@@ -27,35 +29,12 @@ class DingdanController extends Controller
         from bs_goods,shopping_cart
         where bs_goods.bs_gid=shopping_cart.bs_gidd and ci_idddd=1 and bs_gid=1";
         $storename=M()->query($sql);
-       // dump($storename);
-        // $n= count($storename);
-        // $count=0;
-        //  for ($i=0; $i < $n ; $i++) { 
-        //      $c=$storename[$i][sh_cnum]*$storename[$i][bs_gprice];
-        //      $count=$count+$c;
-        //  }
-        
-        //   $this->assign('cs',$count);
-           $this->assign('storename',$storename);
+        $this->assign('storename',$storename);
         $this->display();
 
        
     }
     public function gouwuche_queren(){
-//        $_db=M('shopping_cart');
-//
-//        $condition['ci_idddd']=1;
-//        $condition1=$_db->where($condition)->select();
-//        //dump($condition1);
-//         $n=count($condition1);
-//        for ($i=0; $i < $n ; $i++) {
-//            $storename[]=M('bs_goods')->where("bs_gid=%d",array($condition1[$i]['bs_gidd']))->find();
-//        }
-//        $this->assign('cs',$condition1);
-//        $this->display();
-
-
-
 
         $sql = "select bs_gname,bs_gprice,sh_cnum,bs_gurl,bs_goods.bs_gid
          from bs_goods,shopping_cart
@@ -79,7 +58,7 @@ class DingdanController extends Controller
     */
     public function personal_comment(){
         $or_tdid['or_tdid']= $_GET['id'];
-       $c1 = M('order_trade')->where($or_tdid)->select();
+        $c1 = M('order_trade')->where($or_tdid)->select();
         $this->assign('c1',$c1);
         $pt_inid['pt_inid']= $_GET['id'];
         $c2 = M('pt_information')->where($pt_id)->select();
@@ -122,8 +101,6 @@ class DingdanController extends Controller
        //dump($s1);
        $this->assign('s1',$s1);
        //已完成订单
-      
-    	
         $this->display();
     }
 }
