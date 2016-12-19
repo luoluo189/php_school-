@@ -1,6 +1,13 @@
 <?php
+/*
+    * 功能：商品类订单
+    * 编写者：高小力
+ */
 namespace Admin\Controller;
-
+//开启输出缓冲区
+ob_start();
+//开启会话
+session_start();
 use Think\Controller;
 
 class DingController extends Controller
@@ -11,27 +18,7 @@ class DingController extends Controller
     * 修改者：ljj* 添加了判断ifshow=1
     * 状态：succeed
 //    */
-//    public function ding()
-//    {
-//        //$this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px } a,a:hover{color:blue;}</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本 V{$Think.version}</div><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_55e75dfae343f5a1"></thinkad><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');
-//        //$tstate=M('trade_state');
-//
-//        //选择交易状态分类
-//        $sql="select ts_name
-//            from store_information,trade_state
-//            where si_id=1 and store_information.s_type_id=trade_state.s_type_idd";
-//        $tstate=M()->query($sql);
-//        //dump($tstate);
-//        $this->assign('tstate',$tstate);
-//
-//        $sqls="select bs_tr_id,ci_name,bs_tr_xtime,ts_name,bs_tr_way
-//        from bs_trade,trade_state,customer_information
-//        where bs_trade.ts_iddd=trade_state.ts_id and bs_trade.ci_id5=customer_information.ci_id and bs_sid=1 and bs_trade.ifshow=1";
-//        $tstates=M()->query($sqls);
-//        //dump($tstates);
-//        $this->assign('tstates',$tstates);
-//        $this->display();
-//    }
+
     public function ding()
     {
          //选择交易状态分类
@@ -48,8 +35,6 @@ class DingController extends Controller
         where bs_trade.ts_iddd=trade_state.ts_id and bs_trade.ci_id5=customer_information.ci_id and bs_sid=1 and bs_trade.ifshow=1";
         $tstates=M()->query($sqls);
         //dump($tstates);
-//        $this->assign('tstates',$tstates);
-//        $this->display();
 
         //1.获取记录总条数
         $count=count($tstates);
@@ -156,23 +141,24 @@ class DingController extends Controller
 
         //数据库获取订单状态
         $type= $_db->select($id);
-//        dump($type);
         $type = $type[0]['ts_iddd'];
-//        dump($type);
-
         //判断订单的状态订单取消后不可以再次确定
         if($type== 5){
             // 要修改的数据对象属性赋值
-            $this->error('订单已经取消不能确定呢！','',2);
+         echo "<script>alert('订单已经取消不能确定呢！') ;history.go(-1);</script>";
 
         }
         elseif($type==6){
-            $this->error('订单已经是确定状态啦！','',2);
+//            订单已经确定
+            echo "<script>history.go(-1);</script>";
+
         }
         else{
+            echo "<script>alert('确定完成订单吗？');</script>";
             $data['ts_iddd'] = 6;
             $_db->save($data);
-            $this->success('完成订单成功！','',2);
+            echo "<script>history.go(-1);</script>";
+
         }
     }
        /*
@@ -192,43 +178,17 @@ class DingController extends Controller
         //判断订单的状态订单取消后不可以再次确定
         if($type== 6){
             // 要修改的数据对象属性赋值
-            $this->error('订单已经确定不能取消呢！','',2);
+            echo "<script>alert('订单已经确定不能取消呢！') ;history.go(-1);</script>";
 
         }
         elseif($type==5){
-            $this->error('订单已经是取消状态啦！','',2);
+            echo "<script>history.go(-1);</script>";
         }
         else{
+            echo "<script>alert('确定取消订单吗？');</script>";
             $data['ts_iddd'] = 5;
             $_db->save($data);
-            $this->success('取消订单成功。。。','',2);
-        }
-    }
-    /*
-        * 功能：批量删除
-        * 编写者：安垒
-        * 状态：存在问题（关联表怎么实现删除数据）！！！！！！！！！！！
-     * ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-        */
-    public function deleteSelected()
-    {
-        //删除指定记录
-        $name = $this->getActionName();
-        //$adminUsersModel = D("tstates");
-        $model = D("bs_trade");//获取当期模块的操作对象
-        dump($model);
-        $bs_tr_id = $_GET['bs_tr_id'];  //判断id是数组还是一个数值
-        if(is_array($bs_tr_id)){
-            $where = 'bs_tr_id in('.implode(',',$bs_tr_id).')';
-        }else{
-            $where = 'bs_tr_id='.$bs_tr_id;
-        }
-        dump($where);
-        $list=$model->where($where)->delete();
-        if($list!==false) {
-            $this->success("成功删除{$list}条！", U("__URL__/ding/ding"));
-        }else{
-            $this->error('删除失败！');
+            echo "<script>history.go(-1);</script>";
         }
     }
 
