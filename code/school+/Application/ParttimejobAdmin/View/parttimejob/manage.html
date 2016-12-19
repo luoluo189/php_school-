@@ -18,30 +18,32 @@
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
-                            <th>兼职ID</th>
+
+                            <th>序号</th>
+                            <!--<th>兼职ID</th>-->
                             <th>兼职名称</th>
                             <th>兼职报酬</th>
                             <th>兼职时间</th>
-
-                            <th>兼职内容</th>
+                            <th>兼职周期</th>
+                            <th>兼职人数</th>
                             <th>联系方式</th>
                             <th>兼职地址</th>
                             <th>操作</th>
                         </tr>
-                        <volist name="pt_information" id="vo">
+                        <volist name="pt_information" id="vo" key="k">
                         <tr>
-                            <td>{$vo.pt_inid}</td>
+                            <td>{$k}</td>
+                            <!--<td>{$vo.pt_inid}</td>-->
                             <td>{$vo.pt_inname}</td>
                             <td>{$vo.pt_inmoney}</td>
-
-                            <td>{$vo.pt_ifshow}</td>
-
-                            <td>{$vo.pt_inabstract}</td>
+                            <td>{$vo.pt_intime_a}到{$vo.pt_intime_b}</td>
+                            <td>周{$vo.pt_inweeka}到周{$vo.pt_inweekb}</td>
+                            <td>{$vo.pt_innum}</td>
                             <td>{$vo.pt_min_phonee}</td>
                             <td>{$vo.pt_inaddress}</td>
                             <td>
-                                <a class="" href="edit/id/{$vo.pt_inid}">修改</a>
-                                <a class="delete" href="" name="{$vo.pt_inid}">删除</a>
+                                <a class="" href="/ParttimejobAdmin/parttimejob/edit?id={$vo.pt_inid}">修改</a>
+                                <a   href="/ParttimejobAdmin/parttimejob/deletemange?id={$vo.pt_inid}" name="{$vo.pt_inid}">删除</a>
                                 <!--<a class="delete" href="__URL__/delete?id={$vo.pt_inid}">删除</a>-->
                             </td>
                         </tr>
@@ -69,7 +71,7 @@
 
                     //attr()设置被选元素的属性和值。//获取要删除的数据的id
                     var self = $(this);
-                    $.post("{:U('ParttimejobAdmin/parttimejob/delete')}",//执行删除操作的页面
+                    $.post("{:U('/ParttimejobAdmin/parttimejob/delete')}",//执行删除操作的页面
                             {'id':id},//删除页面所需要的要删除的数据id
 
                             function(data){

@@ -1,15 +1,25 @@
 <?php
 namespace ParttimeJobAdmin\Controller;
+use Think\Controller;
+
 //开启输出缓冲区
 ob_start();
 //开启会话
 session_start();
-use Think\Controller;
-
-
 class ParttimejobController extends Controller
 {
-
+    public function _before_index(){
+        if($_SESSION['loginedName']==NULL){
+            $jumpUrl = '/home/';
+            $this->redirect($jumpUrl);
+        }else{
+            $condition['pt_min_name']= $_SESSION['loginedName'];
+            $result= M('pt_manager_information')->where($condition)->select();
+            dump($result);
+            $_SESSION['pt_min_id']=$result[0]['pt_min_id'];
+            dump($_SESSION);
+        }
+    }
     /*
     * 功能：显示首页兼职发布者的信息（index页面）（成功）
     * 编写者：李雪
@@ -17,25 +27,44 @@ class ParttimejobController extends Controller
     */
     public function index(){
 
-        $condition['pt_min_id'] = 1;
+        $condition['pt_min_id'] = $_SESSION['pt_min_id'];
         $result = M('pt_manager_information')->where($condition)->select();
-        $this->assign('pt_manager_information',$result);
+        $this->assign('news',$result[0]);
         $this->display();
     }
-
+    /*
+ * 功能：显示修改兼职发布者的信息（成功）
+ * 编写者：
+ * 状态：succeed
+ */
+    public function change(){
+        $id= $_SESSION['pt_min_id'];
+        $this->assign('id',$id);
+        $this->display();
+    }
+    /*
+   * 功能：显示修改兼职发布者的头像信息（成功）
+   * 编写者：
+   * 状态：succeed
+   */
+    public function changepic(){
+        $id= $_SESSION['pt_min_id'];
+        $this->assign('id',$id);
+        $this->display();
+    }
     /*
     * 功能：添加兼职页面的显示
     * 编写者：李雪
     * 状态：succeed
     */
     public function add(){
-        $partowerid= 1;
+        $partowerid=  $_SESSION['pt_min_id'];
         $this->assign('pt_min_id',$partowerid);
         $this->display();
     }
 
 
-    /*
+    /*php
   * 功能：查看兼职订单信息（order页面）（成功）
   * 编写者：李雪
   * 修改：骆静静修改 添加发布者id判断字段 
@@ -43,7 +72,7 @@ class ParttimejobController extends Controller
   */
     public function order(){
 
-        $id=1;
+        $id=$_SESSION['pt_min_id'];
         $sql = "select distinct pt_min_id, pt_trid,pt_pname,pt_inname,pt_pphone,pt_trtime,pt_inabstract
         from pt_trade,pt_information,pt_person_information,pt_state
         where pt_trade.ci_id=pt_person_information.pt_pid and pt_information.pt_inid=pt_trade.pt_inid 
@@ -121,7 +150,7 @@ class ParttimejobController extends Controller
             $data=array();
             $data=I('post.');
             if(M('pt_manager_information')->where('pt_min_id=1')->save($data)){
-                $this->success('数据插入成功', '/ParttimejobAdmin/parttimejob/index/');
+                $this->success('数据插入成功', '/index.php/ParttimejobAdmin/parttimejob/index/');
             }
             else{
                 $this->error('数据插入失败');
@@ -129,7 +158,7 @@ class ParttimejobController extends Controller
         }
         else{
             //获取要编辑的用户
-            $pt_min_id=1;
+            $pt_min_id=$_SESSION['pt_min_id'];
             $pt_manager = M('pt_manager_information')->where($pt_min_id)->find($pt_min_id);
             //分配用户到编辑用户页面
             $this->assign('pt_manager',$pt_manager);
@@ -168,7 +197,7 @@ class ParttimejobController extends Controller
      * 状态：succeed
      */
     public function manage(){
-        $publisher=1;
+        $publisher= $_SESSION['pt_min_id'];
         $_db = M('pt_information');
         $tt=array();
         $tt['pt_min_id']=$publisher;
@@ -208,7 +237,7 @@ class ParttimejobController extends Controller
     public function deletemange(){
         $id =I('get.id');
 //$id=2;
-        dump($id);
+//        dump($id);
 
         $_db = M('pt_information');
         $tt['pt_inid']=$id;
@@ -220,132 +249,6 @@ class ParttimejobController extends Controller
         }
         else{
             $this->error('删除失败');
-        }
-    }
-
-
-
-
-
-    /*
-     * 功能：雇佣状态的修改
-     * 编写者：孙池晔
-     * 状态：succeed
-     */
-    /*
-     * 功能：取消雇佣关系
-     * 编写者：孙池晔
-     * 状态：succeed
-     */
-
-    public function employCancel()
-    {//完成订单——改为2
-
-        $id=$_GET['id'];
-        $_db=M('pt_trade');
-        $data['pt_trid']=$id;
-
-        //数据库获取订单状态
-        $type= $_db->select($id);
-        $type = $type[0]['ts_id'];
-        //判断订单的状态订单取消后不可以再次确定
-        if($type== 9){
-            // 要修改的数据对象属性赋值
-            echo "<script>alert('已经同意雇佣！');history.go(-1);</script>";
-
-        }
-        elseif($type==10){
-
-            echo "<script>alert('已经取消预约！');history.go(-1);</script>";
-
-        }
-        elseif($type==12){
-            echo "<script>history.go(-1);</script>";
-        }
-        else{
-            echo "<script>alert('确定取消雇佣吗？');</script>";
-            $data['ts_id'] = 12;
-            $_db->save($data);
-            echo "<script>history.go(-1);</script>";
-
-        }
-    }
-
-    /*
-     * 功能：完成雇佣
-     * 编写者：孙池晔
-     * 状态：succeed
-     */
-
-    public function employConfirm()
-    {//完成订单——改为2
-
-        $id=$_GET['id'];
-        $_db=M('pt_trade');
-        $data['pt_trid']=$id;
-
-        //数据库获取订单状态
-        $type= $_db->select($id);
-        $type = $type[0]['ts_id'];
-        //判断订单的状态订单取消后不可以再次确定
-        if($type== 9){
-            // 要修改的数据对象属性赋值
-            echo "<script>history.go(-1);</script>";
-
-        }
-        elseif($type==10){
-
-            echo "<script>alert('已经取消预约！');history.go(-1);</script>";
-
-        }
-        elseif($type==12){
-            echo "<script>alert('已经取消雇佣！');history.go(-1);</script>";
-        }
-        else{
-            echo "<script>alert('雇佣关系已经确认！');</script>";
-            $data['ts_id'] = 9;
-            $_db->save($data);
-            echo "<script>history.go(-1);</script>";
-
-        }
-    }
-   
-
-   /*
-     * 功能：取消预约
-     * 编写者：孙池晔
-     * 状态：succeed
-     */
-    public function ordCancel()
-    {//完成订单——改为2
-
-        $id=$_GET['id'];
-        $_db=M('pt_trade');
-        $data['pt_trid']=$id;
-
-        //数据库获取订单状态
-        $type= $_db->select($id);
-        $type = $type[0]['ts_id'];
-        //判断订单的状态订单取消后不可以再次确定
-        if($type== 9){
-            // 要修改的数据对象属性赋值
-            echo "<script>alert('已经同意雇佣！');history.go(-1);</script>";
-
-        }
-        elseif($type==10){
-
-            echo "<script>history.go(-1);</script>";
-
-        }
-        elseif($type==12){
-            echo "<script>alert('已经取消雇佣！');history.go(-1);</script>";
-        }
-        else{
-            echo "<script>alert('确认取消预约？');</script>";
-            $data['ts_id'] = 13;
-            $_db->save($data);
-            echo "<script>history.go(-1);</script>";
-
         }
     }
 }
