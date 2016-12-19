@@ -16,9 +16,7 @@
                         <th width="120"><i class="require-red">*</i>分类：</th>
                         <td>
                             <select name="colId" id="catid" class="required">
-                                <option value="{$btypetname.bs_tname}">
-                                    {$btypetname}
-                                </option>
+                                <option value="">请选择</option>
                                 <volist name="btype" id="vo">
                                     <option value="{$vo.bs_tname}">{$vo.bs_tname}</option>
                                 </volist>
@@ -51,12 +49,7 @@
                     </tr>
                     <tr>
                         <th><i class="require-red">*</i>商品图片：</th>
-                        <td>
-                            <span class="res-info"><img src="__PUBLIC__/{$bgoods.bs_gurl}" class="res-labb"/></span>
-                            <span >
-                             <a href="/admin/seller/changegoodspic/goodsPic?id={$bgoods.bs_gid}"  class="update"> <input value="修改商品照片" type="button"></a>
-                            </span>
-                        </td>
+                        <td><input name="bs_gurl" id="" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>--></td>
                     </tr>
                     <tr>
                         <th>商品描述：</th>

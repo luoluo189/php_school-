@@ -11,7 +11,11 @@ session_start();
 use Think\Controller;
 
 class IndexController extends Controller
-{
+{  /*
+   * 功能：判断session
+   * 编写者：骆静静
+   * 状态：已完成
+   */
     public function _before_index(){
         if($_SESSION['loginedName']==NULL || $_SESSION['si_id']==NULL){
             $jumpUrl = '/home/';

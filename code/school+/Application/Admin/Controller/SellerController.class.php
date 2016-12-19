@@ -16,14 +16,13 @@ class SellerController extends Controller
 {
     /*
      * 功能：店家信息的展示
-     * 编写者：骆静静
-     * 状态：succeed
+     * 编写者：高小力
      */
     public function seller()
     {
          $seller=M('store_information');
         $condition=array();
-        $condition['si_id']=$_SESSION['si_id'];;
+        $condition['si_id']=$_SESSION['si_id'];
         $seller=$seller->where($condition)->select();
         //dump($seller);
         $seller=$seller[0];
@@ -47,13 +46,12 @@ class SellerController extends Controller
     }
     /*
      * 功能：修改店家信息的页面
-     * 编写者：骆静静
-     * 状态：succeed
+     * 编写者：高小力
      */
     public function changeseller(){
         $seller=M('store_information');
         $condition=array();
-        $condition['si_id']=$_SESSION['si_id'];;
+        $condition['si_id']=$_SESSION['si_id'];
         $seller=$seller->where($condition)->select();
         //dump($seller);
         $seller=$seller[0];
@@ -70,7 +68,7 @@ class SellerController extends Controller
     public function changesellerpic(){
         $seller=M('store_information');
         $condition=array();
-        $condition['si_id']=$_SESSION['si_id'];;
+        $condition['si_id']=$_SESSION['si_id'];
         $seller=$seller->where($condition)->select();
         //dump($seller);
         $seller=$seller[0];
@@ -81,8 +79,7 @@ class SellerController extends Controller
     }
     /*
      * 功能：修改店家信息的提交
-     * 编写者：骆静静
-     * 状态：succeed
+     * 编写者：高小力
      */
     public function store(){
         //获取post数据
@@ -97,7 +94,7 @@ class SellerController extends Controller
         // 善后处理
         if ($result) {
             //$this->success( '数据修改成功！','/admin/seller/seller');
-            header('Location:/admin/seller/seller');
+            header('Location:/index.php/admin/seller/seller');
         } else {
             $this->error('数据修改失败！');
         }
