@@ -4,18 +4,21 @@ namespace Home\Controller;
 ob_start();
 //开启会话
 session_start();
+
+
 use Think\Controller;
-/**
- * @Author: 孙池晔
- * @Date:   2016-11-17 
- * @Last Modified by:   孙池晔
- * @Last Modified time: 2016-12-6 
- */
+
 class LifaController extends Controller
 {
     protected $_db;
+    public $userId=1;
    
-   //
+
+    /*
+     * 功能：理发店铺页
+     * 编写者：孙池晔
+     * 状态：已完成
+     */
     public function dianpu(){
         $_db=M('store_information');
         $condition=array();        
@@ -25,9 +28,13 @@ class LifaController extends Controller
         //$name = $result[0]['si_name'];
         $this->assign('set', $result[0]);
         $this->display();
-
     }
-  
+
+    /*
+     * 功能：简介页面
+     * 编写者：孙池晔
+     * 状态：已完成
+     */
     public function jianjie(){
         $_db=M('store_information');
         $condition=array();        
@@ -35,8 +42,29 @@ class LifaController extends Controller
         $condition['si_id']=$_GET[si_id];
         $result=$_db->where($condition)->select();
         $this->assign('set', $result[0]);
+
+        //获取店家ID
+        $condition['si_id'] = $_GET['si_id'];
+        //var_dump($condition);
+        $Model1 = M('bs_type');
+        $Model2 = M('store_information');
+        $type1 = $Model1->where($condition)->select();
+        $type2 = $Model2->where($condition)->select();
+        //var_dump($type2);
+        $si = array();
+        $si= $type2[0];
+        //var_dump($si);
+        $this->assign('bs_type',$type1);
+        $this->assign('si',$si);
+
         $this->display();
     }
+
+    /*
+     * 功能：理发预约界面
+     * 编写者：孙池晔
+     * 状态：已完成
+     */
     public function yuyue(){
         $_db=M('store_information');
         $condition=array();        
@@ -46,6 +74,13 @@ class LifaController extends Controller
         $this->assign('set', $result[0]);
         $this->display();
     }
+
+
+    /*
+     * 功能：预约数据提交
+     * 编写者：孙池晔
+     * 状态：已完成
+     */
     public function getyuyue()
     {
 
@@ -62,18 +97,24 @@ class LifaController extends Controller
             $data['or_tdday'] = I('date');
             $data['or_tdtime'] = I('time');
             $data['hair_content'] = I('comment');
-         
-        // 插入到数据表中
-       $_mb = M('order_trade');
-       $results = $_mb->add($data);
-       if ($results) {
-            $this->success( '预约成功！');
-        } else {
-            $this->error('预约失败！');
-        }
-        
+
+            // 插入到数据表中
+           $_mb = M('order_trade');
+           $results = $_mb->add($data);
+
+           if ($results) {
+               $referer = $_SERVER['HTTP_REFERER'];
+               echo "<script>alert('预约成功');document.location.href='$referer'</script>";
+           } else {
+                $this->error('预约失败！');
+            }
     }
-    //理发列表显示正常
+
+    /*
+     * 功能：理发列表显示
+     * 编写者：孙池晔
+     * 状态：已完成
+     */
     public function index(){
         $_db=M('store_information');
         $condition=array();        
@@ -82,4 +123,5 @@ class LifaController extends Controller
         $this->assign('store', $result);
         $this->display();
     }
+
 }
