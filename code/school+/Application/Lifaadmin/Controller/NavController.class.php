@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 namespace Admin\Controller;
 use Common\Controller\AdminBaseController;
 /**
@@ -77,4 +77,4 @@ class NavController extends AdminBaseController{
 	}
 
 
-}
+} -->
