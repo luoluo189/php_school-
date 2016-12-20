@@ -3,40 +3,44 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span class="crumb-name">理发预约管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('/Lifaadmin/seller')}">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">理发预约管理</span></div>
         </div>
 
         <div class="result-wrap">
-            <form name="myform" id="myform" method="post">
+            <form name="myform" id="myform" method="post" action="/index.php/__URL__/destoryBatchlan">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="addji"><i class="icon-font"></i>添加理发预约时间段</a>
-
+                        <a href="{:U('/Lifaadmin/lifa/addlifa')}"><i class="icon-font"></i>添加理发预约时间段</a>
+                        <button id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</button>
                     </div>
                 </div>
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
+                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox" onclick="check_all(this,'id[]')"></th>
+                            <th>序号</th>
                             <th>理发预约时间段</th>
                             <th>理发预约种类</th>
                             <th>次种类可预约人数</th>
                             <th>操作</th>
                         </tr>
-                        <volist name="store" id="vo">
+                        <volist name="store" id="vo" key="k">
                             <tr>
+                                <td class="tc"><input name="id[]" value="{$vo.ot_pnid}" type="checkbox"></td>
+                                <td>{$k}</td>
 
                                 <td>{$vo.ot_pntime}</td>
                                 <td>{$vo.ot_type}</td>
                                 <td>{$vo.ot_pnpnum}</td>
                                 <td>
-                                    <a  href="/lifaadmin/lifa/changelifa?id={$vo.ot_pnid}">修改</a>
+                                    <a  href="/index.php/lifaadmin/lifa/changelifa?id={$vo.ot_pnid}">修改</a>
                                     <a class="delete" href="" name="{$vo.ot_pnid}">删除</a>
                                 </td>
                             </tr>
                         </volist>
 
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page">{$pages}</div>
                 </div>
             </form>
         </div>
@@ -50,10 +54,10 @@
 
             $(".delete").click(function(){
                 var alarm = confirm('是否确定要删除？');
-                confirm(alarm);
+                //confirm(alarm);
                 if(alarm == true){
                     var id = $(this).attr('name');
-                    confirm(id);
+                    //confirm(id);
 
                     //attr()设置被选元素的属性和值。//获取要删除的数据的id
                     var self = $(this);
@@ -70,4 +74,11 @@
                 }
             });
         });
+    </script>
+    <script type="text/javascript">
+        function check_all(obj,cName)
+        {
+            var checkboxs = document.getElementsByName(cName);
+            for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;}
+        }
     </script>
