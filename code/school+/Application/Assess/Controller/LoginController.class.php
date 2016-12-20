@@ -61,7 +61,7 @@ class LoginController extends Controller
                 //用户名密码正确
                 //把用户名密码写入session
                 session('loginedName',I('post.name'));
-                session('storeId',$user['si_id']);
+                session('si_id',$user['si_id']);
 
                 //跳转页面
                 switch($user['type']) {
@@ -72,7 +72,7 @@ class LoginController extends Controller
                         $jumpUrl = '/Lifaadmin/seller';
                         break;
                     case 兼职:
-                        $jumpUrl = '/ParttimejobAdmin/seller';
+                        $jumpUrl = '/ParttimejobAdmin/parttimejob/index';
                         break;
                     case boss:
                         $jumpUrl = '/Assess/assess/assess';
@@ -94,10 +94,11 @@ class LoginController extends Controller
     public function logout(){
         //注销session
         session('loginedName',null);
-        session('storeid',null);
+        session('si_id',null);
         $this->redirect('/Assess/login');
     }
     public function changePwd(){
-        $this->dispay();
+        layout(false);
+        $this->display();
     }
 }
