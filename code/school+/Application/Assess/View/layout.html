@@ -1,70 +1,3 @@
-<<<<<<< HEAD
-<!doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>后台管理</title>
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/main.css"/>
-    <script type="text/javascript" src="__PUBLIC__/js/libs/modernizr.min.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
-</head>
-<body>
-<div class="topbar-wrap white">
-    <div class="topbar-inner clearfix">
-        <div class="topbar-logo-wrap clearfix">
-            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
-            <ul class="navbar-list clearfix">
-                <li><a class="on" href="index.html">首页</a></li>
-                <li><a href="#" target="_blank">网站首页</a></li>
-            </ul>
-        </div>
-        <div class="top-info-wrap">
-            <ul class="top-info-list clearfix">
-                <li><a href="http://www.jscss.me">管理员</a></li>
-                <li><a href="http://www.jscss.me">修改密码</a></li>
-                <li><a href="http://www.jscss.me">退出</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="container clearfix">
-    <div class="sidebar-wrap">
-        <div class="sidebar-title">
-            <h1>评价管理</h1>
-        </div>
-        <div class="sidebar-content">
-            <ul class="sidebar-list">
-                <li>
-                    <a href="#"><i class="icon-font">&#xe003;</i>评价信息管理</a>
-                    <ul class="sub-menu">
-                        <li><a href="/assess/assess/assess"><i class="icon-font">&#xe008;</i>查看评价</a></li>
-                        <!--<li><a href="lan/"><i class="icon-font">&#xe004;</i>编辑评价</a></li>-->
-
-                    </ul>
-                </li>
-                <li>
-                    <a href=""><i class="icon-font">&#xe003;</i>发布者信息管理</a>
-                    <ul class="sub-menu">
-                        <li><a href="/assess/publisher/add"><i class="icon-font">&#xe008;</i>添加发布者</a></li>
-                        <li><a href="/assess/publisher/publisher"><i class="icon-font">&#xe004;</i>查看发布者</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#"><i class="icon-font">&#xe003;</i>兼职者管理</a>
-                    <ul class="sub-menu">
-                        <li><a href="/assess/pluralist/pluralist"><i class="icon-font">&#xe008;</i>查看兼职者</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-{__CONTENT__}
-</div>
-</body>
-=======
 <!doctype html>
 <html>
 <head>
@@ -84,15 +17,15 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="index.html">首页</a></li>
-                <li><a href="#" target="_blank">网站首页</a></li>
+                <li><a class="on" href="{:U('/assess/assess/assess')}">首页</a></li>
+                <li><a href="{:U('/home')}" target="_blank">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="http://www.jscss.me">管理员</a></li>
-                <li><a href="http://www.jscss.me">修改密码</a></li>
-                <li><a href="http://www.jscss.me">退出</a></li>
+                <li><a href="http://www.jscss.me"><?php echo $_SESSION['loginedName'];?></a></li>
+                <li><a href="{:U('/Assess/login/changePwd/')}">修改密码</a></li>
+                <li><a href="{:U('/Assess/login/logout/')}">退出</a></li>
             </ul>
         </div>
     </div>
@@ -107,7 +40,7 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>评价信息管理</a>
                     <ul class="sub-menu">
-                        <li><a href="/assess/assess/assess"><i class="icon-font">&#xe008;</i>查看评价</a></li>
+                        <li><a href="{:U('/assess/assess/assess')}"><i class="icon-font">&#xe008;</i>查看评价</a></li>
                         <!--<li><a href="lan/"><i class="icon-font">&#xe004;</i>编辑评价</a></li>-->
 
                     </ul>
@@ -118,8 +51,8 @@
                 <li>
                     <a href=""><i class="icon-font">&#xe003;</i>发布者信息管理</a>
                     <ul class="sub-menu">
-                        <li><a href="/assess/publisher/publisher"><i class="icon-font">&#xe004;</i>查看发布者</a></li>
-                        <li><a href="/assess/publisher/add"><i class="icon-font">&#xe008;</i>添加发布者</a></li>
+                        <li><a href="{:U('/assess/publisher/publisher')}"><i class="icon-font">&#xe004;</i>查看发布者</a></li>
+                        <li><a href="{:U('/assess/publisher/add')}"><i class="icon-font">&#xe008;</i>添加发布者</a></li>
                     </ul>
                 </li>
 
@@ -128,10 +61,26 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>兼职者管理</a>
                     <ul class="sub-menu">
-                        <li><a href="/assess/pluralist/pluralist"><i class="icon-font">&#xe008;</i>查看兼职者</a></li>
+                        <li><a href="{:U('/assess/pluralist/pluralist')}"><i class="icon-font">&#xe008;</i>查看兼职者</a></li>
                     </ul>
                 </li>
 
+                <li>
+                    <a href=""><i class="icon-font">&#xe003;</i>审核管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="{:U('/assess/pending/goodscheck')}"><i class="icon-font">&#xe004;</i>商品审核</a></li>
+                        <li><a href="{:U('/assess/pending/jianzhi')}"><i class="icon-font">&#xe008;</i>兼职审核</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="icon-font">&#xe003;</i>找回密码信息管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="{:U('/assess/findpwd/index')}"><i class="icon-font">&#xe008;</i>查看店家信息</a></li>
+                        <!--<li><a href="lan/"><i class="icon-font">&#xe004;</i>编辑评价</a></li>-->
+
+                    </ul>
+                </li>
 
 
             </ul>
@@ -145,17 +94,5 @@
     <!--/main-->
 </div>
 </body>
-<script type="text/javascript">
-    $(document).ready(function(){
-        console.log('jquery文件引入成功！');
-        $(".delete").click(function(){
-            var tag = confirm('真的要删除吗？');
-            if(!tag){
-                return false;
-            }
-        });
-    });
 
-</script>
->>>>>>> a18faaa828ce6cb71f757c6ada3a13fc53416144
 </html>
