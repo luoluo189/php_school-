@@ -4,7 +4,7 @@
 
     <div class="store-wrap">
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">店铺信息</a><span class="crumb-step">&gt;</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('/Lifaadmin/seller')}">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">店铺信息</a><span class="crumb-step">&gt;</span></div>
         </div>
         <div class="result-wrap">
         <div class="store-content">
@@ -12,7 +12,7 @@
                 <li>
                     <label class="res-lab">头像</label><span class="res-info"><img src="__PUBLIC__/{$store.si_image}" class="res-labb"/></span>
                     <span class="res-labc">
-                        <a href="/Lifaadmin/seller/changesellerpic/storePic/{$seller.si_id}"  class="update"> <input value="修改店铺照片" type="button"></a>
+                        <a href="/index.php/Lifaadmin/seller/changesellerpic/storePic/{$seller.si_id}"  class="update"> <input value="修改店铺照片" type="button"></a>
                     </span>
                 </li>
 
@@ -38,7 +38,7 @@
                 </li>
                 <!--<a href="seller/changeseller">修改店铺信息</a>-->
                 <li>
-                    <a href="/Lifaadmin/seller/changeseller"> <input value="修改店铺信息" type="button"></a>
+                    <a href="{:U('/Lifaadmin/seller/changeseller')}"> <input value="修改店铺信息" type="button"></a>
 
                 </li>
             </ul>

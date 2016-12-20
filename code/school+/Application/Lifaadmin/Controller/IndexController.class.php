@@ -4,7 +4,6 @@ namespace Lifaadmin\Controller;
 ob_start();
 //开启会话
 session_start();
-
 use Think\Controller;
 
 class IndexController extends Controller
@@ -14,7 +13,7 @@ class IndexController extends Controller
 
         $_db=M('store_information');
         $condition=array();
-        $condition['si_id']=6;
+        $condition['si_id']=$_SESSION['si_id'];;
         $result=$_db->where($condition)->select();
         $result= $result[0];
 //        dump($result[si_address]);

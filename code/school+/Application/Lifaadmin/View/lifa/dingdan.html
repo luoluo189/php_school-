@@ -3,10 +3,10 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span class="crumb-name">兼职管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('/Lifaadmin/seller')}">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">预约订单管理</span></div>
         </div>
-        <div class="search-wrap">
-            <div class="search-content">
+        <!--<div class="search-wrap">-->
+            <!--<div class="search-content">-->
                 <!--<form action="/jscss/admin/design/index" method="post">-->
                     <!--<table class="search-tab">-->
                         <!--<tr>-->
@@ -23,17 +23,21 @@
                         <!--</tr>-->
                     <!--</table>-->
                 <!--</form>-->
-            </div>
-        </div>
+            <!--</div>-->
+        <!--</div>-->
         <div class="result-wrap">
-            <form name="myform" id="myform" method="post">
+            <form name="myform" id="myform" method="post" action="index.php/__URL__/destoryBatchlans">
                 <div class="result-title">
-
+                    <div class="result-list">
+                        <button id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</button>
+                    </div>
                 </div>
                 <div class="result-content">
 
                     <table class="result-tab" width="100%">
                         <tr>
+                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox" onclick="check_all(this,'id[]')"></th>
+                            <th>序号</th>
                             <th>预约订单ID</th>
                             <th>预约者姓名</th>
                             <th>预约理发种类</th>
@@ -42,8 +46,10 @@
                             <th>订单状态</th>
                             <th>操作</th>
                         </tr>
-                        <volist name="dingdans" id="vo">
+                        <volist name="dingdans" id="vo" key="k">
                             <tr>
+                                <td class="tc"><input name="id[]" value="{$vo.or_tdid}" type="checkbox"></td>
+                                <td>{$k}</td>
                                 <td>{$vo.or_tdid}</td>
                                 <td>{$vo.hair_name}</td>
                                 <td>{$vo.or_typename}</td>
@@ -68,14 +74,14 @@
                                 </td>
 
                                 <td>
-                                    <a class="" href="/lifaadmin/lifa/seedingdan?id={$vo.or_tdid}">查看详情</a>
+                                    <a class="" href="/index.php/lifaadmin/lifa/seedingdan?id={$vo.or_tdid}">查看</a>
                                     <a class="delete" href="" name="{$vo.or_tdid}">删除</a>
                                 </td>
                             </tr>
                         </volist>
 
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page">{$pages}</div>
                 </div>
             </form>
         </div>
@@ -89,10 +95,10 @@
 
             $(".delete").click(function(){
                 var alarm = confirm('是否确定要删除？');
-                confirm(alarm);
+                //confirm(alarm);
                 if(alarm == true){
                     var id = $(this).attr('name');
-                    confirm(id);
+                    //confirm(id);
 
                     //attr()设置被选元素的属性和值。//获取要删除的数据的id
                     var self = $(this);
@@ -109,5 +115,12 @@
                 }
             });
         });
+    </script>
+    <script type="text/javascript">
+        function check_all(obj,cName)
+        {
+            var checkboxs = document.getElementsByName(cName);
+            for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;}
+        }
     </script>
 
