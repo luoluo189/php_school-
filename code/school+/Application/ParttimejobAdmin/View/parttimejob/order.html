@@ -12,12 +12,16 @@
 
             <form name="myform" id="myform" method="post">
                 <div class="result-title">
-
+                    <div class="result-list">
+                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                    </div>
                 </div>
                 <div class="result-content">
 
                     <table class="result-tab" width="100%">
                         <tr>
+                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+                            <th>序号</th>
                             <th>订单ID</th>
                             <th>预约者姓名</th>
                             <th>预约工作名称</th>
@@ -27,9 +31,11 @@
                             <th>操作</th>
                         </tr>
 
-                        <volist name="order" id="vo">
+                        <volist name="order" id="vo" key="k">
 
                         <tr>
+                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
+                            <td>{$k}</td>
                             <td>{$vo.pt_trid}</td>
                             <td>{$vo.pt_pname}</td>
                             <td>{$vo.pt_inname}</td>
@@ -38,13 +44,13 @@
                             <td>{$vo.pt_trtime}</td>
 
                             <td>
-                                <a class="" href="view/id/{$vo.pt_trid}">查看详情</a>
-                                <a class="" href="delete/id/{$vo.pt_trid}">删除</a>
+                                <a class="" href="/ParttimejobAdmin/parttimejob/view/?id={$vo.pt_trid}">查看详情</a>
+                                <a class="" href="/ParttimejobAdmin/parttimejob/delete?id={$vo.pt_trid}">删除</a>
                             </td>
                         </tr>
                        </volist>
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page">{$pages}</div>
                 </div>
             </form>
         </div>

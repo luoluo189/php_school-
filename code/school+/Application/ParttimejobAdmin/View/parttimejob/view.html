@@ -36,16 +36,19 @@
 
                         <tr>
                             <td>兼职者备注</td>
-                            <td>{$orders[0]['pt_inabstract']}</td>
+                            <td>{$orders[0]['pt_trremark']}</td>
                         </tr>
 
                         </tbody></table>
                     <br/>
-
-                    <button>确认雇佣</button>
+                    <a class="btn btn-primary btn2 mr3" href="/ParttimejobAdmin/parttimejob/employConfirm?id={$orders[0]['pt_trid']}">确认雇佣</a>
+                    <a class="btn btn-primary btn2 mr1" href="/ParttimejobAdmin/parttimejob/ordCancel?id={$orders[0]['pt_trid']}">取消预约</a>
+                    <a class="btn btn-primary btn2 mr1" href="/ParttimejobAdmin/parttimejob/employCancel?id={$orders[0]['pt_trid']}">取消雇佣</a>
+                    （当确认雇佣之后取消雇佣生效）
+                    <!-- <button>确认雇佣</button>
                     <button>取消预约</button>
                     <button>取消雇佣</button>（当确认雇佣之后取消雇佣生效）
-
+ -->
             </div>
         </div>
 

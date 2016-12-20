@@ -1,17 +1,23 @@
 <?php
+/*
+    * 功能：商品种类
+    * 编写者：高小力
+ */
 namespace Admin\Controller;
-
+//开启输出缓冲区
+ob_start();
+//开启会话
+session_start();
 use Think\Controller;
 
 class LanController extends Controller
 {
     public function lan()
     {
-        //$this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px } a,a:hover{color:blue;}</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本 V{$Think.version}</div><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_55e75dfae343f5a1"></thinkad><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');
         $stype=M('bs_type');
         $condition=array();
-        $condition['si_id']=1;
-        //1.获取author_id=3记录总条数
+        $condition['si_id']=$_SESSION['si_id'];
+        //1.获取记录总条数
         $count=$stype->where($condition)->count();
         //dump($count);
         //2.设置（获取）每一页显示的个数
@@ -28,10 +34,7 @@ class LanController extends Controller
         $this->assign('pages',$page->show());
         //7.显示视图文件
         $this->display();
-        //$stype=$stype->where($condition)->select();
-        //dump($stype);
-        //$stype=$this->assign('stype',$stype);
-        //$this->display();
+
     }
     public function addlan(){
         $this->display();
@@ -40,7 +43,7 @@ class LanController extends Controller
         $stype=M('bs_type');
         $data=array();
         $data['bs_tname']=I('title');
-        $data['si_id']=1;
+        $data['si_id']=$_SESSION['si_id'];;
         //dump($data);
         $resulut=$stype->add($data);
         //dump($resulut);

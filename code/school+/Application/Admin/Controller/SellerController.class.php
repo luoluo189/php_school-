@@ -1,6 +1,13 @@
 <?php
+/*
+    * 功能：店家信息
+    * 编写者：高小力
+ */
 namespace Admin\Controller;
-
+//开启输出缓冲区
+ob_start();
+//开启会话
+session_start();
 use Think\Controller;
 use Think\Upload;
 
@@ -16,7 +23,7 @@ class SellerController extends Controller
     {
          $seller=M('store_information');
         $condition=array();
-        $condition['si_id']=1;
+        $condition['si_id']=$_SESSION['si_id'];;
         $seller=$seller->where($condition)->select();
         //dump($seller);
         $seller=$seller[0];
@@ -46,7 +53,7 @@ class SellerController extends Controller
     public function changeseller(){
         $seller=M('store_information');
         $condition=array();
-        $condition['si_id']=1;
+        $condition['si_id']=$_SESSION['si_id'];;
         $seller=$seller->where($condition)->select();
         //dump($seller);
         $seller=$seller[0];
@@ -63,7 +70,7 @@ class SellerController extends Controller
     public function changesellerpic(){
         $seller=M('store_information');
         $condition=array();
-        $condition['si_id']=1;
+        $condition['si_id']=$_SESSION['si_id'];;
         $seller=$seller->where($condition)->select();
         //dump($seller);
         $seller=$seller[0];
