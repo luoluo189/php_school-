@@ -4,13 +4,13 @@
 
     <div class="crumb-wrap">
         <div class="crumb-list"><i class="icon-font"></i>
-            <a href="/Lifaadmin/seller/seller">首页</a><span class="crumb-step">&gt;</span>
-            <a class="crumb-name" href="/Lifaadmin/seller/seller">店铺管理</a>
+            <a href="{:U('/Lifaadmin/seller')}">首页</a><span class="crumb-step">&gt;</span>
+            <a class="crumb-name" href="{:U('/Lifaadmin/seller')}">店铺管理</a>
             <span class="crumb-step">&gt;</span><span>店铺信息修改</span></div>
     </div>
     <div class="result-wrap">
         <div class="result-content">
-            <form action="/Lifaadmin/seller/storePic/id/{$seller.si_id}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+            <form action="/index.php/Lifaadmin/seller/storePic/id/{$seller.si_id}" method="post" id="myform" name="myform" enctype="multipart/form-data">
                 <table class="insert-tab" width="100%">
                     <tbody>
                     <tr>
