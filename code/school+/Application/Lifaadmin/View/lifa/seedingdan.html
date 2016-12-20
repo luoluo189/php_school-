@@ -3,23 +3,25 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span>理发预约订单管理</span><span class="crumb-step">&gt;</span><span>查看订单</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('/Lifaadmin/seller')}">首页</a><span class="crumb-step">&gt;</span><span>理发预约订单管理</span><span class="crumb-step">&gt;</span><span>查看订单</span></div>
         </div>
+
         <div class="result-wrap">
             <div class="result-content">
-                <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
-                    <table class="insert-tab" width="100%">
+
+                <div class="result-content">
+                    <table class="result-tab" width="60%">
                         <tbody>
                         <tr>
                             <td>订单ID</td>
                             <td>{$lifadan.or_tdid}</td>
 
                         </tr>
-                         <tr>
-                             <td>预约者姓名</td>
-                             <td>{$lifadan.hair_name}</td>
+                        <tr>
+                            <td>预约者姓名</td>
+                            <td>{$lifadan.hair_name}</td>
 
-                         </tr>
+                        </tr>
                         <tr>
                             <td>预约理发种类头发长度</td>
                             <td>{$lifadan.or_typename}，头发长度为：{$lifadan.hair_long}</td>
@@ -58,13 +60,18 @@
                                         };?>
                             </td>
                         </tr>
-                        </tbody></table>
+                        <tr>
+                            <td colspan="4">
+                                <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                <a class="btn btn-primary btn2 mr3" href="/index.php/lifaadmin/lifa/danConfirm?id={$lifadan.or_tdid}">订单完成</a>
+                                <a class="btn btn-primary btn2 mr1" href="/index.php/lifaadmin/lifa/danCancel?id={$lifadan.or_tdid}">取消预约</a>
+                            </td>
+                        </tr>
+                        </tbody>
 
-                    <a class="btn btn-primary btn2 mr3" href="/lifaadmin/lifa/danConfirm?id={$lifadan.or_tdid}">订单完成</a>
-                    <a class="btn btn-primary btn2 mr1" href="/lifaadmin/lifa/danCancel?id={$lifadan.or_tdid}">取消预约</a>
+                    </table>
 
-                    <!--<a id="delete" name="{$lifadan.or_tdid}" class="btn btn-primary btn2 mr1">删除订单</a>-->
-                </form>
+                </div>
             </div>
         </div>
 

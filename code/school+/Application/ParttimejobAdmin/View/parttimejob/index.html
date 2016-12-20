@@ -1,51 +1,54 @@
 
-    <!--/sidebar-->
-    <div class="main-wrap">
+<!--/sidebar-->
+<div class="main-wrap">
 
+    <div class="store-wrap">
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span class="crumb-name">兼职管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">兼职发布者信息</a><span class="crumb-step">&gt;</span></div>
         </div>
-
         <div class="result-wrap">
+            <div class="store-content">
 
+                <ul class="sys-info-list">
+                    <li>
+                        <label class="res-lab">头像</label><span class="res-info"><img src="__PUBLIC__/{$news.pt_min_image}" class="res-labb"/></span>
+                        <span class="res-labc">
+                        <a href="/index.php/ParttimejobAdmin/parttimejob/changepic"  class="update"> <input value="修改我的照片" type="button"></a>
+                    </span>
+                    </li>
 
-                <div class="store-wrap">
-                    <div class="store-title">
-                        <h1>兼职者基本信息</h1>
-                    </div>
-                    <div class="store-content">
-                        <ul class="sys-info-list">
-                            <li name="pt_manager_information">
-                                <label class="res-lab">兼职发布者姓名</label>{$pt_manager_information[0]['pt_min_name']}
-                                <span class="res-labc"></span>
-                            </li>
+                    <li>
+                        <label class="res-lab">我的姓名</label><span class="res-info">{$news.pt_min_name}</span>
 
-                            <li>
-                                <label class="res-lab">发表者身份证号</label><span class="res-info">{$pt_manager_information[0]['pt_min_idnum']}</span>
-                                <span class="res-labc"></span>
-                            </li>
-                            <li>
-                                <label class="res-lab">发表者手机号</label><span class="res-info">{$pt_manager_information[0]['pt_min_phone']}</span>
-                                <span class="res-labc"></span>
-                            </li>
-                            <li>
-                                <label class="res-lab">发表者种类</label><span class="res-info">{$pt_manager_information[0]['pt_min_type']}</span>
-                                <span class="res-labc"></span>
-                            </li>
-                            <li>
-                                <label class="res-lab">发表者认证状态</label><span class="res-info">{$pt_manager_information[0]['pt_min_app_state']}</span>
-                                <span class="res-labc"></span>
-                            </li>
+                    </li>
+                    <li>
+                        <label class="res-lab">我的身份证号</label><span class="res-info">{$news.pt_min_idnum}</span>
+                        <span class="res-labc"></span>
+                    </li>
+                    <li>
+                        <label class="res-lab">我的联系方式</label><span class="res-info">{$news.pt_min_phone}</span>
+                        <span class="res-labc"></span>
+                    </li>
+                    <li>
+                        <label class="res-lab">我的状态</label><span class="res-info">{$news.pt_min_app_state}</span>
+                        <span class="res-labc"></span>
+                    </li>
+                    <li>
+                        <label class="res-lab">主体信息</label><span class="res-info">{$news.pt_min_type}</span>
+                        <span class="res-labc"></span>
+                    </li>
+                    <!--<a href="seller/changeseller">修改店铺信息</a>-->
+                    <li>
+                        <a href="{:U('/ParttimejobAdmin/parttimejob/change')}"> <input value="修改我的信息" type="button"></a>
 
-                            <!--<a href="seller/changeseller">修改店铺信息</a>-->
-                            <li>
-                                <a href="/ParttimejobAdmin/parttimejob/editor"> <input value="修改兼职发布者信息" type="button"></a>
-
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
+        </div>
     </div>
-    <!--/main-->
+
+
+</div>
+<!--/main-->
+
 

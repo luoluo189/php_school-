@@ -3,7 +3,7 @@
     <div class="crumb-wrap">
         <div class="crumb-list">
             <i class="icon-font"></i>
-            <a href="/admin/seller/seller">首页</a><span class="crumb-step">&gt;</span>
+            <a href="{:U('/admin/seller/seller')}">首页</a><span class="crumb-step">&gt;</span>
             <a class="crumb-name" href="/admin/ding/ding">订单管理</a>
             <span class="crumb-step">&gt;</span><span>订单详情</span>
         </div>
@@ -46,11 +46,11 @@
                             <td colspan="3">{$btin.bs_tr_inphone}</td>
                         </tr>
                         <tr>
-                          <td colspan="4">
-                              <a class="btn btn5" href="/admin/ding/ding"  type="button">返回</a>
-                              <a class="btn btn-primary btn2 mr3" href="/admin/ding/danConfirm?id={$btin.bs_tr_idd}">订单完成</a>
-                              <a class="btn btn-primary btn2 mr1" href="/admin/ding/danCancel?id={$btin.bs_tr_idd}">取消预约</a>
-                          </td>
+                            <td colspan="4">
+                                <a class="btn btn5" href="/admin/ding/ding"  type="button">返回</a>
+                                <a class="btn btn-primary btn2 mr3"  onclick="disabled=true" href="/index.php/admin/ding/danConfirm?id={$btin.bs_tr_idd}">订单完成</a>
+                                <a  class="btn btn-primary btn2 mr1" onclick="disabled=true" href="/index.php/admin/ding/danCancel?id={$btin.bs_tr_idd}">取消预约</a>
+                            </td>
                         </tr>
                     </table>
 

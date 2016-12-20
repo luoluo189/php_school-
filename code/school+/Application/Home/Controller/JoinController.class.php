@@ -11,6 +11,7 @@ namespace Home\Controller;
 ob_start();
 //开启会话
 session_start();
+
 use Think\Verify;
 
 
@@ -23,6 +24,8 @@ use Think\Controller;
 
 class JoinController extends Controller
 {
+
+    public $userId=1;
 
     /*
      * 功能：显示加入我们主页面
@@ -61,13 +64,12 @@ class JoinController extends Controller
                 $data = I('post.');
                 $publisher = M('publisher')->add($data);
                 if ($publisher) {
-                    header("Location:/home/join/dialog");
+                    header("Location:/index.php/home/join/dialog");
                 }
             }
             else {
                 //校验失败
-                redirect('/home/join/join', 2, '验证码输入错误，页面跳转中...');
-
+                redirect('/index.php/home/join/join', 2, '验证码输入错误，页面跳转中...');
             }
         }
     }

@@ -4,12 +4,12 @@
 
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i>
-                <a href="/admin/seller/seller">首页</a><span class="crumb-step">&gt;</span>
+                <a href="{:U('/admin/seller/seller')}">首页</a><span class="crumb-step">&gt;</span>
                 <span class="crumb-name">管理订单</span></div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="/jscss/admin/design/index" method="post">
+                <form action="" method="post">
                     <table class="search-tab">
                         <tr>
                             <th width="120">选择交易状态分类:</th>
@@ -28,16 +28,18 @@
             </div>
         </div>
         <div class="result-wrap">
-            <form name="myform" id="myform" method="post" action="__MODULE__/ding/deleteSelected">
+            <form name="myform" id="myform" method="post" action="__MODULE__/ding/destoryBatchding">
                 <div class="result-title">
                     <div class="result-list">
+                        <!--<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>-->
                         <button id="batchDel" type="submit"><i class="icon-font"></i>批量删除</button>
                     </div>
                 </div>
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
-                            <th class="tc" width="5%"><input class="allChoose" name="checkbox10" type="checkbox" group="ids"></th>
+                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox" onclick="check_all(this,'id[]')"></th>
+                            <th>序号</th>
                             <th>订单交易ID</th>
                             <th>交易用户</th>
                             <th>下单时间</th>
@@ -45,9 +47,10 @@
                             <th>订单状态</th>
                             <th>操作</th>
                         </tr>
-                        <volist name="tstates" id="vo">
+                        <volist name="tstates" id="vo" key="k">
                         <tr>
                             <td class="tc"><input name="id[]" value="{$vo.bs_tr_id}" type="checkbox"></td>
+                            <td>{$k}</td>
                             <td>{$vo.bs_tr_id}</td>
                             <td>{$vo.ci_name}</td>
                             <td>{$vo.bs_tr_xtime}</td>
@@ -55,7 +58,7 @@
                             <td>{$vo.ts_name}</td>
 
                             <td>
-                                <a class="link-view" href="dingview/id/{$vo.bs_tr_id}">查看</a>
+                                <a class="link-view" href="/index.php/Admin/Ding/dingview/id/{$vo.bs_tr_id}">查看</a>
                                 <!--<a class="delete" href="__URL__/delete/id/{$vo.bs_tr_id}">删除</a>-->
                                 <a class="delete" href="" name="{$vo.bs_tr_id}">删除</a>
                             </td>
@@ -76,14 +79,14 @@
 
             $(".delete").click(function(){
                 var alarm = confirm('是否确定要删除？');
-                confirm(alarm);
+                //confirm(alarm);
                 if(alarm == true){
                     var id = $(this).attr('name');
-                    confirm(id);
+                    //confirm(id);
 
                     //attr()设置被选元素的属性和值。//获取要删除的数据的id
                     var self = $(this);
-                    $.post("{:U('admin/ding/delete/')}",//执行删除操作的页面
+                    $.post("{:U('admin/ding/delete')}",//执行删除操作的页面
                             {'id':id},//删除页面所需要的要删除的数据id
 
                             function(data){
@@ -96,5 +99,12 @@
                 }
             });
         });
+    </script>
+    <script type="text/javascript">
+        function check_all(obj,cName)
+        {
+            var checkboxs = document.getElementsByName(cName);
+            for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;}
+        }
     </script>
 
