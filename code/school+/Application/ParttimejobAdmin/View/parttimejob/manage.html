@@ -3,22 +3,23 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span class="crumb-name">兼职管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a class="on" href="{:U('/ParttimejobAdmin/parttimejob/index')}">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">兼职管理</span></div>
         </div>
-        <div class="search-wrap">
 
-        </div>
         <div class="result-wrap">
-            <form name="myform" id="myform" method="post">
+            <form name="myform" id="myform" method="post" action="__URL__/destoryBatchlan">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="add"><i class="icon-font"></i>添加兼职</a>
+                        <a href="/index.php/ParttimejobAdmin/parttimejob/add"><i class="icon-font"></i>添加兼职</a>
+                        <button id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</button>
+
                     </div>
                 </div>
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
 
+                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox" onclick="check_all(this,'id[]')"></th>
                             <th>序号</th>
                             <!--<th>兼职ID</th>-->
                             <th>兼职名称</th>
@@ -32,6 +33,7 @@
                         </tr>
                         <volist name="pt_information" id="vo" key="k">
                         <tr>
+                            <td class="tc"><input name="id[]" value="{$vo.pt_inid}" type="checkbox"></td>
                             <td>{$k}</td>
                             <!--<td>{$vo.pt_inid}</td>-->
                             <td>{$vo.pt_inname}</td>
@@ -42,15 +44,15 @@
                             <td>{$vo.pt_min_phonee}</td>
                             <td>{$vo.pt_inaddress}</td>
                             <td>
-                                <a class="" href="/ParttimejobAdmin/parttimejob/edit?id={$vo.pt_inid}">修改</a>
-                                <a   href="/ParttimejobAdmin/parttimejob/deletemange?id={$vo.pt_inid}" name="{$vo.pt_inid}">删除</a>
+                                <a class="" href="/index.php/ParttimejobAdmin/parttimejob/edit?id={$vo.pt_inid}">修改</a>
+                                <a   href="/index.php/ParttimejobAdmin/parttimejob/deletemange?id={$vo.pt_inid}" name="{$vo.pt_inid}">删除</a>
                                 <!--<a class="delete" href="__URL__/delete?id={$vo.pt_inid}">删除</a>-->
                             </td>
                         </tr>
                          </volist>
 
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page"> {$pages}</div>
                 </div>
             </form>
         </div>
@@ -64,10 +66,10 @@
 
             $(".delete").click(function(){
                 var alarm = confirm('是否确定要删除？');
-                confirm(alarm);
+                //confirm(alarm);
                 if(alarm == true){
                     var id = $(this).attr('name');
-                    confirm(id);
+                   // confirm(id);
 
                     //attr()设置被选元素的属性和值。//获取要删除的数据的id
                     var self = $(this);
@@ -85,3 +87,11 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        function check_all(obj,cName)
+        {
+            var checkboxs = document.getElementsByName(cName);
+            for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;}
+        }
+    </script>
+

@@ -1,10 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+<!--/sidebar-->
+<div class="main-wrap">
+
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font"></i><a class="on" href="{:U('/ParttimejobAdmin/parttimejob/index')}">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="{:U('/Lifaadmin/seller')}">店铺管理</a><span class="crumb-step">&gt;</span><span>店铺信息修改</span></div>
+    </div>
+    <div class="result-wrap">
+        <div class="result-content">
+            <form action="/index.php/ParttimejobAdmin/parttimejob/changestore" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <table class="insert-tab" width="100%">
+                    <tbody>
+
+                    <tr>
+                        <th><i class="require-red">*</i>头像：</th>
+                        <td>
+                            <img src="__PUBLIC__/{$news.pt_min_image}" alt="{$news.pt_min_image}的头像" width="150px">
+                        </td>
+                    </tr>
+                    <input type="hidden" name="pt_min_id" value="{$news.pt_min_id}">
+                    <!--<input type="text" name="pt_min_name" value="{$news.pt_min_name}">-->
+                    <tr>
+                        <th><i class="require-red">*</i>姓名：</th>
+                        <td>
+                           {$news.pt_min_name}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>我的身份证号：</th>
+                        <td>
+                            <input class="common-text required"  name="pt_min_IDnum" size="50" value="{$news.pt_min_idnum}" type="text">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>我的联系方式：</th>
+                        <td>
+                            <input class="common-text required"  name="pt_min_phone" size="50" value="{$news.pt_min_phone}" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                            <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                        </td>
+                    </tr>
+                    </tbody></table>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!--/main-->

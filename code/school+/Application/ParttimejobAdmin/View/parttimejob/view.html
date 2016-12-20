@@ -3,24 +3,23 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span>兼职订单管理</span><span class="crumb-step">&gt;</span><span>查看订单</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a class="on" href="{:U('/ParttimejobAdmin/parttimejob/index')}">首页</a><span class="crumb-step">&gt;</span><span>兼职订单管理</span><span class="crumb-step">&gt;</span><span>查看订单</span></div>
         </div>
-        <div class="search-wrap">
 
-        </div>
         <div class="result-wrap">
             <div class="result-content">
 
-                    <table class="insert-tab" width="100%">
+                <div class="result-content">
+                    <table class="result-tab" width="60%">
                         <tbody>
                         <tr>
                             <td>订单ID</td>
                             <td>{$orders[0]['pt_trid']}</td>
                         </tr>
-                         <tr>
-                             <td>预约者姓名</td>
-                             <td>{$orders[0]['pt_pname']}</td>
-                         </tr>
+                        <tr>
+                            <td>预约者姓名</td>
+                            <td>{$orders[0]['pt_pname']}</td>
+                        </tr>
                         <tr>
                             <td>预约工作名称</td>
                             <td>{$orders[0]['pt_inname']}</td>
@@ -38,16 +37,19 @@
                             <td>兼职者备注</td>
                             <td>{$orders[0]['pt_trremark']}</td>
                         </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                <a class="btn btn-primary btn2 mr3" href="/index.php/ParttimejobAdmin/parttimejob/employConfirm?id={$orders[0]['pt_trid']}">确认雇佣</a>
+                                <a class="btn btn-primary btn2 mr1" href="/index.php/ParttimejobAdmin/parttimejob/ordCancel?id={$orders[0]['pt_trid']}">取消预约</a>
+                                <a class="btn btn-primary btn2 mr1" href="/index.php/ParttimejobAdmin/parttimejob/employCancel?id={$orders[0]['pt_trid']}">取消雇佣</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-                        </tbody></table>
-                    <br/>
-
-                    <button>确认雇佣</button>
-                    <button>取消预约</button>
-                    <button>取消雇佣</button>（当确认雇佣之后取消雇佣生效）
-
+                </div>
             </div>
         </div>
-
     </div>
     <!--/main-->

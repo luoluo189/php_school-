@@ -3,43 +3,49 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><span class="crumb-name">兼职管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a class="on" href="{:U('/ParttimejobAdmin/parttimejob/index')}">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">兼职管理</span></div>
         </div>
-        <div class="search-wrap">
 
-        </div>
+
         <div class="result-wrap">
 
-            <form name="myform" id="myform" method="post">
-                <div class="result-title">
-
+            <form name="myform" id="myform" method="post" action="__URL__/destoryBatchlans">
+                <div class="search-wrap">
+                    <button id="batchDel" href="javascript:void(0)" style="margin-left: 20px;"><i class="icon-font"></i>批量删除</button>
                 </div>
+
                 <div class="result-content">
 
                     <table class="result-tab" width="100%">
                         <tr>
+                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox" onclick="check_all(this,'id[]')"></th>
+                            <th>序号</th>
                             <th>订单ID</th>
                             <th>预约者姓名</th>
                             <th>预约工作名称</th>
                             <th>预约者联系方式</th>
                             <th>兼职简介</th>
+                            <th>兼职状态</th>
                             <th>预约时间</th>
                             <th>操作</th>
                         </tr>
 
-                        <volist name="order" id="vo">
+                        <volist name="order" id="vo" key="k">
 
                         <tr>
+                            <td class="tc"><input name="id[]" value="{$vo.pt_trid}" type="checkbox"></td>
+                            <td>{$k}</td>
                             <td>{$vo.pt_trid}</td>
                             <td>{$vo.pt_pname}</td>
                             <td>{$vo.pt_inname}</td>
                             <td>{$vo.pt_pphone}
                             <td>{$vo.pt_inabstract}</td>
+                            <td>{$vo.ts_name}</td>
                             <td>{$vo.pt_trtime}</td>
 
                             <td>
-                                <a class="" href="/ParttimejobAdmin/parttimejob/view/?id={$vo.pt_trid}">查看详情</a>
-                                <a class="" href="/ParttimejobAdmin/parttimejob/delete?id={$vo.pt_trid}">删除</a>
+                                <a class="" href="/index.php/ParttimejobAdmin/parttimejob/view/?id={$vo.pt_trid}">查看</a>
+                                <a class="delete" href="/index.php/ParttimejobAdmin/parttimejob/delete/?id={$vo.pt_trid}">删除</a>
                             </td>
                         </tr>
                        </volist>
@@ -50,3 +56,39 @@
         </div>
     </div>
     <!--/main-->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //检测js文件是否引入成功
+            console.log('恭喜你,jquery文件引入成功');
+
+            $(".delete").click(function(){
+                var alarm = confirm('是否确定要删除？');
+                //confirm(alarm);
+                if(alarm == true){
+                    var id = $(this).attr('name');
+                    //confirm(id);
+
+                    //attr()设置被选元素的属性和值。//获取要删除的数据的id
+                    var self = $(this);
+                    $.post("{:U('ParttimejobAdmin/parttimejob/delete')}",//执行删除操作的页面
+                            {'id':id},//删除页面所需要的要删除的数据id
+
+                            function(data){
+                                //请求成功后隐藏该记录
+                                var child = self.parent().parent();//获取当前结点父结点的父结点
+                                child.hide();//隐藏信息
+
+                            }//function(data)处的括号
+                    );//post结尾处的括号
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function check_all(obj,cName)
+        {
+            var checkboxs = document.getElementsByName(cName);
+            for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;}
+        }
+    </script>

@@ -3,12 +3,12 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><span class="crumb-step">&gt;</span><a class="crumb-name" href=" ">兼职管理</a><span class="crumb-step">&gt;</span><span>添加兼职</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a class="on" href="{:U('/ParttimejobAdmin/parttimejob/index')}">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="{:U('/ParttimejobAdmin/parttimejob/manage')} ">兼职管理</a><span class="crumb-step">&gt;</span><span>添加兼职</span></div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
 
-                <form action="/ParttimejobAdmin/parttimejob/addAction" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <form action="/index.php/ParttimejobAdmin/parttimejob/addAction" method="post" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody>
                         <!--插入发布者id的隐藏域 就可以添加数据-->
