@@ -1,0 +1,78 @@
+
+<!--/sidebar-->
+<div class="main-wrap">
+
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font"></i>
+            <a href="{:U('/admin/seller/seller')}">首页</a><span class="crumb-step">&gt;</span>
+            <a class="crumb-name" href="{:U('/admin/goods/design')}">商品管理</a>
+            <span class="crumb-step">&gt;</span><span>修改商品</span></div>
+    </div>
+    <div class="result-wrap">
+        <div class="result-content">
+            <form action="/index.php/admin/goods/updategoods/id/{$bgoods.bs_gid}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <table class="insert-tab" width="100%">
+                    <tbody><tr>
+                        <th width="120"><i class="require-red">*</i>分类：</th>
+                        <td>
+                            <select name="colId" id="catid" class="required">
+                                <option value="{$btypetname.bs_tname}">
+                                    {$btypetname}
+                                </option>
+                                <volist name="btype" id="vo">
+                                    <option value="{$vo.bs_tname}">{$vo.bs_tname}</option>
+                                </volist>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>商品名称：</th>
+                        <td>
+                            <input class="common-text required" id="title" name="bs_gname" size="50" value="{$bgoods.bs_gname}" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>商品型号(颜色)：</th>
+                        <td>
+                            <input class="common-text required" id="size" name="bs_gsize" size="50" value="{$bgoods.bs_gsize}" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>商品单价：</th>
+                        <td>
+                            <input class="common-text required" id="price" name="bs_gprice" size="50" value="{$bgoods.bs_gprice}" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>商品库存：</th>
+                        <td>
+                            <input class="common-text required" id="num" name="bs_gnumber" size="50" value="{$bgoods.bs_gnumber}" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require-red">*</i>商品图片：</th>
+                        <td>
+                            <span class="res-info"><img src="__PUBLIC__/{$bgoods.bs_gurl}" class="res-labb"/></span>
+                            <span >
+                             <a href="/index.php/admin/goods/changegoodspic/goodsPic?id={$bgoods.bs_gid}"  class="update"> <input value="修改商品照片" type="button"></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>商品描述：</th>
+                        <td><textarea name="bs_gdescription" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10">{$bgoods.bs_gdescription}</textarea></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10" value="修改" type="submit">
+                            <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                        </td>
+                    </tr>
+                    </tbody></table>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!--/main-->
