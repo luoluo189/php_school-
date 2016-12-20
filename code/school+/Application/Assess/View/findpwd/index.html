@@ -1,0 +1,80 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('/assess/assess/assess')}">首页</a>
+                <span class="crumb-step">&gt;</span><span class="crumb-name">找回密码信息管理</span></div>
+        </div>
+
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post" action="__URL__/destoryBatchlan">
+                <div class="result-title">
+                    <div class="result-list">
+                        <!--<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>-->
+                        <button id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</button>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox" onclick="check_all(this,'id[]')"> </th>
+                            <th>序号</th>
+                            <th>ID</th>
+                            <th>店家名称</th>
+                            <th>店主姓名</th>
+                            <th>店主身份证号</th>
+                            <th>店主手机号</th>
+                            <th>店家类型</th>
+                            <!--<th>商品</th>-->
+                            
+                            <th>操作</th>
+                        </tr>
+                        <volist name="find" id="vo" key="k">
+                        <tr>
+                            <td class="tc"><input name="id[]" value="{$vo.id}" type="checkbox"></td>
+                            <td>{$k}</td>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.si_name}</td>
+                            <td>{$vo.st_pon}</td>
+                            <td>{$vo.idnumber}</td>
+                            <!--<td>{$vo['bs_goods']['bs_gname']}</td>-->
+                            <td>{$vo.si_phone}</td>
+                            <td>{$vo.s_type_name}</td>
+                            <td>
+                                <!--店家id--><input type="hidden" name="s_type">
+                                <!--顾客id-->
+                                <!--商品id-->
+                                <a class="view" href="/assess/findpwd/view/id/{$vo.id}">查看</a>
+                                <a class="delete" href="__URL__/delete/id/{$vo.id}">删除</a>
+                            </td>
+                        </tr>
+                        </volist>
+
+                    </table>
+                    <div class="list-page">{$pages}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('jquery文件引入成功！');
+        $(".delete").click(function(){
+            var tag = confirm('真的要删除吗？');
+            if(!tag){
+                return false;
+            }
+        });
+    });
+
+</script>
+    <script type="text/javascript">
+        function check_all(obj,cName)
+        {
+            var checkboxs = document.getElementsByName(cName);
+            for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;}
+        }
+    </script>

@@ -1,0 +1,57 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i>
+                <a href="/assess/assess/assess">首页</a><span class="crumb-step">&gt;</span>
+                <span class="crumb-name">修改密码信息查看</span>
+            </div>
+        </div>
+
+        <div class="result-wrap">
+            <div class="result-content">
+
+                <div class="result-content">
+                    <table class="result-tab" width="60%">
+                        <tbody>
+                        <tr>
+                            <td>评价ID</td>
+                            <td>{$assess[0]['id']}</td>
+                        </tr>
+                        <tr>
+
+                            <td>店家名称</td>
+                            <td>{$assess[0]['si_name']}</td>
+                        </tr>
+                        <tr>
+                            <td>店主姓名</td>
+                            <td>{$assess[0]['st_pon']}</td>
+                        </tr>
+                        <tr>
+                            <td>店主身份证号</td>
+                            <td>{$assess[0]['idnumber']}</td>
+                        </tr>
+
+                        <tr>
+                            <td>店主手机号</td>
+                            <td>{$assess[0]['si_phone']}</td>
+                        </tr>
+                        <tr>
+                            <td>店家类型</td>
+                            <td>{$assess[0]['s_type_name']}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
