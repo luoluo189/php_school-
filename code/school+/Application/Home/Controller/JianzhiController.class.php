@@ -1,12 +1,14 @@
 <?php
-
-
 /*
 作者：尤燕飞
 功能：实现兼职模块的动态获取
 日期：12.7
 */
 namespace Home\Controller;
+//开启输出缓冲区
+ob_start();
+//开启会话
+session_start();
 
 use Think\Controller;
 
@@ -42,6 +44,31 @@ class JianzhiController extends controller{
 
 		$this->display();
 	}
+
+    /*
+       * 功能：搜索
+       * 编写者：安垒
+       * 状态：完成
+       */
+    public function search()
+    {
+        $key = I('get.search_word');                               //获取参数
+
+        $sellUserModel = M('pt_information');                           //要查询的表
+
+        $where['pt_inname'] = array('like', "%{$key}%");            //like查询的条件
+
+        $where['pt_inabstract'] = array('like', "%{$key}%");    //like查询的条件
+
+        $where['_logic'] = 'OR';                                    //语句之间的连接条件
+        $c = $sellUserModel->where($where)->select();
+
+        if (NULL == $c) {
+            $this->error("很抱歉，没找到您要查找的兼职类型");
+        }
+        $this->assign('c',$c);
+        $this->display(jianzhi);
+    }
 	/*
 	作者：尤燕飞
 	功能：获取兼职预约页

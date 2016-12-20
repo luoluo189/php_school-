@@ -18,7 +18,7 @@ class DianjiaController extends Controller
      * 状态：succeed
      */
     public function dianjia(){
-        $_SESSION['ci_id']=1;
+        $_SESSION['ci_id'] = 1;
         //通过店家ID获取商品种类
         $condition['si_id']=$_GET['si_id'];
         $name = M('store_information')->where($condition)->select();
@@ -92,13 +92,17 @@ class DianjiaController extends Controller
      */
     public function jianjie(){
         $_SESSION['ci_id']=1;
+
         //获取店家ID
-        $condition['si_id'] = $_GET['si_id'];
-        //var_dump($condition);
-        $Model1 = M('bs_type');
+        $si_id = $_GET['si_id'];
+
+        $sql = "select bs_tname,bs_gurl,bs_type.bs_tid
+        from bs_type,bs_goods
+        where bs_type.bs_tid = bs_goods.bs_tid and si_id = $si_id  ";
+        $type1 = M()->query($sql);
+
         $Model2 = M('store_information');
-        $type1 = $Model1->where($condition)->select();
-        $type2 = $Model2->where($condition)->select();
+        $type2 = $Model2->where("si_id = $si_id")->select();
         //var_dump($type2);
         $si = array();
         $si= $type2[0];
@@ -122,7 +126,6 @@ class DianjiaController extends Controller
         $condition['bs_tid'] = $_GET['bs_tid'];
         $result=M('bs_goods')->where($condition)->select();
         $set0=M('bs_type')->where($condition)->select();
-        //var_dump($set);
         $set=array();
         $set = $set0[0];
         $this->assign('bs_goods',$result);
@@ -136,26 +139,85 @@ class DianjiaController extends Controller
      * 状态：succeed
      */
     public function shangpin(){
-        layout(false);
-        $_SESSION['ci_id']=1;
-        //获取商品id
-        //$condition=array();  
-        $condition['bs_gid'] = $_GET['bs_gid'];
-        $conditions['si_id'] = $_GET['si_id'];
-        //$condition['bs_gid'] = 4;
-        $result=M('bs_goods')->where($condition)->select();
-        $name=M('store_information')->where($conditions)->select();
+        $_SESSION['ci_id'] = 1;
+
+
+        $si_id = $_GET['si_id'];//店家id
+        $bs_rid= $_GET['id'];//推荐id
+
+        $sql = "select bs_gname,bs_gurl,bs_gprice,bs_gdescription
+        from bs_goods,bs_type
+        where bs_goods.bs_rid = $bs_rid and bs_type.si_id = $si_id  and bs_type.bs_tid = bs_goods.bs_tid";
+        $result = M()->query($sql);
         $set = array();
-        $si = array();
         $set = $result[0];
+
+        $name=M('store_information')->where("si_id = $si_id")->select();
+        $si = array();
         $si = $name[0];
 
         $this->assign('set',$set);
         $this->assign('si',$si);
-
         $this->assign('image',$name);
+
         $this->display();
     }
+
+
+
+
+    /*
+     * 功能：商品详情跳转
+     * 编写者：李雪
+     * 状态：已完成
+     */
+
+    public function jumps(){
+
+        $si_id = $_GET['si_id'];//店家id
+        $bs_gid= $_GET['id'];//商品id
+
+        $sql = "select bs_gname,bs_gurl,bs_gprice,bs_gdescription
+        from bs_goods,bs_type
+        where bs_goods.bs_gid = $bs_gid and bs_type.si_id = $si_id  and bs_type.bs_tid = bs_goods.bs_tid";
+        $result = M()->query($sql);
+        $set = array();
+        $set = $result[0];
+
+        $name=M('store_information')->where("si_id = $si_id")->select();
+        $si = array();
+        $si = $name[0];
+
+        $this->assign('set',$set);
+        $this->assign('si',$si);
+        $this->assign('image',$name);
+
+        $this->display("Dianjia:shangpin");
+    }
+//    /*
+//     * 功能：美食列表搜索
+//     * 编写者：安垒
+//     * 状态：succeed
+//     */
+//
+//    public function search(){
+//        $key=I('get.search_word');                               //获取参数
+//
+//        $sellUserModel = M('store_information');                 //要查询的表
+//
+//        $where['si_name']=array('like',"%{$key}%");            //like查询的条件
+//
+//        $where['si_sintroduce']=array('like',"%{$key}%");    //like查询的条件
+//
+//        $where['_logic']='OR';                                    //语句之间的连接条件
+//
+//        $result=$sellUserModel->where($where)->select();
+//
+//        $this->assign('store_information', $result);
+//
+//        $this->display(shangjia);
+//    }
+
 
      /*
      * 功能：美食列表
@@ -208,8 +270,8 @@ class DianjiaController extends Controller
             $goodtype = M('bs_type')->where("si_id=$id")->select();
             //var_dump($goodtype);
 
-            $tid=array();
-            $_db=M('bs_goods');
+            $tid = array();
+            $_db = M('bs_goods');
             for($i=0;$i<count($goodtype);$i++){
                 $tid[$i]= $goodtype[$i]['bs_tid'];
                 $conditions['bs_tid']=$tid[$i];
@@ -230,16 +292,16 @@ class DianjiaController extends Controller
             $this->assign('image',$name);
 
         if($set['s_type_id'] == 1){
-            $this->display('lifa:dianpu');
+            $this->display('Lifa:dianpu');//店铺
         }
         else if($set['s_type_id'] == 2){
-            $this->display('dianjia:dianjia');
+            $this->display('Dianjia:dianjia');//店家
         }
         else if($set['s_type_id'] == 3){
             $_db=M('pt_information');
             $c = $_db->select();
             $this->assign('c',$c);
-            $this->display('jianzhi:jianzhi');
+            $this->display('Jianzhi:jianzhi');//兼职
         }
     }
 
@@ -296,5 +358,37 @@ STR;
         //var_dump($news);
         $results = M('shopping_cart')->add($news);
         $this->display("Dingdan:gouwuche_queren");
+    }
+
+
+    /*
+     * 功能：商家列表搜索
+     * 编写者：安垒
+     * 状态：succeed
+     */
+
+    public function search(){
+        $key=I('get.search_word');                               //获取参数
+
+        $sellUserModel = M('store_information');                 //要查询的表
+
+        $where['si_name']=array('like',"%{$key}%");            //like查询的条件
+
+        $where['si_sintroduce']=array('like',"%{$key}%");    //like查询的条件
+
+        $where['_logic']='OR';                                    //语句之间的连接条件
+
+        $result=$sellUserModel->where($where)->select();
+
+        //返回不存在的商家
+        if (NULL == $result){
+            $this->error("很抱歉，没找到您要查找的商家");
+        }
+
+        $this->assign('store_information', $result);
+
+        $this->display(shangjia);
+
+
     }
 }
