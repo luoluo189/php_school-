@@ -4,17 +4,17 @@
 
     <div class="crumb-wrap">
         <div class="crumb-list"><i class="icon-font"></i>
-            <a href="{:U('/admin/seller/seller')}">首页</a><span class="crumb-step">&gt;</span>
+            <a href="{:U('/admin/goods/design')}">首页</a><span class="crumb-step">&gt;</span>
             <a class="crumb-name" href="{:U('/admin/goods/design')}">商品管理</a>
-            <span class="crumb-step">&gt;</span><span>商品图片修改</span></div>
+            <span class="crumb-step">&gt;</span><span>修改商品图片</span></div>
     </div>
     <div class="result-wrap">
         <div class="result-content">
-            <form action="/index.php/admin/goods/goodsPic/id/{$seller.bs_gid}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+            <form action="/index.php/admin/goods/changegoodspics/id/{$seller.bs_gid}" method="post" id="myform" name="myform" enctype="multipart/form-data">
                 <table class="insert-tab" width="100%">
                     <tbody>
                     <tr>
-                        <th><i class="require-red">*</i>头像：</th>
+                        <th><i class="require-red">*</i>商品图片：</th>
                         <td>
                             <input name="bs_gurl" id="" type="file">
                         </td>

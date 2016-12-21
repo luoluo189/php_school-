@@ -15,7 +15,7 @@
                     <tbody><tr>
                         <th width="120"><i class="require-red">*</i>分类：</th>
                         <td>
-                            <select name="colId" id="catid" class="required">
+                            <select name="bs_tname" id="catid" class="required">
                                 <option value="{$btypetname.bs_tname}">
                                     {$btypetname}
                                 </option>
@@ -54,7 +54,7 @@
                         <td>
                             <span class="res-info"><img src="__PUBLIC__/{$bgoods.bs_gurl}" class="res-labb"/></span>
                             <span >
-                             <a href="/index.php/admin/goods/changegoodspic/goodsPic?id={$bgoods.bs_gid}"  class="update"> <input value="修改商品照片" type="button"></a>
+                             <a href="/index.php/admin/goods/changegoodspic?id={$bgoods.bs_gid}"  class="update"> <input value="修改商品照片" type="button"></a>
                             </span>
                         </td>
                     </tr>
