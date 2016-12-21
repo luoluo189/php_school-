@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>校园+</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+    <style>
+        html,body{
+            height:100%;
+        }
+        .weui-col-20 img{
+            height: 38px;
+            padding-top:2px;
+            padding-left: 4px;
+        }
+        .weui_panel_hd{
+            width: 100%;
+            float: left;
+        }
+        .ab p{
+            padding-left: 20px;
+        }
+        .sp{
+            margin-top: 5px;
+        }
+        .back{
+        margin-top:10px;
+        float:left;
+        }
+        .set{
+        width:80%;
+        padding-top:10px;
+        margin:0 auto;
+    	text-align:center;
+		font-size:22px;
+        }
+    </style>
+</head>
+<body>
+<div class="weui_tab">
+    <div class="weui_tab_bd">
+
+
+		    <div>
+		    <!-- 返回图标开始 -->
+		    <div   class="back" >
+		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    </div>
+		    <div class="set">
+		         {$set}评价
+		    </div>
+		    <!-- 返回图标结束 -->	
+		    </div>
+
+		    
+        <div class="weui_panel weui_panel_access">
+            <div class="weui_panel_hd">
+                <div>综合评价：{$news[0]['appr_score']}</div>
+
+            </div>
+            <div class="weui_panel_bd">
+               <div style="margin-left:30%">{$nocontent}</div>
+                <volist name="news" id="vo">
+                    <div class="weui_media_box weui_media_text">
+                        <div>
+                            <img src="__PUBLIC__/home/images/54.png" style="border-radius: 50%" width="25px" height="25px">
+                            <span style="padding-left: 10px">{$vo.ci_name}</span>
+                        </div>
+                        <div class="sp">
+                            <p class="weui_media_desc">{$vo.appr_content}</p>
+                            <div class="weui_media_info">
+                                <div class="weui_media_info_meta" >{$vo.bs_gname} 评分：{$vo.appr_score}</div>
+                                <!--<div class="weui_media_info_metas ">点赞-->
+                                <!--<img src="images/55.png" width="17px" height="17px" class="tp">-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+
+    <!--&lt;!&ndash;底部开始&ndash;&gt;-->
+    <!--<div class="weui_tabbar">-->
+		<!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b1.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">首页</p>-->
+		<!--</a>-->
+		<!--<a href="sousuo.html" class="weui_tabbar_item">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b2.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">搜索</p>-->
+		<!--</a>-->
+		<!--<a href="gouwuche.html" class="weui_tabbar_item">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b3.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">购物车</p>-->
+		<!--</a>-->
+		<!--<a href="personal.html" class="weui_tabbar_item">-->
+			<!--<div class="weui_tabbar_icon">-->
+				<!--<img src="__PUBLIC__/home/images/b4.jpg" alt="">-->
+			<!--</div>-->
+			<!--<p class="weui_tabbar_label">个人中心</p>-->
+		<!--</a>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;底部结束&ndash;&gt;-->
+<!--</div>-->
+<!--</body>-->
+<script type="text/javascript" src="js/jquery-2.1.4.js" ></script>
+<script type="text/javascript" src="js/jquery-weui.min.js"></script>
+<script type="text/javascript">
+    $(".weui_media_info_metas").click(function(){
+        $("tp").css();
+    })
+
+</script>
+
+<!--</html>-->
