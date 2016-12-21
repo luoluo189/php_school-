@@ -138,7 +138,7 @@ class SellerController extends Controller
         // 善后处理
         if ($result) {
             //$this->success( '数据修改成功！','/admin/seller/seller');
-            header('Location:/admin/seller/seller');
+            header('Location:/index.php/admin/seller/seller');
         } else {
             $this->error('数据修改失败！');
         }

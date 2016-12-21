@@ -13,6 +13,10 @@ use Think\Upload;
 
 class GoodsController extends Controller
 {
+    /*
+    * 功能：显示商品信息
+    * 编写者：高小力
+    */
     public function design()
     {
          //种类分类
@@ -57,7 +61,10 @@ class GoodsController extends Controller
 
     }
 
-
+    /*
+    * 功能：添加商品信息
+    * 编写者：高小力
+    */
     public function addgds(){
         $btype=M('bs_type');
         $condition=array();
@@ -68,6 +75,10 @@ class GoodsController extends Controller
         $this->display();
     }
 
+    /*
+    * 功能：上传商品信息
+    * 编写者：高小力
+    */
     public function store(){
         //获取post数据
         $data=I('post.');
@@ -119,6 +130,10 @@ class GoodsController extends Controller
         }
     }
 
+    /*
+    * 功能：修改商品信息
+    * 编写者：高小力
+    */
     public function changegds(){
         $btype=M('bs_type');
         $condition=array();
@@ -151,32 +166,32 @@ class GoodsController extends Controller
         $data=I('post.');
         //获取外键种类id
         $bstname['bs_tname']=I('post.bs_tname');
-        //dump($bstname);
+        dump($bstname);
         $result = M('bs_type');
         $r = $result ->where($bstname)->select();
         $a=$r[0]['bs_tid'];
         //dump($a);
         $data['bs_tid']=$a;
-        //dump($data);
-        //上传文件
-        $upload=new Upload();
-        //设置参数
-        $upload->rootPath='./Public';
-        $upload->savePath='/uploads/';
-        //上传文件操作
-        $info=$upload->upload();
-        //dump($info);
-        //上传后处理
-        if(!$info){
-            $this->error('文件上传失败!');
-        }
-        else{
-            foreach ($info as $file){
-                $saveFileName=$file['savepath'].$file['savename'];
-                $data['bs_gurl']=$saveFileName;
-                //dump($data['si_image']);
-            }
-        }
+        dump($data);
+//        //上传文件
+//        $upload=new Upload();
+//        //设置参数
+//        $upload->rootPath='./Public';
+//        $upload->savePath='/uploads/';
+//        //上传文件操作
+//        $info=$upload->upload();
+//        //dump($info);
+//        //上传后处理
+//        if(!$info){
+//            $this->error('文件上传失败!');
+//        }
+//        else{
+//            foreach ($info as $file){
+//                $saveFileName=$file['savepath'].$file['savename'];
+//                $data['bs_gurl']=$saveFileName;
+//                //dump($data['si_image']);
+//            }
+//        }
         $id =I('get.id');
         //dump($id);
         $bgoods=M('bs_goods');
@@ -185,7 +200,7 @@ class GoodsController extends Controller
         $result=$bgoods->where("bs_gid=$id")->save($data);
         if ($result) {
             //$this->success( '数据修改成功！','/admin/goods/design');
-            header("Location:U('/index.php/admin/goods/design')");
+            header("Location:/index.php/admin/goods/design");
         } else {
             $this->error('数据修改失败！');
         }
@@ -213,7 +228,7 @@ class GoodsController extends Controller
      * 编写者：孙池晔
      * 状态：succeed
      */
-    public function goodsPic(){
+    public function changegoodspics(){
         //获取post数据
         $data=I('post.');
         //dump($data);
@@ -254,6 +269,10 @@ class GoodsController extends Controller
     }
 
 
+    /*
+    * 功能：删除商品信息
+    * 编写者：高小力
+    */
     public function delete(){
         $id=I('post.id');
         $bgoods=M('bs_goods');
@@ -267,6 +286,10 @@ class GoodsController extends Controller
         }
     }
 
+    /*
+    * 功能：商品信息的批量删除
+    * 编写者：高小力
+    */
     public function destoryBatch(){
         $userModel = M('bs_goods');
         $getid = I('id'); //获取选择的复选框的值
@@ -280,7 +303,7 @@ class GoodsController extends Controller
         if($userModel->where("bs_gid IN ($id )")->delete())
         {
             //$this->success('数据删除成功!');
-            header('Location:/admin/goods/design');
+            header('Location:/index.php/admin/goods/design');
         }
         else{
             $this->error('数据删除失败！');

@@ -24,6 +24,10 @@ class IndexController extends Controller
         }
 
     }
+    /*
+    * 功能：商品后台首页
+    * 编写者：高小力
+    */
     public function index()
     {
         $seller=M('store_information');
