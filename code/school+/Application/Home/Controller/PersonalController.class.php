@@ -29,7 +29,7 @@ class PersonalController extends Controller
         $_db=M('customer_address');
         $_mb=$_db->table('customer_information')->select();
         $condition=array();
-        $condition['ci_idd']=$_GET['id'];   
+        $condition['ci_idd']=$_GET['id'];
         $result=$_db->where($condition)->select();
         $this->assign('address', $result);
         $this->display();
@@ -53,11 +53,11 @@ class PersonalController extends Controller
             echo <<<STR
 				<script type="text/javascript">
 					alert('地址信息添加成功！');
-                    window.location.href = "/home/personal/paddress";
+                    window.location.href = "/index.php/home/personal/paddress";
 				</script>
 STR;
 
-       }else {
+        }else {
             echo "<script>                  
                     alert('地址信息还未添加！');
                     window.history.go(-1);
@@ -81,11 +81,11 @@ STR;
         $_db=M('customer_address');
         $_mb=$_db->table('customer_information')->select();
         $condition=array();
-        $condition['ci_idd']=$condition1['ci_id'];    
+        $condition['ci_idd']=$condition1['ci_id'];
         $result=$_db->where($condition)->order('ca_id')->select();
 
         $this->assign('address', $result);
-        $this->display(); 
+        $this->display();
     }
 
     /*
@@ -106,33 +106,19 @@ STR;
      * 编写者：孙池晔
      * 状态：已完成
      */
+
     public function personal(){
-        $_SESSION['ci_id']=1;
-        //本地调试
         $_db=M('customer_information');
         $condition=array();
-        $condition['ci_id']=$_GET['id'];
-        $result=$_db->where($condition)->select();
-        $this->assign('user', $result[0]);
-        $this->display();
-
-        //服务器代码
-        /*
-        $_db=M('customer_information');
-        $condition=array();
-//        cookie带有openid,通过openid可以查询用户的id
         $condition['openid']=$_COOKIE['openid'];
-
         $result=$_db->where($condition)->select();
         $result[0]['headimgurl']=$_COOKIE['headimgurl'];
 //        dump($_COOKIE['headimgurl']);
         $this->assign('user', $result[0]);
 
-//        dump($_SESSION);
-        $this->display();
-        */
-    }
 
+        $this->display();
+    }
 
     /*
      * 功能：用户地址删除
@@ -146,7 +132,7 @@ STR;
             echo <<<STR
 				<script type="text/javascript">
 					alert('地址信息删除成功！');
-                    window.location.href = "/home/personal/paddress";
+                    window.location.href = "/index.php/home/personal/paddress";
 				</script>
 STR;
         }
@@ -155,7 +141,7 @@ STR;
             echo <<<STR
 				<script type="text/javascript">
 					alert('地址信息删除失败！');
-                    window.location.href = "/home/personal/paddress";
+                    window.location.href = "/index.php/home/personal/paddress";
 				</script>
 STR;
         }
@@ -187,7 +173,7 @@ STR;
                 echo <<<STR
 				<script type="text/javascript">
 					alert('修改成功！');
-                    window.location.href = "/home/personal/paddress";
+                    window.location.href = "/index.php/home/personal/paddress";
 				</script>
 STR;
             }

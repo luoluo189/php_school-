@@ -1,11 +1,15 @@
 <?php
 namespace Home\Controller;
+//开启输出缓冲区
+ob_start();
+//开启会话
+session_start();
 
 use Think\Controller;
 
+
 class IndexController extends Controller
 {
-
     public function _before_index(){
 
         //接收code的值
@@ -59,7 +63,8 @@ class IndexController extends Controller
         $_db=M('customer_information');
         $tt['openid']=$_COOKIE['openid'];
         $result=$_db->where($tt)->count();
-        if($result==0){
+
+        if($result==0&&$_SESSION['ci_id']==NULL){
             $news['ci_name']=$_SESSION['nickname'];
             $news['openid']=$_SESSION['openid'];
             if($_SESSION['openid']==NULL){
@@ -67,72 +72,18 @@ class IndexController extends Controller
             }else{
                 $result3=$_db->add($news);
             }
-        }else{
-            $usernews=$_db->where($tt)->select();
         }
+        $usernews=$_db->where($tt)->select();
         setcookie('userid', $usernews[0]['ci_id'], time()+3156000);
+        $_SESSION['ci_id']=$_COOKIE['userid'];
+        dump($_SESSION);
         $this->display();
     }
 
 
-      /*
-       * 功能：搜索
-       * 编写者：安垒
-       * 状态：完成
-       */
-    public function search(){
-        $key=I('get.search_word');                               //获取参数
-
-        $sellUserModel = M('bs_goods');                           //要查询的表
-
-        $where['bs_gname']=array('like',"%{$key}%");            //like查询的条件
-
-        $where['bs_gdescription']=array('like',"%{$key}%");    //like查询的条件
-
-        $where['_logic']='OR';                                    //语句之间的连接条件
-        $list=$sellUserModel->where($where)->select();
-
-        if (NULL ==$list){
-            $this->error("很抱歉，没找到您要查找的商品");
-        }
-        //dump($list);
-
-       //完成跳转
-        foreach ($list as $key=>$val){                            //获取bs_tid
-//            dump($val);
-            $id= $val[bs_tid];
-//            dump($id);
-            $sql = "select si_id from bs_type where bs_type.bs_tid = $id";     //通过bs_tid去条件查询si_id
-            $sii_id=M()->query($sql);
-           // dump($sii_id);
-            foreach ($sii_id as $k => $v){
-               // dump($v);
-                $si_id = $v[si_id];
-                //dump($si_id);
-                $this->assign('si_id',$si_id);
-            }
-        }
-
-//        如果数据很多需要分页显示
-        //$count = M('bs_goods')->where($where)->count('bs_gid');
-//        dump($count);                                                      //统计记录条数
-//        $page = new Page($count, 6);
-//        $limit = $page->firstRow . ',' . $page->listRows;
-//
-//
-//        $rows = D('bs_goods')->where($where)->order('addtime DESC')->limit($limit)->select(); //查询
-
-
-        $this->assign('list',$list);                                //分配
-
-        $this->display(sousuo);
+    public function sousuo(){
+        $this->display();
     }
 
-    public function personal(){
-        redirect('/index.php/home/personal/personal');
 
-    }
-    public function gouwuche(){
-        redirect('/index.php/home/dingdan/gouwuche_queren');
-    }
 }

@@ -14,114 +14,90 @@ use Think\Controller;
 
 class JianzhiController extends controller{
     public $userId=1;
-	/*
-	作者：尤燕飞
-	功能：获取兼职列表页
-	*/
-
-	public function jianzhi(){
-		 $_db=M('pt_information');
-		 $c = $_db->select();
-		$this->assign('c',$c);
-		$this->display();
-	}
-	/*
-	作者：尤燕飞
-	功能：获取兼职详情页
-	*/
-	public function jianzhi_content(){
-		$pt_inid['pt_inid']= $_GET['id'];
-		//dump($pt_inid);
-		
-		$_db = M('pt_information');
-		$cont = $_db->where($pt_inid)->select();
-		$x['pt_min_id'] = $cont[0][pt_min_id];
-		$this->assign('cont',$cont);
-		$b = M('pt_manager_information');
-		$cx = $b->where($x)->select();
-		//dump($cx);
-		$this->assign('cx',$cx);
-
-		$this->display();
-	}
-
     /*
-       * 功能：搜索
-       * 编写者：安垒
-       * 状态：完成
-       */
-    public function search()
-    {
-        $key = I('get.search_word');                               //获取参数
+    作者：尤燕飞
+    功能：获取兼职列表页
+    */
 
-        $sellUserModel = M('pt_information');                           //要查询的表
-
-        $where['pt_inname'] = array('like', "%{$key}%");            //like查询的条件
-
-        $where['pt_inabstract'] = array('like', "%{$key}%");    //like查询的条件
-
-        $where['_logic'] = 'OR';                                    //语句之间的连接条件
-        $c = $sellUserModel->where($where)->select();
-
-        if (NULL == $c) {
-            $this->error("很抱歉，没找到您要查找的兼职类型");
-        }
+    public function jianzhi(){
+        $_db=M('pt_information');
+        $c = $_db->select();
         $this->assign('c',$c);
-        $this->display(jianzhi);
+        $this->display();
     }
-	/*
-	作者：尤燕飞
-	功能：获取兼职预约页
-	*/
-	public function jianzhi_list(){
-		
-		$pt_inid['pt_inid']= $_GET['id'];
-		//dump($pt_inid);
-		$_db = M('pt_information');
-		$cont = $_db->where($pt_inid)->select();
-		//从客户表中获取$ci_id
-		$pts = M('customer_information')->where('ci_id=1')->select();
-		
+    /*
+    作者：尤燕飞
+    功能：获取兼职详情页
+    */
+    public function jianzhi_content(){
+        $pt_inid['pt_inid']= $_GET['id'];
+        //dump($pt_inid);
 
-		$this->assign('cont',$cont);
-		$this->assign('pts',$pts);
-		$this->display();
+        $_db = M('pt_information');
+        $cont = $_db->where($pt_inid)->select();
+        $x['pt_min_id'] = $cont[0]['pt_min_id'];
+        $this->assign('cont',$cont);
+        $b = M('pt_manager_information');
+        $cx = $b->where($x)->select();
+        //dump($cx);
+        $this->assign('cx',$cx);
 
-
-		
-	}
-	/*
-	作者：尤燕飞
-	功能：向数据库添加兼职交易信息
-	*/
-	public function add(){
-	    $time = time();
-		$pt_inid['pt_inid']= $_GET['id'];
-		$time = date('Y-m-d H:i:s', $time);
-		$data = array();
-
-		$data['pt_inid']= $pt_inid['pt_inid'];
-		$data['pt_trtime'] = $time;
-		$data['pt_trremark']= I('post.pt');
-		//默认交易状态
-		$data['ts_id']=7;
-		$data['ci_id']=1;
+        $this->display();
+    }
+    /*
+    作者：尤燕飞
+    功能：获取兼职预约页
+    */
+    public function jianzhi_list(){
+        $ci_id=$_SESSION['ci_id'];
+        $pt_inid['pt_inid']= $_GET['id'];
+        //dump($pt_inid);
+        $_db = M('pt_information');
+        $cont = $_db->where($pt_inid)->select();
+        //从客户表中获取$ci_id
+        $pts = M('customer_information')->where("ci_id=$ci_id")->select();
 
 
-		//dump($data);
-		$pt = M('pt_trade')->add($data);
-			if($pt && $data['pt_trremark'] && $data['pt_inid'] && $data['pt_trtime'])
-			{
-                echo <<<STR
+        $this->assign('cont',$cont);
+        $this->assign('pts',$pts);
+        $this->display();
+
+
+
+    }
+    /*
+    作者：尤燕飞
+    功能：向数据库添加兼职交易信息
+    */
+    public function add(){
+        $time = time();
+        $pt_inid['pt_inid']= $_GET['id'];
+        $time = date('Y-m-d H:i:s', $time);
+        $data = array();
+
+        $data['pt_inid']= $pt_inid['pt_inid'];
+        $data['pt_trtime'] = $time;
+        $data['pt_trremark']= I('post.pt');
+        //默认交易状态
+        $data['ts_id']=7;
+        $data['ci_id']=$_SESSION['ci_id'];
+
+
+        //dump($data);
+
+        if( $data['pt_trremark'] && $data['pt_inid'] && $data['pt_trtime'])
+        {
+            $pt = M('pt_trade')->add($data);
+            echo <<<STR
 				<script type="text/javascript">
 					alert('预约成功！');
                     window.location.href = "/index.php/home/dingdan/personal_list";
 				</script>
 STR;
-			}
-			else{
-                echo "<script>alert('请先预约！');
+        }
+        else{
+            echo "<script>alert('请先填写相关信息！');
                             window.history.go(-1);</script>";
-            }
-	}
+        }
+    }
 }
