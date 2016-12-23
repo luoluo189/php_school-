@@ -63,7 +63,8 @@ class IndexController extends Controller
         $_db=M('customer_information');
         $tt['openid']=$_COOKIE['openid'];
         $result=$_db->where($tt)->count();
-        if($result==0){
+
+        if($result==0&&$_SESSION['ci_id']==NULL){
             $news['ci_name']=$_SESSION['nickname'];
             $news['openid']=$_SESSION['openid'];
             if($_SESSION['openid']==NULL){
@@ -71,10 +72,11 @@ class IndexController extends Controller
             }else{
                 $result3=$_db->add($news);
             }
-        }else{
-            $usernews=$_db->where($tt)->select();
         }
+        $usernews=$_db->where($tt)->select();
         setcookie('userid', $usernews[0]['ci_id'], time()+3156000);
+        $_SESSION['ci_id']=$_COOKIE['userid'];
+        dump($_SESSION);
         $this->display();
     }
 

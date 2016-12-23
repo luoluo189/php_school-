@@ -53,7 +53,7 @@ class PersonalController extends Controller
             echo <<<STR
 				<script type="text/javascript">
 					alert('地址信息添加成功！');
-                    window.location.href = "/home/personal/paddress";
+                    window.location.href = "/index.php/home/personal/paddress";
 				</script>
 STR;
 
@@ -106,18 +106,7 @@ STR;
      * 编写者：孙池晔
      * 状态：已完成
      */
-//    public function personal(){
-//        $_SESSION['ci_id']=1;
-//        //本地调试
-//        $_db=M('customer_information');
-//        $condition=array();
-//        $condition['ci_id']=$_GET['id'];
-//        $result=$_db->where($condition)->select();
-//        $this->assign('user', $result[0]);
-//        $this->display();
-//
 
-//    }
     public function personal(){
         $_db=M('customer_information');
         $condition=array();
@@ -127,7 +116,7 @@ STR;
 //        dump($_COOKIE['headimgurl']);
         $this->assign('user', $result[0]);
 
-//        dump($_SESSION);
+
         $this->display();
     }
 
