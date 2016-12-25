@@ -220,6 +220,7 @@ STR;
     /*
     作者：尤燕飞
     功能：商品预约、兼职、理发预约、全部订单页的动态获取
+    修改者：骆静静（ifsee）等等等等
    */
     public function personal_list(){
         //最新订单
@@ -235,13 +236,14 @@ STR;
          */
         $ci_id=$_SESSION['ci_id'];
 //        $ci_id=6;
-        dump($ci_id);
+//        dump($ci_id);
         //商品预约
         $sql1="select store_information.si_id,bs_mgnum,bs_tr_inaddress,si_name,bs_gname,bs_gprice,bs_tr_inmoney,bs_tr_time,bs_gid,bs_gurl,bs_trade.ts_iddd,bs_trade.bs_tr_id,si_phone
         from bs_many_goods,bs_trade,bs_trade_information,store_information,bs_goods
-        where bs_many_goods.bs_tr_id=bs_trade.bs_tr_id and bs_trade.bs_tr_id=bs_trade_information.bs_tr_idd and ci_id5=$ci_id and bs_trade.bs_sid=store_information.si_id and bs_goods.bs_gid=bs_many_goods.bs_giddd and bs_trade.ts_iddd=7 ";
-//        $sql1="select * from bs_trade,bs_trade_information where ci_id5=$ci_id";
-        $c=M()->order('bs_tr_time desc')->query($sql1);
+        where bs_many_goods.bs_tr_id=bs_trade.bs_tr_id and bs_trade.bs_tr_id=bs_trade_information.bs_tr_idd and ci_id5=$ci_id and bs_trade.bs_sid=store_information.si_id and bs_goods.bs_gid=bs_many_goods.bs_giddd and bs_trade.ts_iddd=7
+        order by bs_tr_time  DESC";
+
+        $c=M()->query($sql1);
         dump($c);
         $this->assign('c',$c);
 
@@ -653,7 +655,7 @@ STR;
  */
     public function deltHorder(){
         $data['or_tdid']=I('get.or_tdid');
-        dump($data);
+//    dump($data);
         $data['or_ifsee']=0;
         if(M('order_trade')->save($data)){
             echo <<<STR
@@ -679,7 +681,7 @@ STR;
 */
     public function deltPtorder(){
         $data['pt_trid']=I('get.pt_trid');
-        dump($data);
+//        dump($data);
         $data['pt_trifsee']=0;
         if(M('pt_trade')->save($data)){
             echo <<<STR

@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>店家</title>
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
     <link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
-
+    
     <style>
         html,body{
             height:100%;
@@ -20,8 +20,8 @@
         width:80%;
         padding-top:10px;
         margin:0 auto;
-    	text-align:center;
-		font-size:26px;
+        text-align:center;
+        font-size:26px;
         }
         .top{
             float: left;
@@ -64,33 +64,34 @@
 <div class="weui_tab">
     <div class="weui_tab_bd">
 
-		    <div>
-		    <!-- 返回图标开始 -->
-		    <div   class="back" >
-		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
-		    </div>
-		    <div class="set" name="set">
-		    {$set['si_name']}
-		    </div>
-		    <!-- 返回图标结束 -->
-		    </div>
+            <div>
+            <!-- 返回图标开始 -->
+            <div   class="back" >
+            <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+            </div>
+            <div class="set" name="set">
+            {$set['si_name']}
+            </div>
+            <!-- 返回图标结束 --> 
+            </div>
+
 
         <div class="titleimage">
-        <img src="__PUBLIC__/{$image[0]['si_image']}" style="width:100%;">
+        <img src="__PUBLIC__/home/images/yinpindian.jpg" style="width:100%;">
         </div>
 
 
         <!--中间小标题部分开始-->
         <div   class="littletitle" >
-            <a name="set" class="top" href="/index.php/home/dianjia/jianjie?si_id={$set.si_id}">
+            <a name="set" class="top" href="/home/dianjia/jianjie?si_id={$set.si_id}">
                 <div><img src="__PUBLIC__/home/images/51.png" alt=""></div>
                 <div class="f">本店简介</div>
             </a>
-            <a name="commen" class="top" href="/index.php/home/dianjia/shangpin?id={$commen.bs_rid}&si_id={$set.si_id}">
+            <a name="commen" class="top" href="/home/dianjia/shangpin?bs_gid={$commen.bs_rid}&si_id={$set.si_id}">
                 <div><img src="__PUBLIC__/home/images/52.png" alt=""></div>
                 <div class="f">店家推荐</div>
             </a>
-            <a class="top" href="/index.php/home/pingjia/fengping?id={$set.si_id}">
+            <a class="top" href="{:U('home/dianjia/pingjia')}">
                 <div><img src="__PUBLIC__/home/images/53.png" alt=""></div>
                 <div class="f">顾客风评</div>
             </a>
@@ -102,27 +103,26 @@
 
         <div class="content" >
         <volist name="bs_goods" id="voo">
-
+        
             <volist name="voo" id="vo">
                 <div class="weui_cells weui_cells_access">
-                            <a href="/index.php/home/dianjia/shangpin?bs_gid={$vo.bs_gid}&si_id={$set.si_id}">
-                                <img src="__PUBLIC__/{$vo.bs_gurl}"  class="yinpin"></a>
+                            <a href="/index.php/home/dianjia/shangpin?bs_gid={$vo.bs_gid}&si_id={$set.si_id}"><img src="__PUBLIC__/home/images/yinpin.jpg"  class="yinpin"></a>
                             <div class="neirong">
                                 {$vo['bs_gname']}<br/>
                                 价格：{$vo['bs_gprice']}<br/>
                                 {$vo['bs_gsize']}<br/>
-                                <a href="/index.php/home/dianjia/gouwu1/id/{$vo.bs_gid}">
-                                  <img src="__PUBLIC__/home/images/gouwuche.png" style="float:right;"></a>
+                                <a href="gouwuche-queren.html"><img src="__PUBLIC__/home/images/gouwuche.png" style="float:right;"></a>
                             </div>
                 </div>
             </volist>
-
+           
             </volist>
         </div>
         <!--主体部分结束-->
 
 
     <!--底部开始-->
+
 
         <!--<div class="weui_tabbar">-->
             <!--<a href="index.html" class="weui_tabbar_item ">-->

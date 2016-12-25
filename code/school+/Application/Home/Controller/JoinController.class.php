@@ -64,16 +64,66 @@ class JoinController extends Controller
                 $data = I('post.');
                 $publisher = M('publisher')->add($data);
                 if ($publisher) {
-                    header("Location:/index.php/home/join/dialog");
+                    echo <<<STR
+				<script type="text/javascript">
+					alert('您的信息提交成功，管理员会在半个小时内与您联系！');
+                    window.location.href = "/index.php/home/";
+				</script>
+STR;
                 }
             }
             else {
                 //校验失败
-                redirect('/index.php/home/join/join', 2, '验证码输入错误，页面跳转中...');
+                echo <<<STR
+				<script type="text/javascript">
+					alert('验证码输入错误！');
+                    window.location.href = "/index.php/home/";
+				</script>
+STR;
             }
         }
     }
     public function dialog(){
         $this->display();
+    }
+    /*
+   功能：将修改密码者的信息提交到数据库
+   作者：尤燕飞
+   修改：骆静静弹框
+   状态：已完成
+   */
+    public function findpwd(){
+        $captcha = new Verify();
+        $result = $captcha->check(I('post.captcha'),'login');
+//        dump($result);
+
+        if(isset($_POST['submit'])) {
+            if ($result) {
+                //校验成功
+                $data = I('post.');
+                $pu = M('findpwd')->add($data);
+                if ($pu) {
+                    echo <<<STR
+				<script type="text/javascript">
+					alert('您的请求信息提交成功，管理员确认后会在半个小时内为您重置密码');
+                    window.location.href = "/index.php/home/";
+				</script>
+STR;
+                }
+            }
+            else {
+                //校验失败
+                echo <<<STR
+				<script type="text/javascript">
+					alert('验证码输入错误！');
+                    window.location.href = "/index.php/home/";
+				</script>
+STR;
+            }
+        }
+
+
+        $this->display();
+
     }
 }
