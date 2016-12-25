@@ -32,30 +32,60 @@ class DingdanController extends Controller
 
 
     }
+
+
+
+    /*
+    * 功能：购物车确认页面
+    * 编写者：尤燕飞
+    * 状态：已完成
+    * 修改者：李雪
+    */
     public function gouwuche_queren(){
-        $ci_id=$_SESSION['ci_id'];
-        $sql = "select bs_gname,bs_gprice,sh_cnum,bs_gurl,bs_goods.bs_gid,si_id
-        from bs_goods,shopping_cart,bs_type
-        where bs_goods.bs_gid = shopping_cart.bs_gidd and bs_type.bs_tid = bs_goods.bs_tid and ci_idddd = $ci_id";
-        $storename=M()->query($sql);
+        $ci_id = $_SESSION['ci_id'];
+        $storegoods = M('shopping_cart')->getField('si_ids', true);
+//        dump($storegoods);
+        $storeid = array_keys(array_count_values($storegoods));//获取到了不重复的店家id
 
-        //dump($storename);
-        $this->assign('storename',$storename);
+        for ($i = 0; $i < count($storeid); $i++) {
+            $conditions['si_ids'] = $storeid[$i];//查询条件
+            //获取商品id和数量
+            $storenameid[$storeid[$i]] = M('shopping_cart')->where($conditions)->select();
+            $news = $storenameid[$storeid[$i]];//购物车的信息
+        }
+//        dump($storenameid);
+        $this->assign('storename',$storenameid);//显示店家id
 
-        $n= count($storename);
-        $count=0;
+        $n = count($storegoods);
+        $count = 0;
         for ($i=0; $i < $n ; $i++) {
-            $c=$storename[$i][sh_cnum]*$storename[$i][bs_gprice];
+            $c=$storegoods[$i]['sh_cnum']*$storegoods[$i]['bs_gprice'];
             $count=$count+$c;
         }
         $this->assign('cs',$count);
         $this->display();
     }
 
+
+
     /*
-    作者：尤燕飞
-    功能：订单评价页的动态获取
+    * 功能：购物车页面删除订单
+    * 编写者;李雪
+    * 状态：已完成
     */
+    public function deleteorder(){
+        $bs_gid = I('get.bs_gid');
+        $result = M('shopping_cart')->where("bs_gidd=$bs_gid")->delete();
+        if($result){
+            $referer = $_SERVER['HTTP_REFERER'];
+            echo "<script>document.location.href='$referer'</script>";
+        }
+        else{
+            echo "<script>alert('删除失败');window.history.go(-1);</script>";
+        }
+    }
+
+
     /*
        作者：尤燕飞
        功能：订单评价页的动态获取
@@ -205,20 +235,21 @@ STR;
          */
         $ci_id=$_SESSION['ci_id'];
 //        $ci_id=6;
-//        dump($ci_id);
+        dump($ci_id);
         //商品预约
         $sql1="select store_information.si_id,bs_mgnum,bs_tr_inaddress,si_name,bs_gname,bs_gprice,bs_tr_inmoney,bs_tr_time,bs_gid,bs_gurl,bs_trade.ts_iddd,bs_trade.bs_tr_id,si_phone
         from bs_many_goods,bs_trade,bs_trade_information,store_information,bs_goods
-        where bs_many_goods.bs_tr_id=bs_trade.bs_tr_id and bs_trade.bs_tr_id=bs_trade_information.bs_tr_idd and ci_id5=$ci_id and bs_trade.bs_sid=store_information.si_id and bs_goods.bs_gid=bs_many_goods.bs_giddd and bs_trade.ts_iddd=7 and if_see=1";
+        where bs_many_goods.bs_tr_id=bs_trade.bs_tr_id and bs_trade.bs_tr_id=bs_trade_information.bs_tr_idd and ci_id5=$ci_id and bs_trade.bs_sid=store_information.si_id and bs_goods.bs_gid=bs_many_goods.bs_giddd and bs_trade.ts_iddd=7 ";
 //        $sql1="select * from bs_trade,bs_trade_information where ci_id5=$ci_id";
         $c=M()->order('bs_tr_time desc')->query($sql1);
+        dump($c);
         $this->assign('c',$c);
 
         //兼职订单
 
         $sql2="select pt_inname,pt_inmoney,pt_trtime,pt_information.pt_inid,pt_trade.pt_trid,pt_trade.ts_id
        from pt_information,pt_trade
-       where pt_information.pt_inid=pt_trade.pt_inid and ci_id=$ci_id and pt_trade.ts_id in (8,9) and pt_trifsee=1";
+       where pt_information.pt_inid=pt_trade.pt_inid and ci_id=$ci_id and pt_trade.ts_id in (8,9) ";
         $s = M()->order('pt_trtime desc')->query($sql2);
         //dump($s);
         $this->assign('s',$s);
@@ -227,7 +258,7 @@ STR;
         //理发订单
         $sql3="select store_information.si_id,si_name,or_typename,hair_long,or_tdday,or_tdtime,si_id,or_tdid,si_image,order_trade.or_tdid,order_trade.ts_idd,si_phone
        from store_information,order_trade
-       where order_trade.storeid=store_information.si_id and order_trade.ci_idid=$ci_id and order_trade.ts_idd in (3,4) and or_ifsee=1";
+       where order_trade.storeid=store_information.si_id and order_trade.ci_idid=$ci_id and order_trade.ts_idd in (3,4)";
         $s1 = M()->order('order_trade.or_tdid DESC')->query($sql3);
         //dump($s1);
         $this->assign('s1',$s1);
@@ -617,8 +648,54 @@ STR;
 //    订单完成部分的订单软删除
     /*
      作者：骆静静
-     功能：订单管理之商品订单的删除（软）
+     功能：订单管理之理发订单的删除（软）
      状态：完成
  */
+    public function deltHorder(){
+        $data['or_tdid']=I('get.or_tdid');
+        dump($data);
+        $data['or_ifsee']=0;
+        if(M('order_trade')->save($data)){
+            echo <<<STR
+                    <script type="text/javascript">
+                        alert('订单删除成功！');
+                        window.location.href = "/index.php/home/dingdan/personal_list";
+                    </script>
+STR;
+        }else{
+            echo <<<STR
+                        <script type="text/javascript">
+                            alert('订单删除失败');
+                            window.location.href = "/index.php/home/dingdan/personal_list";
+                        </script>
+STR;
+        }
 
+    }
+    /*
+    作者：骆静静
+    功能：订单管理之兼职订单的删除（软）
+    状态：完成
+*/
+    public function deltPtorder(){
+        $data['pt_trid']=I('get.pt_trid');
+        dump($data);
+        $data['pt_trifsee']=0;
+        if(M('pt_trade')->save($data)){
+            echo <<<STR
+                    <script type="text/javascript">
+                        alert('订单删除成功！');
+                        window.location.href = "/index.php/home/dingdan/personal_list";
+                    </script>
+STR;
+        }else{
+            echo <<<STR
+                        <script type="text/javascript">
+                            alert('订单删除失败');
+                            window.location.href = "/index.php/home/dingdan/personal_list";
+                        </script>
+STR;
+        }
+
+    }
 }
