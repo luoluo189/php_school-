@@ -37,8 +37,6 @@
 
 <div class="weui_tab">
 	<div class="weui_tab_bd">	
-	
-
 
     		<div>
 		    <!-- 返回图标开始 -->
@@ -50,7 +48,6 @@
 		    </div>
 		    <!-- 返回图标结束 -->	
 		    </div>
-		    
 
     <!-- 主体部分开始 -->
     <div class="weui_cells weui_cells_access"  style="margin-top:8%">
@@ -62,20 +59,21 @@
                 <p>姓名：{$vo.ca_name}</p>
                 <p>电话：{$vo.ca_phone}</p>
                 <p>地址：{$vo.ca_address}</p>
-
             </div>
         </a>
         <div class="weui_cell">
             <div class="weui_cell_bd weui_cell_primary"  >
-                <!--<div style="margin-top: 0%;width:50%;">-->
-                    <!--<input type="checkbox"  name="address"  value="address"> 设为默认地址-->
-                <!--</div>-->
-                <div class="weui_cell_bd weui_cell_primary"    style="float:right;margin-top: -6%;">
+
+                <div style="width:50%;">
+                    <input type="radio"  name="{$vo.ca_id}"  value="" class="setaddress"> 设为默认地址
+                </div>
+
+                <div class="weui_cell_bd weui_cell_primary" style="float:right;margin-top: -8%;">
 
                     <a class="delete"  href="/index.php/home/personal/editaddress/id/{$vo.ca_id}">
                     <input type="submit" value="编辑" class="weui_btn weui_btn_mini weui_btn_default">
                     </a>
-                    <a class="delete" href="/index.php/__URL__/delete/id/{$vo.ca_id}">
+                    <a class="delete" href="__URL__/delete/id/{$vo.ca_id}">
                         <input type="submit" value="删除" class="weui_btn weui_btn_mini weui_btn_default" id="delete">
                      </a>
                 </div>
@@ -103,6 +101,21 @@
             }
         });
     });
+</script>
+<script type="text/javascript">
+    $(".setaddress").click(function () {
+        var id = $(this).attr('name');
+        var self = $(this);
+        $.get("{:U('home/personal/setaddress')}",
+                {'id':id},//删除页面所需要的要删除的数据id
+                function(data){
+                    alert('修改成功');
+                    window.history.go(-1);
+                    location.reload()
 
+}//function(data)处的括号
+        );//post结尾处的括号
+
+    })  ;
 </script>
 </html>

@@ -63,15 +63,15 @@
         <div class="pho">
             <img src="__PUBLIC__/{$set.si_image}"alt="">
         </div>
-        <form action="{:U('home/lifa/getyuyue')}" method="post" enctype= "multipart/form-data">
+        <form action="/index.php/home/lifa/getyuyue/si_id/{$set.si_id}" method="post" enctype= "multipart/form-data">
         <p class="pt">请填写您的信息：</p>
         <!-- placeholder="商家id" -->
           <input class="weui_input" type="hidden" name="storeid"  value="{$set.si_id}">
 
           <!--  placeholder="客户id" -->
-            <input class="weui_input" type="hidden" name="ci_idid" value="2">
+            <!--<input class="weui_input" type="text" name="ci_idid"  value="  李雪 <?php echo $_SESSION['ci_id']; ?>">-->
            <!-- placeholder="ts_id" -->
-          <input class="weui_input" type="hidden" name="ts_idd"  value="1">
+           <input class="weui_input" type="hidden" name="ts_idd"  value="3">
 
         <div class="weui_cells weui_cells_form">
             <div class="weui_cell">
@@ -93,21 +93,19 @@
                 </div>
             </div>
             <div class="weui_cell">
-                <div class="weui_cell_hd"><label class="weui_label">选择您的头发长度：</label></div>
+                <div class="weui_cell_hd"><label class="weui_label">头发长度：</label></div>
                 <div class="weui_cell_bd ">
-                    <input type="radio" name="hair" value="短发">短发
-                    <input type="radio" name="hair" value="中长发">中长发
-                    <input type="radio" name="hair" value="长发">长发
+                    <input type="radio" name="hair" value="短发">&nbsp;短发
+                    <input type="radio" name="hair" value="中长发">&nbsp;中长发
+                    <input type="radio" name="hair" value="长发">&nbsp;长发
                 </div>
             </div>
             <div class="weui_cell">
-                <div class="weui_cell_hd"><label class="weui_label">选择您的服务类型：</label></div>
+                <div class="weui_cell_hd"><label class="weui_label">服务类型：</label></div>
                 <div class="weui_cell_bd ">
-                    <input type="checkbox" name="haircut" value="剪发">剪发
-                    <input type="checkbox" name="haircut" value="烫发">烫发
-                    <input type="checkbox" name="haircut" value="染发">染发
-                    <input type="checkbox" name="haircut" value="拉直">拉直
-                    <input type="checkbox" name="haircut" value="造型设计">造型设计
+                    <volist name="service" id="vo">
+                        <input type="checkbox" name="haircut[]" value="{$vo.ot_type}">&nbsp;{$vo.ot_type}<br/>
+                    </volist>
                 </div>
             </div>
             <div class="weui_cell">
@@ -120,10 +118,10 @@
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label for="" class="weui_label">预约时间：</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input type="radio" name="time" value="1">9:00-11:30&nbsp;&nbsp;
-                    <input type="radio" name="time" value="2">13:00-15:00<br/>
-                    <input type="radio" name="time" value="3">16:00-18:00
-                    <input type="radio" name="time" value="4">19:00-21:00
+                    <input type="radio" name="time" value="9:00-11:30">9:00-11:30<br/>
+                    <input type="radio" name="time" value="13:00-15:00">13:00-15:00<br/>
+                    <input type="radio" name="time" value="16:00-18:00">16:00-18:00<br/>
+                    <input type="radio" name="time" value="19:00-21:00">19:00-21:00<br/>
                 </div>
             </div>
         </div>

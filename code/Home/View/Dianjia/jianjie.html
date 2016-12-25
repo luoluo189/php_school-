@@ -108,8 +108,8 @@
         <hr/>
         <div class="t1">
             <volist name="bs_type" id="vo">
-            <a class="top1" href="/index.php/home/dianjia/goodslist?si_id={$vo.si_id}&bs_tid={$vo.bs_tid}">
-                <div class="im"><img src="__PUBLIC__/home/images/guozhi.jpg" alt=""></div>
+            <a class="top1" href="/index.php/home/dianjia/goodslist?id={$vo.si_id}&bs_tid={$vo.bs_tid}">
+                <div class="im"><img src="__PUBLIC__/{$vo['bs_gurl']}" alt=""></div>
                 <div class="f1">{$vo['bs_tname']}</div>
             </a>
             </volist>

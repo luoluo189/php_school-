@@ -22,7 +22,6 @@
     	text-align:center;
 		font-size:22px;
         }
-	
 	</style>
 </head>
 <body>
@@ -63,7 +62,7 @@
            <div class="weui_panel weui_panel_access" >
 			  <div class="weui_panel_bd">
 			    <volist name="store_information" id="vo">
-			    <a href="/home/dianjia/jump?si_id={$vo.si_id}" class="weui_media_box weui_media_appmsg"  id="{$vo.si_id}">
+			    <a href="/index.php/home/dianjia/jump?si_id={$vo.si_id}" class="weui_media_box weui_media_appmsg"  id="{$vo.si_id}">
 			      <div class="weui_media_hd" >
 			        <img class="weui_media_appmsg_thumb" src="__PUBLIC__/{$vo.si_image}" alt="">
 			      </div>
@@ -106,8 +105,8 @@
 	<!--</div>-->
 <!--</div>-->
 <!--</body>-->
-<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-<script type="text/javascript" src="js/jquery-weui.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
 
 <style>
 	.swiper-container img {

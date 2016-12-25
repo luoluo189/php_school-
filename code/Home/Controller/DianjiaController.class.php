@@ -18,7 +18,7 @@ class DianjiaController extends Controller
      * 状态：succeed
      */
     public function dianjia(){
-
+        $_SESSION['ci_id'] = 1;
         //通过店家ID获取商品种类
         $condition['si_id']=$_GET['si_id'];
         $name = M('store_information')->where($condition)->select();
@@ -32,20 +32,20 @@ class DianjiaController extends Controller
             $tid[$i]= $goodtype[$i]['bs_tid'];
             $conditions['bs_tid']=$tid[$i];
             $goodname[$i] = M('bs_goods')->where($conditions)->select();
-            //var_dump($goodname[$i]);
+             //var_dump($goodname[$i]);
         }
         //var_dump($tid);
         //获取推荐信息
         $conditionss['bs_rname'] = '推荐';
         $result = M('bs_recommend')->where($conditionss)->select();
-        $commen =array();
-        $commen = $result[0];
-        //var_dump($commen);
-        $this->assign('commen',$commen);
+         $commen =array();
+         $commen = $result[0];
+         //var_dump($commen);
+         $this->assign('commen',$commen);
 
-        $this->assign('set',$set);
+         $this->assign('set',$set);
         //获取商品详细信息
-        // 数据库sql语句拼接？
+         // 数据库sql语句拼接？
         $this->assign('bs_goods',$goodname);
         $this->assign('image',$name);
         $this->display();
@@ -56,7 +56,7 @@ class DianjiaController extends Controller
      * 状态：succeed
      */
     public function index(){
-
+        $_SESSION['ci_id']=1;
         //通过店家ID获取商品种类
         $condition['si_id']=$_GET['si_id'];
         $name = M('store_information')->where($condition)->select();
@@ -70,17 +70,17 @@ class DianjiaController extends Controller
             $tid[$i]= $goodtype[$i]['bs_tid'];
             $conditions['bs_tid']=$tid[$i];
             $goodname[$i] = M('bs_goods')->where($conditions)->select();
-            //var_dump($goodname[$i]);
+             //var_dump($goodname[$i]);
         }
         //var_dump($tid);
         $conditionss['bs_rname'] = '推荐';
         $result = M('bs_recommend')->where($conditionss)->select();
-        $commen =array();
-        $commen = $result[0];
-        //var_dump($commen);
-        $this->assign('commen',$commen);
+         $commen =array();
+         $commen = $result[0];
+         //var_dump($commen);
+         $this->assign('commen',$commen);
 
-        $this->assign('set',$set);
+         $this->assign('set',$set);
         $this->assign('bs_goods',$goodname);
         $this->display();
     }
@@ -90,7 +90,6 @@ class DianjiaController extends Controller
      * 编写者：黄桃源
      * 状态：succeed
      */
-
     public function jianjie(){
         $_SESSION['ci_id']=1;
 
@@ -123,7 +122,7 @@ class DianjiaController extends Controller
      * 状态：succeed
      */
     public function goodslist(){
-
+        $_SESSION['ci_id']=1;
         $condition['bs_tid'] = $_GET['bs_tid'];
         $result=M('bs_goods')->where($condition)->select();
         $set0=M('bs_type')->where($condition)->select();
@@ -140,18 +139,18 @@ class DianjiaController extends Controller
      * 状态：succeed
      */
     public function shangpin(){
+        $_SESSION['ci_id'] = 1;
 
         $si_id = $_GET['si_id'];//店家id
-        $bs_rid= $_GET['id'];//推荐id
+        $bs_rid= $_GET['id'];//商品id或者推荐id
 
-        $sql = "select bs_gname,bs_gurl,bs_gprice,bs_gdescription
+        $sql = "select bs_gname,bs_gurl,bs_gprice,bs_gdescription,bs_gid,bs_tname,bs_gsize,si_id
         from bs_goods,bs_type
         where bs_goods.bs_rid = $bs_rid and bs_type.si_id = $si_id  and bs_type.bs_tid = bs_goods.bs_tid";
-
         $result = M()->query($sql);
         $set = array();
         $set = $result[0];
-//dump($set);
+
         $name=M('store_information')->where("si_id = $si_id")->select();
         $si = array();
         $si = $name[0];
@@ -162,8 +161,6 @@ class DianjiaController extends Controller
 
         $this->display();
     }
-
-
 
 
     /*
@@ -195,17 +192,17 @@ class DianjiaController extends Controller
         $this->display("Dianjia:shangpin");
     }
 
-    /*
-    * 功能：美食列表
-    * 编写者：黄桃源
-    * 状态：succeed
-    */
+     /*
+     * 功能：美食列表
+     * 编写者：黄桃源
+     * 状态：succeed
+     */
     public function meishi(){
-
+        $_SESSION['ci_id']=1;
         $_db=M('store_information');
-        $condition=array();
-        $condition['s_type_id']=2;
-        $result=$_db->where($condition)->select();
+        $condition=array();        
+        $condition['s_type_id']=2;        
+        $result=$_db->where($condition)->select();  
         $this->assign('store_information', $result);
         $this->display();
     }
@@ -217,7 +214,7 @@ class DianjiaController extends Controller
      */
 
     public function shangjia(){
-
+        $_SESSION['ci_id']=1;
         $_db=M('store_information');
         $result=$_db->select();
         $this->assign('store_information', $result);
@@ -235,43 +232,43 @@ class DianjiaController extends Controller
      * 兼职进jianzhi,s_type_id是3
      */
     public function jump(){
+            $_SESSION['ci_id']=1;
+            $id = I('get.si_id');
+            //通过店家ID获取商品种类
+            $name = M('store_information')->where("si_id=$id")->select();
 
-        $id = I('get.si_id');
-        //通过店家ID获取商品种类
-        $name = M('store_information')->where("si_id=$id")->select();
+            $set = array();
+            $set = $name[0];
 
-        $set = array();
-        $set = $name[0];
+            $goodtype = M('bs_type')->where("si_id=$id")->select();
+            //var_dump($goodtype);
 
-        $goodtype = M('bs_type')->where("si_id=$id")->select();
-        //var_dump($goodtype);
-
-        $tid = array();
-        $_db = M('bs_goods');
-        for($i=0;$i<count($goodtype);$i++){
-            $tid[$i]= $goodtype[$i]['bs_tid'];
-            $conditions['bs_tid']=$tid[$i];
-            $goodname[$i] = M('bs_goods')->where($conditions)->select();
-            //var_dump($goodname[$i]);
-        }
-        //var_dump($tid);
-        //获取推荐信息
-        $conditionss['bs_rname'] = '推荐';
-        $result = M('bs_recommend')->where($conditionss)->select();
-        $commen =array();
-        $commen = $result[0];
-        //var_dump($commen);
-        $this->assign('commen',$commen);
-        $this->assign('set',$set);
-        //获取商品详细信息
-        $this->assign('bs_goods',$goodname);
-        $this->assign('image',$name);
+            $tid = array();
+            $_db = M('bs_goods');
+            for($i=0;$i<count($goodtype);$i++){
+                $tid[$i]= $goodtype[$i]['bs_tid'];
+                $conditions['bs_tid']=$tid[$i];
+                $goodname[$i] = M('bs_goods')->where($conditions)->select();
+                //var_dump($goodname[$i]);
+            }
+            //var_dump($tid);
+            //获取推荐信息
+            $conditionss['bs_rname'] = '推荐';
+            $result = M('bs_recommend')->where($conditionss)->select();
+            $commen =array();
+            $commen = $result[0];
+            //var_dump($commen);
+            $this->assign('commen',$commen);
+            $this->assign('set',$set);
+            //获取商品详细信息
+            $this->assign('bs_goods',$goodname);
+            $this->assign('image',$name);
 
         if($set['s_type_id'] == 1){
-            $this->display('Lifa:dianpu');//店铺
+            $this->display('Lifa:dianpu');//店铺（理发）
         }
         else if($set['s_type_id'] == 2){
-            $this->display('Dianjia:dianjia');//店家
+            $this->display('Dianjia:dianjia');//店家（商品）
         }
         else if($set['s_type_id'] == 3){
             $_db=M('pt_information');
@@ -284,22 +281,51 @@ class DianjiaController extends Controller
 
 
     /*
-    * goodlist页面数据插入数据库
+    * 点击购物车图标将商品加入购物车
     * 编写者：黄桃源
     * 状态：succeed
+     * 修改者：李雪
     */
     public function gouwu1(){
-        //$id = $_GET['id'];
 
-
+        $_SESSION['ci_id'] = 1;
+        $bs_gidd = $_GET['id'];
         $news = array();
-        $news['bs_gidd'] = $_GET['id'];
+        $news['bs_gidd'] = $bs_gidd;//商品id
+        $news['ci_idddd'] = $_SESSION['ci_id'];//用户id
+        $news['si_ids'] = $_GET['si_id'];//店家id
 
-        $news['ci_idddd'] = $_SESSION['ci_id'];
-//        dump($news);
-        $results = M('shopping_cart')->add($news);
-        if($results){
-            if($results) {
+        //加入购物车前，先查询购物车内是否有当前商品
+        $result = M('shopping_cart')->where("bs_gidd = $bs_gidd")->select();
+
+        if(!$result){//如果购物车中没有当前商品
+            $results = M('shopping_cart')->add($news);
+            if($results){
+                if($results) {
+                    echo <<<STR
+				<script type="text/javascript">
+					alert('加入购物车成功！');
+                    window.location.href = "/index.php/home/dingdan/gouwuche_queren";
+				</script>
+STR;
+                }
+                else{
+                    echo <<<STR
+				<script type="text/javascript">
+					alert('加入购物车失败！');
+                    window.history.go(-1);
+				</script>
+STR;
+                }
+            }
+
+        }
+        else{//如果购物车中已有当前商品
+            $sh_cnum = $result[0]['sh_cnum'] + 1;
+            $news['sh_cnum'] = $sh_cnum;
+            //对该条数据进行更新
+            $r = M('shopping_cart')->where("bs_gidd = $bs_gidd")->save($news);
+            if($r){
                 echo <<<STR
 				<script type="text/javascript">
 					alert('加入购物车成功！');
@@ -314,12 +340,12 @@ STR;
                     window.history.go(-1);
 				</script>
 STR;
-
             }
-
         }
-
     }
+
+
+
     /*
      * 店家页面数据插入数据库
      * 编写者：黄桃源
@@ -327,7 +353,7 @@ STR;
      */
     public function gouwu2(){
         //global $userId;
-
+        $_SESSION['ci_id'] = 1;
         $news = array();
         $news['bs_gidd'] = $_GET['id'];
         $news['ci_idddd'] = 1;
@@ -335,11 +361,14 @@ STR;
         $results = M('shopping_cart')->add($news);
         $this->display("Dingdan:gouwuche_queren");
     }
+
+
+
     /*
-   * 功能：商家列表搜索
-   * 编写者：安垒
-   * 状态：succeed
-   */
+  * 功能：商家列表搜索
+  * 编写者：安垒
+  * 状态：succeed
+  */
 
     public function search(){
         $key=I('get.search_word');                               //获取参数
@@ -365,4 +394,5 @@ STR;
 
 
     }
+
 }

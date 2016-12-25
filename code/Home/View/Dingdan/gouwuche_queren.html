@@ -32,12 +32,7 @@
             text-align:center;
             font-size:22px;
         }
-        .edit{
-            width:10%;
-            float:right;
-            margin-right: 2%;
-            margin-top: -8%;
-        }
+
         .checkbox{
             float:left;
             margin-top:20%;
@@ -48,17 +43,25 @@
             margin:0 auto;
         }
         .dingdan{
-            margin-right:15%;
+            width:40%;
+            margin-right:7%;
             float:left;
         }
-
+        .delete{
+            height:30px;
+            width:40px;
+            float:right;
+            margin-left: 280%;
+        }
+        .buttons{
+            width:20px;
+        }
     </style>
 </head>
 <body>
 <div class="weui_tab">
     <div class="weui_tab_bd">
         <div class="con">
-
 
             <div>
                 <!-- 返回图标开始 -->
@@ -72,78 +75,135 @@
                 <!-- 返回图标结束 -->
             </div>
         </div>
+
+
         <!-- 主体部分开始 -->
+
+
+
+
+
+
+
+        <!--第一层循环开始，显示店家姓名-->
+        <volist name="storename" id="voo" key="kk">
         <div class="weui_cells"   height="100%">
             <div class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary" style="height:20px;">
-                    <input type="checkbox">&nbsp;&nbsp;店铺名称：一个柚子
+                  <!--店家名称：  {$Think.lang.$key}-->
+<?php
+
+    $si_id = $Think.$key;
+    $connect = mysqli_connect('localhost','root','','school')or die('连接失败');
+    mysqli_set_charset($connect, "utf8");
+    $sql = "select * from store_information where si_id = $si_id";
+    $result = mysqli_query($connect,$sql);
+    $rows = mysqli_fetch_assoc($result);
+?>
+                    店家：{$rows['si_name']}
                 </div>
             </div>
         </div>
-
         <div class="weui_cells">
+            <!--第二层循环开始，显示商品-->
+                 <volist name="voo" id="vo"  key="k">
 
-            <volist name="storename" id="vo">
-                <div class="weui_cell">
+                     <!--商品id-->
+                     <input type="hidden" value="{$vo['bs_gidd']}" name="bs_gidd">
+
+<?php
+    $bs_gids = $vo['bs_gidd'];
+    $connect = mysqli_connect('localhost','root','','school')or die('连接失败');
+    mysqli_set_charset($connect, "utf8");
+    $sql = "select * from bs_goods where bs_gid = $bs_gids";
+    $result = mysqli_query($connect,$sql);
+    $row = mysqli_fetch_assoc($result);
+?>
+                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
                         <div class="checkbox" >
                             <input type="checkbox"  name="checkbox[]" href="/index.php/__URL__/gouwuche_queren/id/{$vo.bs_gid}" value="{$vo.bs_gid}">
                         </div>
-                        <!--<input type="hidden" value="{$vo.bs_gid}">-->
+
                         <div class="image">
-                            <!--<a href="/home/dianjia/shangpin/id/{$vo.bs_gid}">-->
-
-                            <a href="/index.php/home/dianjia/shangpin?bs_gid={$vo.bs_gid}&si_id={$set.si_id}">
-
-                                <img src="__PUBLIC__/{$vo['bs_gurl']}" width="120px" height="100px"></a>
+                            <a href="/index.php/home/dianjia/jumps?id={$vo.bs_gid}&si_id={$vo.si_id}">
+                                <img src="__PUBLIC__/{$row['bs_gurl']}" width="120px" height="100px"></a>
                         </div>
-                    </div>
+                 </div>
+
+
                     <div class="dingdan">
-                        {$vo['bs_gname']}<br/>
-                        ￥{$vo['bs_gprice']}<br/>
-                        *{$vo['sh_cnum']}
+                       {$row['bs_gname']}<br/>
+                        ￥{$row['bs_gprice']}<br/>
+                       *{$vo['sh_cnum']}<br/>
+                        <!--<input type="button" value="-" onclick="disNum(this)" class="buttons"/>-->
+                        <!--<span id="num1"  name="{$vo['sh_cnum']}">{$vo['sh_cnum']}</span>-->
+                        <!--<input type="button" value="+" onclick="incNum(this)" class="buttons"/>-->
+                        <!--店家id{$vo['si_id']}-->
+                        <input type = "hidden" value="{$vo['si_id']}">
+                        <a href="/index.php/home/dingdan/deleteorder?sh_cid={$vo['sh_cid']}">
+                            <input type="submit" name="submit" class="delete" value="删除">
+                        </a>
                     </div>
                 </div>
             </volist>
-
+            <!--第二层循环结束，显示商品-->
         </div>
-
+        </volist>
+        <!--第一层循环结束，显示店家姓名-->
 
         <div class="weui_cells">
             <div class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <div class="checkboxs" >
-                        <input type="checkbox" name="all" value="全选" onclick="check_all(this,'checkbox[]')">全选
+                        <!--<input type="checkbox" name="all" value="全选" onclick="check_all(this,'checkbox[]')">全选-->
                     </div>
                 </div>
                 <div class="button" >
-                    合计：￥{$cs}&nbsp;&nbsp;<a href="{:U('home/dingdan/confirm')}"><input type="submit" name="Submit" style="height:30px;width:40px;"value="结算"></a>
+                    <!--合计：￥{$cs}-->
+                    <a href="{:U('home/dingdan/confirm')}">
+                    <input type="submit" name="submit" style="height:30px;width:40px;"value="结算">
+                    </a>
                 </div>
 
             </div>
         </div>
+
+
         <!-- 主体部分结束 -->
     </div>
-
-
-
-
-
-<!--</div>-->
-<!--</div>-->
-
-<!--</body>-->
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/swiper.js"></script>
-
-
 <script type="text/javascript">
     function check_all(obj,cName)
     {
         var checkboxs = document.getElementsByName(cName);
         for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;}
     }
+    $(document).ready(function(){
+
+        $(".delete").click(function(){
+            var tag = confirm('真的要删除这件商品吗？');
+            if(!tag){
+                return false;
+            }
+        });
+    });
+    function disNum(dom){
+        dom.nextSibling.nextSibling.innerHTML--;
+
+        var a = dom.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML;
+        a--;
+        dom.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML = a.toFixed(2);
+        sum();
+    }
+    function incNum(dom){
+        dom.previousSibling.previousSibling.innerHTML ++;
+        var a = dom.nextSibling.nextSibling.innerHTML;
+        a++;
+        dom.nextSibling.nextSibling.innerHTML = a.toFixed(2);
+        sum();
+    }
 </script>
-<!--</html>-->

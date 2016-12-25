@@ -58,16 +58,33 @@
 
        
         <div class="fo">
-            <p>兼职时间： 周{$cont[0][pt_inweeka]}~周{$cont[0][pt_inweekb]}</p>
-            <p>职位需要人员个数： {$cont[0][pt_innum]}人</p>
-            <p>岗位要求：</p>
-            {$cont[0][pt_inabstract]}
+            <p>兼职时间： 周{$cont[0]['pt_inweeka']}~周{$cont[0]['pt_inweekb']}</p>
+            <p>职位需要人员个数： {$cont[0]['pt_innum']}人</p>
+            <p>岗位要求：{$cont[0]['pt_inabstract']}</p>
             <!--获取微信名-->
-            <p>姓名：{$pts[0][ci_name]}</p>
+            <p>姓名：{$pts[0]['ci_name']}</p>
         </div>
 
        <form action="/index.php/home/jianzhi/add?id={$cont[0][pt_inid]}" method="post" id="myform" name="myform" enctype="multipart/form-data">
-           <div class="weui_cells_title">备注</div>
+
+
+
+           <div class="weui_cells_title">您的手机号：</div>
+
+           <div class="weui_cells weui_cells_form">
+               <div class="weui_cell">
+                   <div class="weui_cell_bd weui_cell_primary">
+                       <textarea class="weui_textarea" placeholder="请输入您的手机号" name="pt_pphone"></textarea>
+                   </div>
+               </div>
+           </div>
+
+
+
+
+
+           <div class="weui_cells_title">请输入您的详细信息:（留下联系方式更容易被录取哦！）</div>
+
            <div class="weui_cells weui_cells_form">
                <div class="weui_cell">
                    <div class="weui_cell_bd weui_cell_primary">
