@@ -99,11 +99,7 @@
         </div>
         <hr/>
         <div class="text" name="set">
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;{$set.si_sintroduce}<!-- 艺美理发店 经销批发的美发用品、美发用品畅销消费者市场，在消费者当中享有较高的地位，公司与多家零售商和代理商建
-            立了长期稳定的合作关系。艺美理发店经销的美发用品、美发用品品种齐全、价格合理。艺美理发店实力雄厚，重信用、守
-            合同、保证产品质量，以多品种经营特色和薄利多销的原则，赢得了广大客户的信任。 艺美理发店地址设在孔孟文化、运河
-            文化、水浒文化的发源地济宁，山东 济宁市市中区 枣店阁路兴隆桥南50米，老板是王照云，主要经营美发用品、美发用品
-            等，店铺注册资本未知，在职员工5名。 --></p>
+            <p>{$set.si_sintroduce}</p>
         </div>
         <hr/>
         <div class="ap">
@@ -111,22 +107,13 @@
         </div>
         <hr/>
         <div class="t1">
-            <a class="top1" href="dianpu">
+
+            <volist name="bs_type" id="vo">
+            <a class="top1" href="">
                 <div class="im"><img src="__PUBLIC__/home/images/h1.jpg" alt=""></div>
-                <div class="f1">剪发</div>
+                <div class="f1">{$vo['bs_tname']}</div>
             </a>
-            <a class="top1" href="dianpu">
-                <div class="im"><img src="__PUBLIC__/home/images/h3.jpg" alt=""></div>
-                <div class="f1">烫发</div>
-            </a>
-            <a class="top1" href="dianpu">
-                <div class="im"><img src="__PUBLIC__/home/images/h2.jpeg" alt=""></div>
-                <div class="f1">染发</div>
-            </a>
-            <a class="top1" href="dianpu">
-                 <div class="im"><img src="__PUBLIC__/home/images/h4.jpeg" alt=""></div>
-                 <div class="f1">拉直</div>
-            </a>
+            </volist>
         </div>
         <hr/>
         <div class="t2">

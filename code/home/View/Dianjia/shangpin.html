@@ -25,10 +25,6 @@
             color:red;
             float: right;
         }
-        .b{
-            border: 2px #9c9c9c solid;
-            padding-left: 0px;
-        }
         .back{
             margin-top:10px;
             float:left;
@@ -40,15 +36,8 @@
             text-align:center;
             font-size:22px;
         }
-
         .dingdan{
-            margin-left:5%;
-        }
-        .tdd
-        {
-            border: 2px lightgrey solid;
-            width: 70px;
-            font-size: 14px;
+            margin-left: 50%;
         }
     </style>
 </head>
@@ -85,45 +74,19 @@
 
             <div class="weui_cell" >
                 <div class="weui_cell_hd">
-                    <form action="" method="post" id="myform" name="myform" enctype="multipart/form-data">
-                        <table class="insert-tab" width="100%">
-                            <tbody>
-                            <tr>
-                                <td>种类：</td>
-                                <td>
-                                    <select name="catid" id="catid" class="required">
-                                        <option value="">请选择</option>
-                                        
-                                        <option value="19" name="set">{$set['bs_gname']}</option>
-                                        
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>型号(颜色)：</td>
-                                <td>
-                                    <select name="colId" id="colId" class="required" onchange="select()">
-                                        <option value="请选择">请选择</option>
-                                        <option value="19" name="set">{$set['bs_gsize']}</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr >
-                                <td>已选种类</td>
-                                <td class="tdd" name="set">{$set['bs_gname']}</td>
-                                <td class="tdd" name="set">{$set['bs_gsize']}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </form>
+                                种类：{$set.bs_tname}
+                                <br/><br/>
+                                型号(颜色)：{$set.bs_gsize}
                 </div>
                 <div class="dingdan">
-                    <div class="img1"><img src="__PUBLIC__/{$set['bs_gurl']}"  width="50px" height="50px" ></div>
-                    <div class="img2"><a href="/home/dingdan/gouwuche_queren" name="gouwuche"><img src="__PUBLIC__/home/images/gouwuche.png" alt=""></a></div>
+                    <div class="img2">
+                        <a href="/index.php/home/dianjia/gouwu1?id={$set['bs_gid']}&si_id={$set.si_id}">
+                        <img src="__PUBLIC__/home/images/gouwuche.png" alt="">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
 
         <div class="weui_panel_bd">
             <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
@@ -141,32 +104,38 @@
         <!--&lt;!&ndash;底部开始&ndash;&gt;-->
 
         <!--<div class="weui_tabbar">-->
-            <!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
-                <!--<div class="weui_tabbar_icon">-->
-                    <!--<img src="images/b1.jpg" alt="">-->
-                <!--</div>-->
-                <!--<p class="weui_tabbar_label">首页</p>-->
+            <!--<a href="/index.php/home/dianjia/shangjia" class="weui_tabbar_item weui_bar_item_on">-->
+            <!--<div class="weui_tabbar_icon">-->
+            <!--<img src="__PUBLIC__/home/images/11.png" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">店家</p>-->
             <!--</a>-->
-            <!--<a href="sousuo.html" class="weui_tabbar_item">-->
-                <!--<div class="weui_tabbar_icon">-->
-                    <!--<img src="images/b2.jpg" alt="">-->
-                <!--</div>-->
-                <!--<p class="weui_tabbar_label">搜索</p>-->
+            <!--<a href="" class="weui_tabbar_item">-->
+            <!--<div class="weui_tabbar_icon">-->
+            <!--<img src="__PUBLIC__/home/images/22.png" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">收藏</p>-->
             <!--</a>-->
-            <!--<a href="gouwuche.html" class="weui_tabbar_item">-->
-                <!--<div class="weui_tabbar_icon">-->
-                    <!--<img src="images/b3.jpg" alt="">-->
-                <!--</div>-->
-                <!--<p class="weui_tabbar_label">购物车</p>-->
+            <!--<a href="/index.php/home/dingdan/gouwuche_queren" class="weui_tabbar_item">-->
+            <!--<div class="weui_tabbar_icon">-->
+            <!--<img src="__PUBLIC__/home/images/33.png" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">购物车</p>-->
             <!--</a>-->
-            <!--<a href="personal.html" class="weui_tabbar_item">-->
-                <!--<div class="weui_tabbar_icon">-->
-                    <!--<img src="images/b4.jpg" alt="">-->
-                <!--</div>-->
-                <!--<p class="weui_tabbar_label">个人中心</p>-->
+            <!--<a href="" class="weui_tabbar_item">-->
+            <!--<div class="weui_tabbar_icon">-->
+            <!--<img src="__PUBLIC__/home/images/44.png" alt="">-->
+            <!--</div>-->
+            <!--<p class="weui_tabbar_label">立即购买</p>-->
             <!--</a>-->
         <!--</div>-->
         <!--&lt;!&ndash;底部结束&ndash;&gt;-->
+
+
+
+
+
+
     <!--</div>-->
 <!--</div>-->
 <!--</body>-->
@@ -185,16 +154,4 @@
         $(".weui_tab_bd .content:eq("+which+")").show();
     });
 </script>
- <script type="text/javascript">
- //    function select(){
- //        var myform = document.getElementById('myform');
- //        myform.submit();
-
- //        var sel = document.getElementById('colId');
- //        var text = sel.options[sel.selectedIndex].value;
- //        console.log(text);
- //        sel.options[sel.selectedIndex].value = text;
- //    }
- //    </script>
-
 <!--</html>-->

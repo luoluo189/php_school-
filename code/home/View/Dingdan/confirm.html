@@ -11,19 +11,9 @@
         html,body{
             height:100%;
         }
-        .swiper-container {
-            width: 100%;
-        }
         .swiper-container img {
             display: block;
             width: 100%;
-        }
-        .s3{
-            top:20px;
-            height:30px;
-            position:absolute;
-            left:90%;
-
         }
         .sto{
             float:left;
@@ -96,14 +86,13 @@
         <hr/>
         <volist name="s" id="vo">
             <div  style="margin-left: 4%;">
-           收货人：{$vo['ca_name']} &nbsp;&nbsp;联系电话：{$vo['ca_phone']}
+            收货人：{$vo['ca_name']} &nbsp;&nbsp;联系电话：{$vo['ca_phone']}
             <br/>
             <div  style="margin-top:10px;">
 
            <img src="__PUBLIC__/home/images/dingwei.png" style="width:18px; height:30px;float:left;margin-right:20px;">
            {$vo['ca_phone']}
-           <a href="/home/personal/paddress" ><img src="__PUBLIC__/home/images/back2.jpg" class="address"></a>
-
+           <a href="/index.php/home/dingdan/setaddress" ><img src="__PUBLIC__/home/images/back2.jpg" class="address"></a>
            </div>
             </div>
             </volist>
@@ -137,7 +126,7 @@
 
 
             <!--  -->
-            <hr/>
+
         </div>
 
 
@@ -168,37 +157,7 @@
 
 
     </div>
-    <!--<div class="weui_tabbar">-->
-        <!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
-            <!--<div class="weui_tabbar_icon">-->
-                <!--<img src="__PUBLIC__/home/images/b1.jpg" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">首页</p>-->
-        <!--</a>-->
-        <!--<a href="sousuo.html" class="weui_tabbar_item">-->
-            <!--<div class="weui_tabbar_icon">-->
-                <!--<img src="__PUBLIC__/home/images/b2.jpg" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">搜索</p>-->
-        <!--</a>-->
-        <!--<a href="gouwuche.html" class="weui_tabbar_item">-->
-            <!--<div class="weui_tabbar_icon">-->
-                <!--<img src="__PUBLIC__/home/images/b3.jpg" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">购物车</p>-->
-        <!--</a>-->
-        <!--<a href="personal.html" class="weui_tabbar_item">-->
-            <!--<div class="weui_tabbar_icon">-->
-                <!--<img src="__PUBLIC__/home/images/b4.jpg" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">个人中心</p>-->
-        <!--</a>-->
-    <!--</div>-->
-<!--</div>-->
 
-
-
-<!--</body>-->
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.js"></script>
@@ -214,4 +173,6 @@
         items: ["英语家教", "数学家教", "物理家教", "发单员", "其他"]
     });
 </script>
+
+
 <!--</html>-->
