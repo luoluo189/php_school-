@@ -246,7 +246,7 @@
                         <div class="content" style="display:none">
                             <div class="weui_cells weui_cells_access">
                                 <p>理发预约订单</p>
-                                <volist name="s1" id="vo">
+                                <volist name="finishedHorder" id="vo">
                                     <a class="weui_cell" href="/index.php/home/lifa/dianpu?si_id={$vo.si_id}">
                                         <div class="weui_cell_hd">
                                             <img src="__PUBLIC__/{$vo['si_image']}"  style="width:130px;height:100px">
@@ -287,7 +287,7 @@
                                                     <a href="{:U('home/dingdan/personal_comment')}?si_id={$vo['si_id']}&id={$vo['or_tdid']}" class="weui_btn weui_btn_mini weui_btn_default">
                                                         评价订单
                                                     </a>
-                                                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">删除订单</a>
+                                                    <a href="/index.php/home/dingdan/deltHorder?or_tdid={$vo.or_tdid}" class="weui_btn weui_btn_mini weui_btn_default delete">删除订单</a>
                                                 </div>
 
                                             </div>
@@ -338,7 +338,7 @@
                                                 </div>
                                                 <div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
 
-                                                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">删除订单</a>
+                                                    <a href="/index.php/home/dingdan/deltPtorder?pt_trid={$vo.pt_trid}" class="weui_btn weui_btn_mini weui_btn_default delete">删除订单</a>
                                                 </div>
 
                                             </div>
@@ -383,7 +383,7 @@
                                                 <div class="button_sp_area"  style=" float:right;margin-bottom:1%;">
 
                                                     <a href="{:U('home/dingdan/personal_comment')}?si_id={$vo['si_id']}&id={$vo['bs_gid']}" class="weui_btn weui_btn_mini weui_btn_default">评价订单</a>
-                                                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">删除订单</a>
+                                                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default delete">删除订单</a>
                                                 </div>
 
                                             </div>
@@ -429,7 +429,7 @@
     $(document).ready(function(){
         $(".cancelHire").click(function(){
             //拒绝发布者录用的提示框
-            var tag1 = confirm('是否确定拒绝录用？拒绝录用三次系统一个月内拒绝服务');
+            var tag1 = confirm('是否确定拒绝录用？');
             if(!tag1) {
                 return false;
             }
@@ -452,6 +452,13 @@
             //确认商品订单
             var tag3 = confirm('是否确定收货？');
             if(!tag3){
+                return false;
+            }
+        });
+        $(".delete").click(function(){
+            //取消兼职预约的提示框
+            var tag2 = confirm('是否确定删除订单？');
+            if(!tag2){
                 return false;
             }
         });

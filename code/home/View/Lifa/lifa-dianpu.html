@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
-	<link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+	<link href="css/weui.min.css" type="text/css" rel="stylesheet">
+	<link href="css/jquery-weui.min.css" type="text/css" rel="stylesheet">
     <style>
         html,body{
             height:100%;
@@ -84,27 +84,27 @@
 		    <div>
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a href="lifayuyue-list.html"><img src="images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
-		    <div class="set" name="set">
-		    {$set.si_name}
+		    <div class="set">
+		    美发店
 		    </div>
 		    <!-- 返回图标结束 -->	
 		    </div>
 
         <div class="line">
-            <img src="__PUBLIC__/{$set.si_image}"alt="" style="width:100%">
-            <div class="littletitle" name="set">
-                <a class="top" href="/index.php/home/lifa/jianjie?si_id={$set.si_id}" id="{$set.si_id}">
-                    <div class="ims"><img src="__PUBLIC__/home/images/51.png" alt=""></div>
+            <img src="images/5.png"alt="" style="width:100%;">
+            <div class="littletitle">
+                <a class="top" href="lifa-jianjie.html" >
+                    <div class="ims"><img src="images/51.png" alt=""></div>
                     <div class="f">本店简介</div>
                 </a>
-                <a class="top" href="/index.php/home/lifa/yuyue?si_id={$set.si_id}" id="{$set.si_id}">
-                    <div class="ims"><img src="__PUBLIC__/home/images/52.png" alt=""></div>
+                <a class="top" href="lifa-yuyue.html" >
+                    <div class="ims"><img src="images/52.png" alt=""></div>
                     <div class="f">预约服务</div>
                 </a>
-                <a class="top" href="/index.php/home/pingjia/fengping?id={$set.si_id}" id="{$set.si_id}" >
-                    <div class="ims"><img src="__PUBLIC__/home/images/53.png" alt=""></div>
+                <a class="top" href="lifa-fengping.html" >
+                    <div class="ims"><img src="images/53.png" alt=""></div>
                     <div class="f">顾客风评</div>
                 </a>
             </div>
@@ -133,20 +133,44 @@
                     <hr/>
                     <div class="t1">
                         <div class="top1" >
-                            <div><img src="__PUBLIC__/home/images/h1.jpg" alt=""></div>
+                            <div><img src="images/h1.jpg" alt=""></div>
                             <div class="f1">剪发</div>
                         </div>
                         <div class="top2"><p>女士：剪发15元</p></div>
                     </div>
                     <div class="t1">
                         <div class="top1" >
-                            <div><img src="__PUBLIC__/home/images/h5.jpg" alt=""></div>
+                            <div><img src="images/h1.jpg" alt=""></div>
                             <div class="f1">剪发</div>
                         </div>
                         <div class="top2"><p>男士：精剪寸头10元</p></div>
                     </div>
 
-                    
+                    <div class="t1">
+                        <div class="top1" >
+                            <div><img src="images/h1.jpg" alt=""></div>
+                            <div class="f1">剪发</div>
+                        </div>
+                        <div class="top2"><p>男士：精剪寸头10元</p></div>
+                    </div>
+
+                    <div class="t1">
+                        <div class="top1" >
+                            <div><img src="images/h1.jpg" alt=""></div>
+                            <div class="f1">剪发</div>
+                        </div>
+                        <div class="top2"><p>男士：精剪寸头10元</p></div>
+                    </div>
+
+                    <div class="t1">
+                        <div class="top1" >
+                            <div><img src="images/h1.jpg" alt=""></div>
+                            <div class="f1">剪发</div>
+                        </div>
+                        <div class="top2"><p>男士：精剪寸头10元</p></div>
+                    </div>
+
+
 
                 </div>
                 <div class="content" style="display:none">
@@ -156,24 +180,19 @@
                     <hr/>
                     <div class="t1">
                         <div class="top1" >
-                            <div><img src="__PUBLIC__/home/images/h3.jpg" alt=""></div>
+                            <div><img src="images/h3.jpg" alt=""></div>
                             <div class="f1">烫发</div>
                         </div>
                         <div class="top2"><p>女士：</p></div>
-                        <div class="top2"><p>大卷&nbsp;&nbsp;小卷&nbsp;&nbsp;中卷</p></div>
                     </div>
                     <div class="t1">
                         <div class="top1" >
-                            <div><img src="__PUBLIC__/home/images/h5.jpg" alt=""></div>
+                            <div><img src="images/h3.jpg" alt=""></div>
                             <div class="f1">烫发</div>
                         </div>
                         <div class="top2"><p>男士：</p></div>
-                        <div class="top2"><p>锡纸烫&nbsp;&nbsp;发根定位烫&nbsp;&nbsp;离子烫</p></div>
                     </div>
                 </div>
-
-
-
                 <div class="content" style="display:none">
                     <div class="ap">
                         染发分类:
@@ -181,24 +200,19 @@
                     <hr/>
                     <div class="t1">
                         <div class="top1" >
-                            <div><img src="__PUBLIC__/home/images/h2.jpeg" alt=""></div>
+                            <div><img src="images/h2.jpeg" alt=""></div>
                             <div class="f1">染发</div>
                         </div>
                         <div class="top2"><p>女士：</p></div>
-                        <div class="top2"><p>颜色：&nbsp;&nbsp;板栗色(深色/浅色)&nbsp;&nbsp;棕红色(深色/浅色)&nbsp;&nbsp;黑色&nbsp;&nbsp;灰色&nbsp;&nbsp;亚麻色&nbsp;&nbsp;咖啡色(深色)</p></div>
                     </div>
                     <div class="t1">
                         <div class="top1" >
-                            <div><img src="__PUBLIC__/home/images/h5.jpg" alt=""></div>
+                            <div><img src="images/h2.jpeg" alt=""></div>
                             <div class="f1">染发</div>
                         </div>
                         <div class="top2"><p>男士：</p></div>
-                        <div class="top2"><p>颜色：&nbsp;&nbsp;板栗色(深色/浅色)&nbsp;&nbsp;棕红色(深色/浅色)&nbsp;&nbsp;黑色&nbsp;&nbsp;灰色&nbsp;&nbsp;亚麻色&nbsp;&nbsp;咖啡色(深色)</p></div>
                     </div>
                 </div>
-
-
-
                 <div class="content" style="display:none">
                     <div class="ap">
                         拉直分类:
@@ -206,14 +220,14 @@
                     <hr/>
                     <div class="t1">
                         <div class="top1" >
-                            <div><img src="__PUBLIC__/home/images/h4.jpeg" alt=""></div>
+                            <div><img src="images/h4.jpeg" alt=""></div>
                             <div class="f1">拉直</div>
                         </div>
                         <div class="top2"><p>头发干枯：</p></div>
                     </div>
                     <div class="t1">
                         <div class="top1" >
-                            <div><img src="__PUBLIC__/home/images/h4.jpeg" alt=""></div>
+                            <div><img src="images/h4.jpeg" alt=""></div>
                             <div class="f1">拉直</div>
                         </div>
                         <div class="top2"><p>初始卷发：</p></div>
@@ -222,39 +236,39 @@
             </div>
         </div>
 
-    <!--&lt;!&ndash;底部开始&ndash;&gt;-->
-    <!--<div class="weui_tabbar">-->
-		<!--<a href="index.html" class="weui_tabbar_item weui_bar_item_on">-->
-			<!--<div class="weui_tabbar_icon">-->
-				<!--<img src="__PUBLIC__/home/images/b1.jpg" alt="">-->
-			<!--</div>-->
-			<!--<p class="weui_tabbar_label">首页</p>-->
-		<!--</a>-->
-		<!--<a href="sousuo.html" class="weui_tabbar_item">-->
-			<!--<div class="weui_tabbar_icon">-->
-				<!--<img src="__PUBLIC__/home/images/b2.jpg" alt="">-->
-			<!--</div>-->
-			<!--<p class="weui_tabbar_label">搜索</p>-->
-		<!--</a>-->
-		<!--<a href="gouwuche.html" class="weui_tabbar_item">-->
-			<!--<div class="weui_tabbar_icon">-->
-				<!--<img src="__PUBLIC__/home/images/b3.jpg" alt="">-->
-			<!--</div>-->
-			<!--<p class="weui_tabbar_label">购物车</p>-->
-		<!--</a>-->
-		<!--<a href="personal.html" class="weui_tabbar_item">-->
-			<!--<div class="weui_tabbar_icon">-->
-				<!--<img src="__PUBLIC__/home/images/b4.jpg" alt="">-->
-			<!--</div>-->
-			<!--<p class="weui_tabbar_label">个人中心</p>-->
-		<!--</a>-->
-        <!--</div>-->
-    <!--&lt;!&ndash;底部结束&ndash;&gt;-->
-<!--</div>-->
-<!--</div>-->
-<!--</body>-->
-<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js" ></script>
-<script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
+    <!--底部开始-->
+    <div class="weui_tabbar">
+		<a href="index.html" class="weui_tabbar_item weui_bar_item_on">
+			<div class="weui_tabbar_icon">
+				<img src="images/b1.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">首页</p>
+		</a>
+		<a href="sousuo.html" class="weui_tabbar_item">
+			<div class="weui_tabbar_icon">
+				<img src="images/b2.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">搜索</p>
+		</a>
+		<a href="gouwuche.html" class="weui_tabbar_item">
+			<div class="weui_tabbar_icon">
+				<img src="images/b3.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">购物车</p>
+		</a>
+		<a href="personal.html" class="weui_tabbar_item">
+			<div class="weui_tabbar_icon">
+				<img src="images/b4.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">个人中心</p>
+		</a>
+        </div>
+    <!--底部结束-->
+</div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.js" ></script>
+<script type="text/javascript" src="js/jquery-weui.min.js"></script>
 <script type="text/javascript">
     $(".weui_navbar .weui_navbar_item").click(function(){
         $(".weui_navbar .weui_navbar_item").removeClass("weui_bar_item_on");//全部没有weui_bar_item_on

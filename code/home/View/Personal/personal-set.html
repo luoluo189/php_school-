@@ -5,8 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
-	<link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+	<link href="css/weui.min.css" type="text/css" rel="stylesheet">
+	<link href="css/jquery-weui.min.css" type="text/css" rel="stylesheet">
 <style>
         html,body{
 			height:100%;
@@ -36,7 +36,7 @@
 	<div class="weui_tab_bd">
     <!-- 返回图标开始 -->
     <div   class="back" >
-    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+    <a href="personal.html"><img src="images/back.jpg"  style="width:30px;height:30px;" ></a>
     </div>
     <div class="setfont">
     设置
@@ -46,32 +46,42 @@
     
     <!-- 主体部分开始 -->
     <div class="weui_cells weui_cells_access"  style="margin-top:30%">
-         <a class="weui_cell" href="javascript:;">
-         <div class="weui_cell_bd weui_cell_primary" >
-             <p>头像</p>
-         </div>
-         <div class="weui_cell_ft">
-             <img src="__PUBLIC__/home/images/head.jpg">
-        </div>
-        </a>
-        <a class="weui_cell" href="javascript:;">
-        <div class="weui_cell_bd weui_cell_primary"  >
-             <p>{$user.ci_name}</p>
-        </div>
-        <div class="weui_cell_ft"></div>
-        </a>
-        <a class="weui_cell" href="/index.php/home/personal/paddress/id/{$user.ci_id}">
-        <div class="weui_cell_bd weui_cell_primary"  >
-            <p>收货地址管理</p>
-         </div>
-            <div class="weui_cell_ft"></div>
-        </a>
-    
+   <a class="weui_cell" href="javascript:;">
+    <div class="weui_cell_bd weui_cell_primary" >
+      <p>头像</p>
     </div>
+    <div class="weui_cell_ft">
+    <img src="images/head.jpg">
+    </div>
+  </a>
+  <a class="weui_cell" href="javascript:;">
+    <div class="weui_cell_bd weui_cell_primary"  >
+      <p>用户名</p>
+    </div>
+    <div class="weui_cell_ft"></div>
+  </a>
+    <a class="weui_cell" href="personal-address.html">
+    <div class="weui_cell_bd weui_cell_primary"  >
+      <p>收货地址管理</p>
+    </div>
+    <div class="weui_cell_ft"></div>
+  </a>
+    <a class="weui_cell" href="javascript:;">
+    <div class="weui_cell_bd weui_cell_primary"  >
+      <p>修改登录密码</p>
+    </div>
+    <div class="weui_cell_ft"></div>
+  </a>
+</div>
     <!-- 主体部分结束 -->
     
     <!-- 底部“退出登录”开始 -->
+    <div class="exit" >
+    <hr/>
     
+     退出登录
+    </div>
      <!-- 底部“退出登录结束 -->
-   </div>
-
+</div>
+</body>
+</html>

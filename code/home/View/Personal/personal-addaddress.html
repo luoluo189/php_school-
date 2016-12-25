@@ -5,8 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
-	<link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+	<link href="css/weui.min.css" type="text/css" rel="stylesheet">
+	<link href="css/jquery-weui.min.css" type="text/css" rel="stylesheet">
    <style>
         html,body{
 			height:100%;
@@ -45,10 +45,10 @@
 		    <div>
 		    <!-- 返回图标开始 -->
 		    <div   class="back" >
-		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    <a href="personal-address.html"><img src="images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
-		    修改收货地址
+		    新增收货地址
 		    </div>
 		    <!-- 返回图标结束 -->	
 		    </div>
@@ -56,26 +56,24 @@
 
     <!-- 主体部分开始 -->
         <div class="weui_cells weui_cells_form">
-          <form action="{:U('home/personal/pchangeaddress')}" method="post" enctype= "multipart/form-data">
-           <input class="weui_input" type="hidden" name="ci_idd"  value="{$user.ci_id}">
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" name="ca_name" type="tel" placeholder="请输入姓名" value="{$address.ca_name}">
+                    <input class="weui_input" type="tel" placeholder="请输入姓名">
                 </div>
             </div>
 
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" name="ca_phone" type="tel" placeholder="请输入手机号" value="{$address.ca_phone}">
+                    <input class="weui_input" type="tel" placeholder="请输入手机号">
                 </div>
             </div>
 
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">收货地址</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" name="ca_address" type="tel" placeholder="请输入收货地址" value="{$address.ca_address}">
+                    <input class="weui_input" type="tel" placeholder="请输入收货地址">
                 </div>
             </div>
 
