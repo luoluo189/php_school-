@@ -49,7 +49,7 @@
 		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
 		    </div>
 		    <div class="set">
-		    我的评价
+		    我的订单
 		    </div>
 		    <!-- 返回图标结束 -->	
 		    </div>
@@ -57,9 +57,6 @@
     
 
 		<!-- 中间部分开始 -->
-
-
-<form action="/index.php/home/dingdan/submit?si_id={$store[0]['si_id']}" method="post" id="myform" name="myform" enctype="multipart/form-data">
 		
 		
 		<div class="weui_cells">
@@ -68,12 +65,20 @@
 		      <img src="__PUBLIC__/home/images/chaosuannai.jpg"  style="width:90% ;height:100%;">
 		    </div> -->
 		    <div class="dingdanneirong">
-				朕光顾过的小店：{$store[0]['si_name']}
-				<br/>
-				朕的订单：{$goods[0]['bs_gname']}{$order[0]['or_typename']}
-				<br/>
-				<input type="hidden" name="bs_gida" value="{$goods[0]['bs_gid']}">
-				<input type="hidden" name="bs_gidb" value="{$order[0]['or_tdid']}">
+				    订单内容：
+				    <br/>
+					&nbsp;&nbsp;&nbsp;{$c1[0][or_typename]}{$c2[0][pt_inname]}{$c3[0][bs_gname]}<br/>
+					预约类型：
+				    <br/>&nbsp;&nbsp;&nbsp;{$c1[0][or_typename]}
+					<br/>&nbsp;&nbsp;&nbsp;{$c2[0][pt_inabstract]}
+				    <br/>&nbsp;&nbsp;&nbsp;{$c3[0][bs_gsize]}<br/>
+					预约时间：
+					<br/>&nbsp;&nbsp;&nbsp;{$c1[0][or_tdday]}
+					<br/>&nbsp;&nbsp;&nbsp;{$c1[0][or_tdtime]}
+					<br/>&nbsp;&nbsp;&nbsp;{$c2[0][pt_intime_a]}
+					<br/>&nbsp;&nbsp;&nbsp;{$c2[0][pt_intime_b]}
+					<br/>&nbsp;&nbsp;&nbsp;{$c3[0][bs_gmaketime]}<br/>
+							      
 		    </div>
 		  </div>
 		  
@@ -81,16 +86,16 @@
 		   <div class="weui_cell">
 		    <div class="weui_cell_bd weui_cell_primary">
 		    <!-- 文本输入开始（商品评价） -->
+
 				  <div class="weui_cell">
 				    <div class="weui_cell_bd weui_cell_primary">
-				      <textarea class="weui_textarea" placeholder="朕的评价"  name="appr_content"></textarea>
+				      <textarea class="weui_textarea" placeholder="对所购买商品的评价" ></textarea>
 				      <div class="weui_textarea_counter"><span>0</span>/200</div>
 				    </div>
 				  </div>
 			<!-- 文本输入结束（商品评价） -->				  
 		    </div>
 		  </div>
-
 		</div>
 
 
@@ -99,22 +104,34 @@
 		<div class="weui_cells">
 		  <div class="weui_cell">
 		    <div class="weui_cell_bd weui_cell_primary">
-				留个评分可好？
+		    <form>
+				&nbsp;&nbsp;&nbsp;留个评分可好？
 				<br/>
-			  <input type="radio"  name="appr_score" value="5分">5分&nbsp;
-		      <input type="radio"  name="appr_score" value="4分">4分&nbsp;
-		      <input type="radio"  name="appr_score" value="3分">3分&nbsp;
-		      <input type="radio"  name="appr_score" value="2分">2分&nbsp;
-		      <input type="radio"  name="appr_score" value="1分">1分&nbsp;
+				&nbsp;&nbsp;&nbsp;<input type="radio"  name="radiobutton" value="radiobutton">5分&nbsp;
+		     <input type="radio"  name="radiobutton" value="radiobutton">4分&nbsp;
+		     <input type="radio"  name="radiobutton" value="radiobutton">3分&nbsp;
+		     <input type="radio"  name="radiobutton" value="radiobutton">2分&nbsp;
+		     <input type="radio"  name="radiobutton" value="radiobutton">1分&nbsp;
+
+          </form>
+          
+
+     
 		    </div>
 		  </div>
 		</div>
+		
+		
 <div class="button_sp_area">
-<!--<a href="#" class="weui_btn weui_btn_mini weui_btn_default"  style="float:left;margin-top:0;margin-left: 30px;">匿名评价</a>-->
-	<input type="submit" name="submit" value="发表评论"  style="float:right; margin-top:10px;"   class="weui_btn weui_btn_mini weui_btn_default">
-</div>
+<a href="#" class="weui_btn weui_btn_mini weui_btn_default"  style="float:left;margin-top:0;margin-left: 30px;">匿名评价</a>
 
-			</form>
+
+	<!--此处未完成，正在修改-->
+	<a href="dianjia-pingjia.html" class="weui_btn weui_btn_mini weui_btn_default"  style="float:right; margin-top:0;">发表评论</a>
+
+
+</div>
+		
 		
 
 		<!-- 中间部分结束 -->	

@@ -25,6 +25,10 @@
             color:red;
             float: right;
         }
+        .b{
+            border: 2px #9c9c9c solid;
+            padding-left: 0px;
+        }
         .back{
             margin-top:10px;
             float:left;
@@ -36,8 +40,15 @@
             text-align:center;
             font-size:22px;
         }
+
         .dingdan{
-            margin-left: 50%;
+            margin-left:5%;
+        }
+        .tdd
+        {
+            border: 2px lightgrey solid;
+            width: 70px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -74,18 +85,44 @@
 
             <div class="weui_cell" >
                 <div class="weui_cell_hd">
-                                种类：{$set.bs_tname}
-                                <br/><br/>
-                                型号(颜色)：{$set.bs_gsize}
-
+                    <form action="/admin/goods/design" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                        <table class="insert-tab" width="100%">
+                            <tbody>
+                            <tr>
+                                <td>种类：</td>
+                                <td>
+                                    <select name="colId" id="catid" class="required">
+                                        <option value="">请选择</option>
+                                        <option value="19">碳酸饮料</option>
+                                        <option value="20">西瓜汁</option>
+                                        <option value="20">柠檬汁</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>型号(颜色)：</td>
+                                <td>
+                                    <select name="colId" id="size" class="required">
+                                        <option value="">请选择</option>
+                                        <option value="19">大杯(瓶)</option>
+                                        <option value="20">中杯(瓶)</option>
+                                        <option value="20">小杯(瓶)</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr >
+                                <td>已选种类</td>
+                                <td class="tdd">西瓜汁</td>
+                                <td class="tdd">小杯</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
                 </div>
                 <div class="dingdan">
-                    <!--<div class="img1"><img src="__PUBLIC__/home/images/0.png"  width="50px" height="50px" ></div>-->
-                    <div class="img2">
-                        <a href="/index.php/home/dianjia/gouwu1/id/{$set['bs_gid']}">
-                        <img src="__PUBLIC__/home/images/gouwuche.png" alt="">
-                        </a>
-                    </div>
+                    <div class="img1"><img src="__PUBLIC__/home/images/0.png"  width="50px" height="50px" ></div>
+                    <div class="img2"><a href="/index.php/home/dianjia/gouwu1/id/{$set['bs_gid']}">
+                        <img src="__PUBLIC__/home/images/gouwuche.png" alt=""></a></div>
                 </div>
             </div>
         </div>
@@ -104,44 +141,44 @@
         </div>
 
 
-        <!--&lt;!&ndash;底部开始&ndash;&gt;-->
+        <!--底部开始-->
 
-        <!--<div class="weui_tabbar">-->
-            <!--<a href="/index.php/home/dianjia/shangjia" class="weui_tabbar_item weui_bar_item_on">-->
-            <!--<div class="weui_tabbar_icon">-->
-            <!--<img src="__PUBLIC__/home/images/11.png" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">店家</p>-->
-            <!--</a>-->
-            <!--<a href="" class="weui_tabbar_item">-->
-            <!--<div class="weui_tabbar_icon">-->
-            <!--<img src="__PUBLIC__/home/images/22.png" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">收藏</p>-->
-            <!--</a>-->
-            <!--<a href="/index.php/home/dingdan/gouwuche_queren" class="weui_tabbar_item">-->
-            <!--<div class="weui_tabbar_icon">-->
-            <!--<img src="__PUBLIC__/home/images/33.png" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">购物车</p>-->
-            <!--</a>-->
-            <!--<a href="" class="weui_tabbar_item">-->
-            <!--<div class="weui_tabbar_icon">-->
-            <!--<img src="__PUBLIC__/home/images/44.png" alt="">-->
-            <!--</div>-->
-            <!--<p class="weui_tabbar_label">立即购买</p>-->
-            <!--</a>-->
-        <!--</div>-->
-        <!--&lt;!&ndash;底部结束&ndash;&gt;-->
-
-
+        <div class="weui_tabbar">
+            <a href="/index.php/home/dianjia/shangjia" class="weui_tabbar_item weui_bar_item_on">
+            <div class="weui_tabbar_icon">
+            <img src="__PUBLIC__/home/images/11.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">店家</p>
+            </a>
+            <a href="" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+            <img src="__PUBLIC__/home/images/22.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">收藏</p>
+            </a>
+            <a href="/index.php/home/dingdan/gouwuche_queren" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+            <img src="__PUBLIC__/home/images/33.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">购物车</p>
+            </a>
+            <a href="" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+            <img src="__PUBLIC__/home/images/44.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">立即购买</p>
+            </a>
+        </div>
+        <!--底部结束-->
 
 
 
 
-    <!--</div>-->
-<!--</div>-->
-<!--</body>-->
+
+
+    </div>
+</div>
+</body>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js" ></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
 <script type="text/javascript">
@@ -157,4 +194,4 @@
         $(".weui_tab_bd .content:eq("+which+")").show();
     });
 </script>
-<!--</html>-->
+</html>

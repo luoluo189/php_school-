@@ -86,7 +86,7 @@
                 <div><img src="__PUBLIC__/home/images/51.png" alt=""></div>
                 <div class="f">本店简介</div>
             </a>
-            <a name="commen" class="top" href="/index.php/home/dianjia/shangpin?id={$commen.bs_rid}&si_id={$set.si_id}">
+            <a name="commen" class="top" href="/index.php/home/dianjia/shangpin?bs_gid={$commen.bs_rid}&si_id={$set.si_id}">
                 <div><img src="__PUBLIC__/home/images/52.png" alt=""></div>
                 <div class="f">店家推荐</div>
             </a>
@@ -105,7 +105,7 @@
 
             <volist name="voo" id="vo">
                 <div class="weui_cells weui_cells_access">
-                            <a href="/index.php/home/dianjia/jumps?id={$vo.bs_gid}&si_id={$set.si_id}">
+                            <a href="/index.php/home/dianjia/shangpin?bs_gid={$vo.bs_gid}&si_id={$set.si_id}">
                                 <img src="__PUBLIC__/{$vo.bs_gurl}"  class="yinpin"></a>
                             <div class="neirong">
                                 {$vo['bs_gname']}<br/>

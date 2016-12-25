@@ -64,13 +64,12 @@
         <volist name="bs_goods" id="vo">
         
                 <div class="weui_cells weui_cells_access" name="set">
-                    <a  href="/index.php/home/dianjia/jumps?id={$vo.bs_gid}&si_id={$set.si_id}">
+                            <a href="/index.php/home/dianjia/shangpin?si_id={$set.si_id}&bs_gid={$vo.bs_gid}">
                                 <img src="__PUBLIC__/{$vo.bs_gurl}"  class="yinpin"></a>
                             <div class="neirong">
                                 {$vo['bs_gname']}<br/>
                                 价格：{$vo['bs_gprice']}<br/>
                                 {$vo['bs_gsize']}<br/>
-                                店家id:{$vo['si_id']}
                                 <a href="/index.php/home/dianjia/gouwu1/id/{$vo.bs_gid}">
                                     <img src="__PUBLIC__/home/images/gouwuche.png" style="float:right;"></a>
                             </div>
