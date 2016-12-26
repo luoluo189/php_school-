@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人信息</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link href="css/weui.min.css" type="text/css" rel="stylesheet">
+	<link href="css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+	<style>
+        html,body{
+			height:100%;
+		}
+        .weui_tab .weui_tab_bd .content img{
+            width:100%;
+            display:block;
+        }
+        .head{
+        margin-top:60px;
+        text-align:center;
+        }
+        .user{
+        text-align:center;        
+        }
+        .weui_tab{
+        padding-top:0px;
+        }
+        .qianbao{
+        width:20px;
+        height:20px;
+        position:absolute;
+        top:22px;
+        left:8px;
+        bottom:0px;
+        }
+        .content{
+        margin-top:60px;
+        }
+        
+        .back{
+        margin-top:10px;
+        float:left;
+        }
+        .set{
+        float:right;
+        margin-top:10px;
+        }
+	</style>
+</head>
+<body>
+<div class="weui_tab">
+	<div class="weui_tab_bd">
+    <!-- 返回和设置图标开始 -->
+		    <div>
+		    <div  class="back" >
+		    <a href="index.html"><img src="images/back.jpg"  style="width:30px;height:30px;" ></a>
+		    </div>
+		    <div class="set">
+		   <a href="personal-set.html"><img src="images/set.jpg "   style="width:40px; height:40px;" > </a>
+		    </div>
+		    </div>
+    <!-- 返回和设置图标结束 -->		
+	
+	    
+    <!-- 用户头像开始 -->
+    <div class="head">
+    <img src="images/head.jpg" width="100px" height="100px">
+    </div>    
+    <div class="user">用户名</div>
+    <!-- 用户头像结束 -->		   
+		
+		
+		<!--中间部分开始-->		
+		 <div class="weui_tab_bd">
+       <!--导航栏开始-->
+        <div class="weui_tab">
+            <div class="weui_navbar">
+                <a class="weui_navbar_item weui_bar_item_on">               
+                <img src="images/qianbao.jpg"   class="qianbao">
+                5.5元<br/>
+                    我的钱包
+                </a>
+                <a class="weui_navbar_item">
+                 <img src="images/qianbao.jpg"   class="qianbao">
+                 4张<br/>
+                   代金券
+                </a>
+                <a class="weui_navbar_item">
+                 <img src="images/qianbao.jpg"  class="qianbao">
+                  4张<br/>
+                    优惠券
+                </a>
+            </div>
+            <div class="weui_tab_bd">
+                <!--选项卡开始-->
+                <div class="weui_tab_bd">
+                    <!--第1个选项卡-->
+                    <div class="content" >
+                        <div class="weui_cells weui_cells_access">
+                            <a class="weui_cell" href="personal-list.html">
+                                <div class="weui_cell_bd weui_cell_primary">
+                                    <p>全部订单</p>
+                                </div>
+                                <div class="weui_cell_ft">查看全部订单</div>
+                            </a>
+                            <a class="weui_cell" href="javascript:;">
+                                <div class="weui_cell_bd weui_cell_primary">
+                                    <p>商品收藏</p>
+                                </div>
+                                <div class="weui_cell_ft"></div>
+                            </a>
+                             <a class="weui_cell" href="javascript:;">
+                                <div class="weui_cell_bd weui_cell_primary">
+                                    <p>店铺收藏</p>
+                                </div>
+                                <div class="weui_cell_ft"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--第2个选项卡-->
+                    <div class="content" style="display:none">
+                        <div class="weui_cells weui_cells_access">
+                            <a class="weui_cell" href="javascript:;">
+                                <div class="weui_cell_bd weui_cell_primary">
+                                    <p>代金券</p>
+                                </div>
+                                <div class="weui_cell_ft">2016.11.19</div>
+                            </a>
+                            <a class="weui_cell" href="javascript:;">
+                                <div class="weui_cell_bd weui_cell_primary">
+                                    <p>代金券</p>
+                                </div>
+                                <div class="weui_cell_ft">2016.11.19</div>
+                            </a>
+                              <a class="weui_cell" href="javascript:;">
+                                <div class="weui_cell_bd weui_cell_primary">
+                                    <p>代金券</p>
+                                </div>
+                                <div class="weui_cell_ft">2016.11.19</div>
+                            </a>
+                            <a class="weui_cell" href="javascript:;">
+                                <div class="weui_cell_bd weui_cell_primary">
+                                    <p>代金券</p>
+                                </div>
+                                <div class="weui_cell_ft">2016.11.19</div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--第3个选项卡-->
+                    <div class="content" style="display:none">                           
+						<div class="weui-row weui-no-gutter">
+						  <div class="weui-col-50">
+						  <img src="images/youhui.jpg">
+						  </div>
+						  <div class="weui-col-50">
+						  <img src="images/youhui.jpg">
+						  </div>
+						  
+						  <div class="weui-col-50">
+						  <img src="images/youhui.jpg">
+						  </div>
+						  <div class="weui-col-50">
+						  <img src="images/youhui.jpg">
+						  </div>
+						</div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--选项卡结束-->
+            </div>
+        </div>
+        <!--导航栏结束-->
+    </div>		
+		<!--中间部分结束-->
+	</div>
+	
+	
+	<!-- 底部menu开始 -->
+	<div class="weui_tabbar">
+		<a href="index.html" class="weui_tabbar_item weui_bar_item_on">
+			<div class="weui_tabbar_icon">
+				<img src="images/b1.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">首页</p>
+		</a>
+		<a href="sousuo.html" class="weui_tabbar_item">
+			<div class="weui_tabbar_icon">
+				<img src="images/b2.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">搜索</p>
+		</a>
+		<a href="gouwuche.html" class="weui_tabbar_item">
+			<div class="weui_tabbar_icon">
+				<img src="images/b3.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">购物车</p>
+		</a>
+		<a href="personal.html" class="weui_tabbar_item">
+			<div class="weui_tabbar_icon">
+				<img src="images/b4.jpg" alt="">
+			</div>
+			<p class="weui_tabbar_label">个人中心</p>
+		</a>
+	</div>
+	<!-- 底部menu结束 -->
+</div>
+
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/jquery-weui.min.js"></script>
+<script type="text/javascript" src="js/swiper.js"></script>
+<script>
+    $(".weui_navbar .weui_navbar_item").click(function(){
+        $(".weui_navbar .weui_navbar_item").removeClass("weui_bar_item_on");//全部没有weui_bar_item_on
+        $(this).addClass("weui_bar_item_on");//点谁谁有weui_bar_item_on
+        //判断点的第几个选项卡
+        var which = $(this).index();
+        //console.log(which);
+        //让所有内容区域隐藏
+        $(".weui_tab_bd .content").hide();
+        //按照索引选择内容
+        $(".weui_tab_bd .content:eq("+which+")").show();
+    });
+</script>
+</html>
