@@ -1,168 +1,168 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>个人信息</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
-	<link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
-	<style>
+    <title>个人信息</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--只有IE8认识,解决兼容性问题-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="__PUBLIC__/home/css/weui.min.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__/home/css/jquery-weui.min.css" type="text/css" rel="stylesheet">
+    <style>
         html,body{
-			height:100%;
-		}
+            height:100%;
+        }
         .weui_tab .weui_tab_bd .content img{
             width:100%;
             display:block;
         }
         .head{
-        margin-top:60px;
-        text-align:center;
+            margin-top:60px;
+            text-align:center;
         }
         .user{
-        text-align:center;        
+            text-align:center;
         }
         .weui_tab{
-        padding-top:0px;
+            padding-top:0px;
         }
         .qianbao{
-        width:20px;
-        height:20px;
-        position:absolute;
-        top:22px;
-        left:8px;
-        bottom:0px;
+            width:20px;
+            height:20px;
+            position:absolute;
+            top:22px;
+            left:8px;
+            bottom:0px;
         }
         .content{
-        margin-top:60px;
+            margin-top:60px;
         }
-        
+
         .back{
-        margin-top:10px;
-        float:left;
+            margin-top:10px;
+            float:left;
         }
         .set{
-        float:right;
-        margin-top:10px;
+            float:right;
+            margin-top:10px;
         }
-	</style>
+    </style>
 </head>
 <body>
 <div class="weui_tab">
-	<div class="weui_tab_bd">
-    <!-- 返回和设置图标开始 -->
-		    <div>
-		    <div  class="back" >
-		    <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
-		    </div>
-		    <div class="set">
-		    <a href="/home/personal/pset/id/{$user.ci_id}"><img src="__PUBLIC__/home/images/set.jpg "   style="width:40px; height:40px;" > </a>
-		    </div>
-		    </div>
-    <!-- 返回和设置图标结束 -->		
-	
-	    
-    <!-- 用户头像开始 -->
-    <div class="head">
-    <img src="__PUBLIC__/home/images/head.jpg" width="100px" height="100px">
-    </div>    
-    <div class="user" id="user">{$user.ci_name}</div>
-    <!-- 用户头像结束 -->		   
-		
-		
-		<!--中间部分开始-->		
-		 <div class="weui_tab_bd">
-       <!--导航栏开始-->
-        <div class="weui_tab">
-            <div class="weui_navbar">
-                <a class="weui_navbar_item weui_bar_item_on">               
-                <img src="__PUBLIC__/home/images/qianbao.jpg"   class="qianbao">
-                5.5元<br/>
-                    我的钱包
-                </a>
-                <a class="weui_navbar_item">
-                 <img src="__PUBLIC__/home/images/qianbao.jpg"   class="qianbao">
-                 4张<br/>
-                   代金券
-                </a>
-                <a class="weui_navbar_item">
-                 <img src="__PUBLIC__/home/images/qianbao.jpg"  class="qianbao">
-                  4张<br/>
-                    优惠券
-                </a>
+    <div class="weui_tab_bd">
+        <!-- 返回和设置图标开始 -->
+        <div>
+            <div  class="back" >
+                <a onclick="history.go(-1)"><img src="__PUBLIC__/home/images/back.jpg"  style="width:30px;height:30px;" ></a>
             </div>
-            <div class="weui_tab_bd">
-                <!--选项卡开始-->
+            <div class="set">
+                <a href="/index.php/home/personal/pset/id/{$user.ci_id}"><img src="__PUBLIC__/home/images/set.jpg "   style="width:40px; height:40px;" > </a>
+            </div>
+        </div>
+        <!-- 返回和设置图标结束 -->
+
+
+        <!-- 用户头像开始 -->
+        <div class="head">
+            <img src="{$user.headimgurl}" width="100px" height="100px">
+        </div>
+        <div class="user" id="user">{$user.ci_name}</div>
+        <!-- 用户头像结束 -->
+
+
+        <!--中间部分开始-->
+        <div class="weui_tab_bd">
+            <!--导航栏开始-->
+            <div class="weui_tab">
+                <div class="weui_navbar">
+                    <a class="weui_navbar_item weui_bar_item_on">
+                        <img src="__PUBLIC__/home/images/qianbao.jpg"   class="qianbao">
+                        5.5元<br/>
+                        我的钱包
+                    </a>
+                    <a class="weui_navbar_item">
+                        <img src="__PUBLIC__/home/images/qianbao.jpg"   class="qianbao">
+                        4张<br/>
+                        代金券
+                    </a>
+                    <a class="weui_navbar_item">
+                        <img src="__PUBLIC__/home/images/qianbao.jpg"  class="qianbao">
+                        4张<br/>
+                        优惠券
+                    </a>
+                </div>
                 <div class="weui_tab_bd">
-                    <!--第1个选项卡-->
-                    <div class="content" >
-                        <div class="weui_cells weui_cells_access">
-                            <a class="weui_cell" href="/index.php/home/dingdan/personal_list">
-                                <div class="weui_cell_bd weui_cell_primary">
-                                    <p>全部订单</p>
-                                </div>
-                                <div class="weui_cell_ft">查看全部订单</div>
-                            </a>
-                            <a class="weui_cell" href="javascript:;">
-                                <div class="weui_cell_bd weui_cell_primary">
-                                    <p>商品收藏</p>
-                                </div>
-                                <div class="weui_cell_ft"></div>
-                            </a>
-                             <!--<a class="weui_cell" href="javascript:;">-->
+                    <!--选项卡开始-->
+                    <div class="weui_tab_bd">
+                        <!--第1个选项卡-->
+                        <div class="content" >
+                            <div class="weui_cells weui_cells_access">
+                                <a class="weui_cell" href="/index.php/home/dingdan/personal_list">
+                                    <div class="weui_cell_bd weui_cell_primary">
+                                        <p>全部订单</p>
+                                    </div>
+                                    <div class="weui_cell_ft">查看全部订单</div>
+                                </a>
+                                <a class="weui_cell" href="javascript:;">
+                                    <div class="weui_cell_bd weui_cell_primary">
+                                        <p>商品收藏</p>
+                                    </div>
+                                    <div class="weui_cell_ft"></div>
+                                </a>
+                                <!--<a class="weui_cell" href="javascript:;">-->
                                 <!--<div class="weui_cell_bd weui_cell_primary">-->
-                                    <!--<p>店铺收藏</p>-->
+                                <!--<p>店铺收藏</p>-->
                                 <!--</div>-->
                                 <!--<div class="weui_cell_ft"></div>-->
-                            <!--</a>-->
+                                <!--</a>-->
+                            </div>
                         </div>
-                    </div>
-                    <!--第2个选项卡-->
-                    <div class="content" style="display:none">
-                        <div class="weui_cells weui_cells_access">
-                            <a class="weui_cell" href="javascript:;">
-                                <div class="weui_cell_bd weui_cell_primary">
-                                    <p>代金券</p>
-                                </div>
-                                <div class="weui_cell_ft">2016.11.19</div>
-                            </a>
-                            <a class="weui_cell" href="javascript:;">
-                                <div class="weui_cell_bd weui_cell_primary">
-                                    <p>代金券</p>
-                                </div>
-                                <div class="weui_cell_ft">2016.11.19</div>
-                            </a>
-                              <a class="weui_cell" href="javascript:;">
-                                <div class="weui_cell_bd weui_cell_primary">
-                                    <p>代金券</p>
-                                </div>
-                                <div class="weui_cell_ft">2016.11.19</div>
-                            </a>
-                            <a class="weui_cell" href="javascript:;">
-                                <div class="weui_cell_bd weui_cell_primary">
-                                    <p>代金券</p>
-                                </div>
-                                <div class="weui_cell_ft">2016.11.19</div>
-                            </a>
+                        <!--第2个选项卡-->
+                        <div class="content" style="display:none">
+                            <div class="weui_cells weui_cells_access">
+                                <a class="weui_cell" href="javascript:;">
+                                    <div class="weui_cell_bd weui_cell_primary">
+                                        <p>代金券</p>
+                                    </div>
+                                    <div class="weui_cell_ft">2016.11.19</div>
+                                </a>
+                                <a class="weui_cell" href="javascript:;">
+                                    <div class="weui_cell_bd weui_cell_primary">
+                                        <p>代金券</p>
+                                    </div>
+                                    <div class="weui_cell_ft">2016.11.19</div>
+                                </a>
+                                <a class="weui_cell" href="javascript:;">
+                                    <div class="weui_cell_bd weui_cell_primary">
+                                        <p>代金券</p>
+                                    </div>
+                                    <div class="weui_cell_ft">2016.11.19</div>
+                                </a>
+                                <a class="weui_cell" href="javascript:;">
+                                    <div class="weui_cell_bd weui_cell_primary">
+                                        <p>代金券</p>
+                                    </div>
+                                    <div class="weui_cell_ft">2016.11.19</div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <!--第3个选项卡-->
-                    <div class="content" style="display:none">                           
-						<div class="weui-row weui-no-gutter">
-						  <div class="weui-col-50">
-						  <img src="__PUBLIC__/home/images/youhui.jpg">
-						  </div>
-						  <div class="weui-col-50">
-						  <img src="__PUBLIC__/home/images/youhui.jpg">
-						  </div>
-						  
-						  <div class="weui-col-50">
-						  <img src="__PUBLIC__/home/images/youhui.jpg">
-						  </div>
-						  <div class="weui-col-50">
-						  <img src="__PUBLIC__/home/images/youhui.jpg">
-						  </div>
-						</div>
+                        <!--第3个选项卡-->
+                        <div class="content" style="display:none">
+                            <div class="weui-row weui-no-gutter">
+                                <div class="weui-col-50">
+                                    <img src="__PUBLIC__/home/images/youhui.jpg">
+                                </div>
+                                <div class="weui-col-50">
+                                    <img src="__PUBLIC__/home/images/youhui.jpg">
+                                </div>
+
+                                <div class="weui-col-50">
+                                    <img src="__PUBLIC__/home/images/youhui.jpg">
+                                </div>
+                                <div class="weui-col-50">
+                                    <img src="__PUBLIC__/home/images/youhui.jpg">
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -171,10 +171,10 @@
             </div>
         </div>
         <!--导航栏结束-->
-    </div>		
-		<!--中间部分结束-->
-	</div>
-	
+    </div>
+    <!--中间部分结束-->
+</div>
+
 
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>

@@ -12,7 +12,7 @@ class LifaController extends Controller
 {
     protected $_db;
     public $userId=1;
-
+   
 
     /*
      * 功能：理发店铺页
@@ -20,8 +20,10 @@ class LifaController extends Controller
      * 状态：已完成
      */
     public function dianpu(){
+
+
         $_db=M('store_information');
-        $condition=array();
+        $condition=array();        
         $condition['s_type_id']=1;
         $condition['si_id']=$_GET[si_id];
         $result=$_db->where($condition)->select();
@@ -37,7 +39,7 @@ class LifaController extends Controller
      */
     public function jianjie(){
         $_db=M('store_information');
-        $condition=array();
+        $condition=array();        
         $condition['s_type_id']=1;
         $condition['si_id']=$_GET[si_id];
         $result=$_db->where($condition)->select();
@@ -64,14 +66,20 @@ class LifaController extends Controller
      * 功能：理发预约界面
      * 编写者：孙池晔
      * 状态：已完成
+     * 修改者：李雪
      */
     public function yuyue(){
-        $_db=M('store_information');
-        $condition=array();
-        $condition['s_type_id']=1;
-        $condition['si_id']=$_GET[si_id];
-        $result=$_db->where($condition)->select();
+        $condition=array();        
+        $condition['s_type_id'] = 1;
+        $condition['si_id'] = $_GET[si_id];
+        $result=M('store_information')->where($condition)->select();
         $this->assign('set', $result[0]);
+
+        //服务类型信息获取
+        $si_id = I('si_id');
+        $service = M('order_time_pmun')->where("si_idddd = $si_id")->select();
+        $this->assign('service',$service);
+
         $this->display();
     }
 
@@ -80,34 +88,77 @@ class LifaController extends Controller
      * 功能：预约数据提交
      * 编写者：孙池晔
      * 状态：已完成
+     * 修改者：李雪
      */
     public function getyuyue()
     {
 
-        // var_dump($result);
-        $data = array();
-        $data['storeid'] =I('storeid');
-        $data['ci_idid']= I('ci_idid');
-        $data['ts_idd'] =I('ts_idd');
-        $data['hair_name'] = I('name');
-        $data['hair_gender']=I('sex');
-        $data['hair_number'] = I('tel');
-        $data['hair_long'] = I('hair');
-        $data['or_typename'] = I('haircut');
-        $data['or_tdday'] = I('date');
-        $data['or_tdtime'] = I('time');
-        $data['hair_content'] = I('comment');
+//        $_SESSION['ci_id'] = 1;
+        $ci_id =  $_SESSION['ci_id'];
 
-        // 插入到数据表中
-        $_mb = M('order_trade');
-        $results = $_mb->add($data);
+        $storeid = I('get.si_id');
 
-        if ($results) {
-            $referer = $_SERVER['HTTP_REFERER'];
-            echo "<script>alert('预约成功');document.location.href='$referer'</script>";
-        } else {
-            $this->error('预约失败！');
+        $or_typename = I('haircut');
+        $or_typenameaa = implode("",$or_typename);
+            $data = array();
+            $data['storeid'] = $storeid;
+            $data['ci_idid']= $ci_id;
+            $data['ts_idd'] =I('ts_idd');
+            $data['hair_name'] = I('name');
+            $data['hair_gender']=I('sex');
+            $data['hair_number'] = I('tel');
+            $data['hair_long'] = I('hair');
+            $data['or_typename'] = $or_typenameaa;
+            $data['or_tdday'] = I('date');
+            $data['or_tdtime'] = I('time');
+            $data['hair_content'] = I('comment');
+
+            // 插入到数据表中
+        if($data['hair_name'] && $data['hair_gender'] && $data['hair_number'] && $data['hair_long'] && $data['or_typename'] &&  $data['or_tdday'] && $data['or_tdtime'] && $data['hair_content'] ){
+            //如果数据均不为空
+
+            //然后判断手机号码长度
+            if(preg_match("/^(1(([35][0-9])|(47)|[8][0126789]))\d{8}$/", $data['hair_number'])){
+                //如果手机号码验证通过
+
+                $results =M('order_trade')->add($data);
+                if ($results) {
+                    echo <<<STR
+				<script type="text/javascript">
+					alert('您的预约成功了呢！');
+                    window.location.href = "/index.php/home/lifa/dianpu?si_id={$storeid}";                  
+				</script>
+STR;
+                } else {
+                    echo <<<STR
+				<script type="text/javascript">
+					alert('预约失败！');
+                    window.history.go(-1);
+				</script>
+STR;
+                }
+
+            }else{
+                //如果手机号码格式不对
+                echo <<<STR
+				<script type="text/javascript">
+					alert('您的手机号码格式有误！');
+                    window.history.go(-1);
+				</script>
+STR;
+            }
+
         }
+        else{
+            //如果有预约信息还没填写
+            echo <<<STR
+				<script type="text/javascript">
+					alert('请先写入您的预约信息哦！');
+                    window.history.go(-1);
+				</script>
+STR;
+        }
+
     }
 
     /*
@@ -117,9 +168,9 @@ class LifaController extends Controller
      */
     public function index(){
         $_db=M('store_information');
-        $condition=array();
-        $condition['s_type_id']=1;
-        $result=$_db->where($condition)->select();
+        $condition=array();        
+        $condition['s_type_id']=1;        
+        $result=$_db->where($condition)->select();  
         $this->assign('store', $result);
         $this->display();
     }

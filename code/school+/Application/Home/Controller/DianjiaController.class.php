@@ -92,7 +92,7 @@ class DianjiaController extends Controller
      */
 
     public function jianjie(){
-        $_SESSION['ci_id']=1;
+
 
         //获取店家ID
         $si_id = $_GET['si_id'];
@@ -125,7 +125,11 @@ class DianjiaController extends Controller
     public function goodslist(){
 
         $condition['bs_tid'] = $_GET['bs_tid'];
-        $result=M('bs_goods')->where($condition)->select();
+        $condition1['bs_tid'] = $_GET['bs_tid'];
+        $condition1['if_renzheng']=1;
+        $condition1['if_gifshow']=1;
+
+        $result=M('bs_goods')->where($condition1)->select();
         $set0=M('bs_type')->where($condition)->select();
         $set=array();
         $set = $set0[0];
@@ -137,6 +141,7 @@ class DianjiaController extends Controller
     /*
      * 功能：商品详情
      * 编写者：黄桃源
+     * 修改：骆静静if_renzheng
      * 状态：succeed
      */
     public function shangpin(){
@@ -144,9 +149,9 @@ class DianjiaController extends Controller
         $si_id = $_GET['si_id'];//店家id
         $bs_rid= $_GET['id'];//推荐id
 
-        $sql = "select bs_gname,bs_gurl,bs_gprice,bs_gdescription
+        $sql = "select bs_gname,bs_gurl,bs_gprice,bs_gdescription,bs_gid,bs_tname,bs_gsize,si_id
         from bs_goods,bs_type
-        where bs_goods.bs_rid = $bs_rid and bs_type.si_id = $si_id  and bs_type.bs_tid = bs_goods.bs_tid";
+        where bs_goods.bs_rid = $bs_rid and bs_type.si_id = $si_id  and bs_type.bs_tid = bs_goods.bs_tid and bs_goods.if_renzheng=1";
 
         $result = M()->query($sql);
         $set = array();
@@ -169,6 +174,7 @@ class DianjiaController extends Controller
     /*
      * 功能：商品详情跳转
      * 编写者：李雪
+     * 骆静静 ifrenzheng
      * 状态：已完成
      */
 
@@ -179,11 +185,11 @@ class DianjiaController extends Controller
 
         $sql = "select bs_gname,bs_gurl,bs_gprice,bs_gdescription,bs_tname,bs_gsize,bs_gid
         from bs_goods,bs_type
-        where bs_goods.bs_gid = $bs_gid and bs_type.si_id = $si_id  and bs_type.bs_tid = bs_goods.bs_tid";
+        where bs_goods.bs_gid = $bs_gid and bs_type.si_id = $si_id  and bs_type.bs_tid = bs_goods.bs_tid and bs_goods.if_renzheng=1";
         $result = M()->query($sql);
         $set = array();
         $set = $result[0];
-
+//        dump($set);
         $name=M('store_information')->where("si_id = $si_id")->select();
         $si = array();
         $si = $name[0];
@@ -284,22 +290,50 @@ class DianjiaController extends Controller
 
 
     /*
-    * goodlist页面数据插入数据库
+    * 点击购物车图标将商品加入购物车
     * 编写者：黄桃源
     * 状态：succeed
+     * 修改者：李雪
     */
     public function gouwu1(){
-        //$id = $_GET['id'];
 
-
+        $bs_gidd  =  $_GET['id'];
         $news = array();
-        $news['bs_gidd'] = $_GET['id'];
-
+        $news['bs_gidd'] = $bs_gidd;
         $news['ci_idddd'] = $_SESSION['ci_id'];
-//        dump($news);
-        $results = M('shopping_cart')->add($news);
-        if($results){
-            if($results) {
+        $news['si_ids'] = $_GET['si_id'];//店家id
+
+        //加入购物车前，先查询购物车内是否有当前商品
+        $result = M('shopping_cart')->where("bs_gidd = $bs_gidd")->select();
+
+        if(!$result){//如果购物车中没有当前商品
+            $results = M('shopping_cart')->add($news);
+            if($results){
+                if($results) {
+                    echo <<<STR
+				<script type="text/javascript">
+					alert('加入购物车成功！');
+                    window.location.href = "/index.php/home/dingdan/gouwuche_queren";
+				</script>
+STR;
+                }
+                else{
+                    echo <<<STR
+				<script type="text/javascript">
+					alert('加入购物车失败！');
+                    window.history.go(-1);
+				</script>
+STR;
+                }
+            }
+
+        }
+        else{//如果购物车中已有当前商品
+            $sh_cnum = $result[0]['sh_cnum'] + 1;
+            $news['sh_cnum'] = $sh_cnum;
+            //对该条数据进行更新
+            $r = M('shopping_cart')->where("bs_gidd = $bs_gidd")->save($news);
+            if($r){
                 echo <<<STR
 				<script type="text/javascript">
 					alert('加入购物车成功！');
@@ -314,27 +348,25 @@ STR;
                     window.history.go(-1);
 				</script>
 STR;
-
             }
-
         }
-
     }
+
     /*
      * 店家页面数据插入数据库
      * 编写者：黄桃源
      * 状态：succeed
      */
-    public function gouwu2(){
-        //global $userId;
-
-        $news = array();
-        $news['bs_gidd'] = $_GET['id'];
-        $news['ci_idddd'] = 1;
-        //var_dump($news);
-        $results = M('shopping_cart')->add($news);
-        $this->display("Dingdan:gouwuche_queren");
-    }
+//    public function gouwu2(){
+//        //global $userId;
+//
+//        $news = array();
+//        $news['bs_gidd'] = $_GET['id'];
+//        $news['ci_idddd'] = 1;
+//        //var_dump($news);
+//        $results = M('shopping_cart')->add($news);
+//        $this->display("Dingdan:gouwuche_queren");
+//    }
     /*
    * 功能：商家列表搜索
    * 编写者：安垒

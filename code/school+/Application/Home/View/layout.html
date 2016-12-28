@@ -2,36 +2,32 @@
 	{__CONTENT__}
 
 	<!--底部开始-->
-	<div class="weui_tabbar" >
-		<a href="/index.php/home/index/index" class="weui_tabbar_item ">
+	<div class="weui_tabbar" id="weui_tabbar" >
+		<a href="/index.php/home/index/index.html" class="weui_tabbar_item" >
 			<div class="weui_tabbar_icon">
 				<img src="__PUBLIC__/home/images/b1.jpg" alt="">
 			</div>
 			<p class="weui_tabbar_label">主页</p>
 		</a>
-		<a href="/index.php/home/index/sousuo" class="weui_tabbar_item">
+		<a href="/index.php/home/index/sousuo.html" class="weui_tabbar_item">
 			<div class="weui_tabbar_icon">
 				<img src="__PUBLIC__/home/images/b2.jpg" alt="">
 			</div>
 			<p class="weui_tabbar_label">搜索</p>
 		</a>
-		<a href="/index.php/home/index/gouwuche" class="weui_tabbar_item">
+		<a href="/index.php/home/index/gouwuche.html" class="weui_tabbar_item">
 			<div class="weui_tabbar_icon">
 				<img src="__PUBLIC__/home/images/b3.jpg" alt="">
 			</div>
-			<p class="weui_tabbar_label">收藏</p>
+			<p class="weui_tabbar_label">购物车</p>
 		</a>
-		<a href="/index.php/home/index/personal" class="weui_tabbar_item">
+		<a href="/index.php/home/index/personal.html" class="weui_tabbar_item">
 			<div class="weui_tabbar_icon">
 				<img src="__PUBLIC__/home/images/b4.jpg" alt="">
 			</div>
 			<p class="weui_tabbar_label">个人中心</p>
 		</a>
 	</div>
-
-
-
-
 
 	<!--底部结束-->
 </div>
@@ -40,9 +36,36 @@
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-weui.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/swiper.js" charset="utf-8"></script>
 	<script>
+		$(document).ready(function () {
+			console.log('jQuery文件引入成功');
+		});
+	</script>
+	<script>
+		$(function() {
+			var urlstr = location.href;
+			var urlstatus=false;
+			$('#weui_tabbar a').each(function(){
+				if ((urlstr + '/').indexOf($(this).attr('href')) > -1&&$(this).attr('href')!='') {
+					$(this).addClass('weui_bar_item_on');
+					urlstatus = true;
+				}
+				else {
+					$(this).removeClass('weui_bar_item_on');
+				}
+			});
+			//保持状态
+			if (!urlstatus) {
+				$("#weui_tabbar a").eq(0).addClass('weui_bar_item_on');
+			}
+		});
 
-
-
+//$(".weui_tabbar .weui_tabbar_item").click(function(){
+//	$(".weui_tabbar .weui_tabbar_item").removeClass("weui_bar_item_on");//全部没有weui_bar_item_on
+//	$(this).addClass("weui_bar_item_on");//点谁谁有weui_bar_item_on
+//	if(!urlstatus){
+//		$(which).eq(0).addClass('weui_bar_item_on');
+//	}
+//});
 	</script>
 
-</html>
+<!--</html>-->

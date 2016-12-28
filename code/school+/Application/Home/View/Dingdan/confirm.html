@@ -11,9 +11,19 @@
         html,body{
             height:100%;
         }
+        .swiper-container {
+            width: 100%;
+        }
         .swiper-container img {
             display: block;
             width: 100%;
+        }
+        .s3{
+            top:20px;
+            height:30px;
+            position:absolute;
+            left:90%;
+
         }
         .sto{
             float:left;
@@ -86,13 +96,13 @@
         <hr/>
         <volist name="s" id="vo">
             <div  style="margin-left: 4%;">
-            收货人：{$vo['ca_name']} &nbsp;&nbsp;联系电话：{$vo['ca_phone']}
+           收货人：{$vo['ca_name']} &nbsp;&nbsp;联系电话：{$vo['ca_phone']}
             <br/>
             <div  style="margin-top:10px;">
 
            <img src="__PUBLIC__/home/images/dingwei.png" style="width:18px; height:30px;float:left;margin-right:20px;">
            {$vo['ca_phone']}
-           <a href="/index.php/home/personal/paddress" ><img src="__PUBLIC__/home/images/back2.jpg" class="address"></a>
+           <a href="/home/personal/paddress" ><img src="__PUBLIC__/home/images/back2.jpg" class="address"></a>
 
            </div>
             </div>
@@ -127,7 +137,7 @@
 
 
             <!--  -->
-
+            <hr/>
         </div>
 
 
