@@ -63,7 +63,7 @@
 
 
 
-        <form action="/home/join/store" method="post" id="myform" name="myform" enctype="multipart/form-data">
+        <form action="/index.php/home/join/store" method="post" id="myform" name="myform" enctype="multipart/form-data">
 		<!--表单-->
 		<div class="weui_cells weui_cells_form">
           <div class="weui_cell">
@@ -93,7 +93,7 @@
                        <input class="weui_input"  placeholder="请输入验证码" name = "captcha">
                       </div>
                      <div class="weui_cell_ft" style="width:30%">
-                         <img src = "/home/join/captcha"  onClick="this.src=this.src+'?'+Math.random()">点击刷新
+                         <img src = "/index.php/home/join/captcha"  onClick="this.src=this.src+'?'+Math.random()">点击刷新
 
                       </div>
                   </div>
@@ -119,8 +119,7 @@
             <input class="weui_btn weui_btn_primary" name="submit" type="submit" value="提交">
 
             </form>
-		<!-- 中间部分结束 -->	
-		
+		<!-- 中间部分结束 -->
 	</div>
 	
 	
